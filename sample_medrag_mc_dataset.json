@@ -1,0 +1,32 @@
+[
+  {
+    "question": "A lesion causing compression of the facial nerve at the stylomastoid foramen will cause ipsilateral",
+    "options": {
+      "A": "paralysis of the facial muscles.",
+      "B": "paralysis of the facial muscles and loss of taste.",
+      "C": "paralysis of the facial muscles, loss of taste and lacrimation.",
+      "D": "paralysis of the facial muscles, loss of taste, lacrimation and decreased salivation."
+    },
+    "answer": "A"
+  },
+  {
+    "question": "Which of the following is the first-line treatment for uncomplicated hypertension in diabetes?",
+    "options": {
+      "A": "Calcium channel blockers",
+      "B": "Beta blockers",
+      "C": "ACE inhibitors",
+      "D": "Thiazide diuretics"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "The most common causative organism in community-acquired pneumonia is:",
+    "options": {
+      "A": "Klebsiella pneumoniae",
+      "B": "Streptococcus pneumoniae",
+      "C": "Mycoplasma pneumoniae",
+      "D": "Haemophilus influenzae"
+    },
+    "answer": "B"
+  }
+]
