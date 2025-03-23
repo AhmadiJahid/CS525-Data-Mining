@@ -1,0 +1,30 @@
+{
+  "overall_score": "75.76%",
+  "component_scores": {
+    "retrieval": "73.29%",
+    "factual_correctness": "80.00%",
+    "citation_accuracy": "72.22%",
+    "clinical_relevance": "80.00%"
+  },
+  "detailed_metrics": {
+    "retrieval": {
+      "precision": "50.00%",
+      "recall": "83.33%",
+      "f1": "62.50%",
+      "ndcg": "97.35%"
+    },
+    "factual_correctness": {
+      "correctness": "100.00%",
+      "completeness": "60.00%"
+    },
+    "citation": {
+      "presence": "100.00%",
+      "relevance": "66.67%",
+      "coverage": "50.00%"
+    },
+    "clinical": {
+      "relevance": "60.00%",
+      "safety": "100.00%"
+    }
+  }
+}

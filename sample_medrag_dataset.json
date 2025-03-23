@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "name": "MEDRag Sample Dataset",
+    "description": "A small sample dataset for testing MEDRag evaluation"
+  },
+  "questions": {
+    "q1": {
+      "text": "What is the first-line treatment for uncomplicated type 2 diabetes?",
+      "question_type": "treatment",
+      "clinical_context": "Adult patient newly diagnosed with type 2 diabetes, HbA1c 7.5%",
+      "relevant_docs": [
+        "doc1",
+        "doc5",
+        "doc8"
+      ],
+      "reference_answer": "Metformin is the first-line pharmacologic agent for type 2 diabetes. It should be initiated at the time of diagnosis unless contraindicated. Metformin is effective, safe, and inexpensive, and may reduce risk of cardiovascular events and death.",
+      "key_concepts": [
+        "metformin",
+        "first-line",
+        "type 2 diabetes",
+        "contraindicated",
+        "cardiovascular"
+      ],
+      "expected_citations": [
+        {
+          "doc_id": "doc1",
+          "text": "Metformin is the preferred initial pharmacologic agent for type 2 diabetes."
+        },
+        {
+          "doc_id": "doc5",
+          "text": "Metformin may reduce risk of cardiovascular events and death."
+        }
+      ]
+    },
+    "q2": {
+      "text": "What are the diagnostic criteria for multiple sclerosis?",
+      "question_type": "diagnosis",
+      "clinical_context": "30-year-old female with episodic neurological symptoms",
+      "relevant_docs": [
+        "doc3",
+        "doc7",
+        "doc12"
+      ],
+      "reference_answer": "Multiple sclerosis is diagnosed based on demonstrating dissemination of lesions in space and time using clinical and MRI findings, with the exclusion of alternative diagnoses. The McDonald criteria are commonly used, requiring evidence of damage in at least two separate areas of the central nervous system and evidence that the damage occurred at different time points.",
+      "key_concepts": [
+        "dissemination in space",
+        "dissemination in time",
+        "McDonald criteria",
+        "MRI",
+        "exclusion of alternatives"
+      ],
+      "expected_citations": [
+        {
+          "doc_id": "doc3",
+          "text": "The 2017 McDonald criteria for MS diagnosis require demonstration of dissemination of lesions in space and time."
+        },
+        {
+          "doc_id": "doc7",
+          "text": "MRI findings are central to the diagnosis of multiple sclerosis."
+        }
+      ]
+    }
+  }
+}
