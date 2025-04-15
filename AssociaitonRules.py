@@ -41,4 +41,70 @@ def load_data():
     
     return patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures
 
-load_data()
+def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures):
+    def categorize_age(age):
+        if age < 18:
+            return 'Child'
+        elif age < 30:
+            return 'Young_Adult'
+        elif age < 50:
+            return 'Adult'
+        elif age < 70:
+            return 'Middle_Aged'
+        else:
+            return 'Elderly'
+        
+    print("Starting preprocessing...")
+    print(f"Initial shapes - Patients: {patients.shape}, Admissions: {admissions.shape}, Diagnoses: {diagnoses.shape}")
+    
+    # 1. Handle missing values in patients
+    # No action needed as only dod is missing which is expected
+
+    #Handle missing values in admissions
+    essential_columns = ['hadm_id', 'subject_id', 'admittime', 'dischtime', 'admission_type', "discharge_location", "race", "hospital_expire_flag"]
+    admissions_subset = admissions[essential_columns].copy()
+
+    admissions_subset["discharge_location"] = admissions_subset["discharge_location"].fillna("Unknown")
+
+    print(f"Missing values in discharge_location after handling: {admissions_subset['discharge_location'].isna().sum()}")
+
+    patients["age_category"] = patients["anchor_age"].apply(categorize_age)
+
+    #Merge diagnoses with description
+    diagnoses_with_desc= pd.merge(diagnoses, d_icd_diagnoses, how='left', left_on=["icd_code", "icd_version"], right_on=["icd_code", "icd_version"])
+    missing_desc = diagnoses_with_desc[diagnoses_with_desc["long_title"].isnull()]
+
+    if len(missing_desc) > 0:
+        print(f"WARNING: {len(missing_desc)} diagnosis codes have no description in the dictionary")
+        #fill missing descriptions with code itself 
+        diagnoses_with_desc["long_title"] =  diagnoses_with_desc["long_title"].fillna("Unlabeled_" + diagnoses_with_desc["icd_code"].astype(str))
+        
+    #Merde patients with admissions (only essential columns)
+
+    patient_admissions = pd.merge(admissions_subset, patients[["subject_id", "anchor_age", "gender", "age_category"]], how='left', on="subject_id")
+
+    #get primary diagnosis
+
+    primary_diagnosis = diagnoses_with_desc[diagnoses_with_desc["seq_num"] == 1].copy()
+
+    #create base transaction dataset
+    transactions_base = pd.merge(patient_admissions, primary_diagnosis[["subject_id", "hadm_id", "icd_code", "long_title"]], how='inner', on=["subject_id", "hadm_id"])
+
+    transactions_base = transactions_base.rename(columns={"long_title": "primary_diagnosis", "icd_code": "primary_diagnosis_code"})
+
+    #checking for missing values
+    missing_values = transactions_base.isnull().sum()
+    
+    if missing_values.sum() > 0:
+        print("WARNING: Missing values found in transactions_base")
+        print(missing_values[missing_values > 0])
+        
+    print(f"Created base transaction dataset with {len(transactions_base)} rows and {transactions_base.shape[1]} columns")
+    print(f"Columns in transactions_base: {transactions_base.columns.tolist()}")
+
+    return transactions_base
+
+
+
+patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data()
+transactions_base = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures)
