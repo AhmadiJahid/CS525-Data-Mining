@@ -6,7 +6,20 @@ from mlxtend.frequent_patterns import apriori, association_rules
 import matplotlib.pyplot as plt
 import os
 
-def load_data():
+def sample_data(data, fraction=0.1, seed=42):
+    if data is None or data.empty:
+        return data
+        
+    # For small datasets, use at least 1000 rows or the original size, whichever is smaller
+    min_rows = min(1000, len(data))
+    
+    # Calculate how many rows to sample (at least min_rows)
+    sample_size = max(min_rows, int(len(data) * fraction))
+    
+    # Sample the data with a fixed random seed for reproducibility
+    return data.sample(n=sample_size, random_state=seed)
+
+def load_data(sample_fraction=0.1):
     patients_path = 'Data/patients.csv'
     admissions_path = 'Data/admissions.csv'
     diagnoses_path = 'Data/diagnoses_icd.csv'
@@ -14,6 +27,7 @@ def load_data():
     d_icd_procedures_path = 'Data/d_icd_procedures.csv'
     procedures_path = 'Data/procedures_icd.csv'
 
+    print(f"Loading data with sampling fraction: {sample_fraction}")
 
     patients = pd.read_csv(patients_path)
     admissions = pd.read_csv(admissions_path)
@@ -22,22 +36,43 @@ def load_data():
     d_icd_procedures = pd.read_csv(d_icd_procedures_path)
     procedures = pd.read_csv(procedures_path)
 
+    print("Original dataset shapes:")
+    print(f"Patients dataset shape: {patients.shape}")
+    print(f"Admissions dataset shape: {admissions.shape}")
+    print(f"Diagnoses dataset shape: {diagnoses.shape}")
+    print(f"d_icd_diagnoses dataset shape: {d_icd_diagnoses.shape}")
+    print(f"d_icd_procedures dataset shape: {d_icd_procedures.shape}")
+    print(f"Procedures dataset shape: {procedures.shape}")
 
-    print("Patints dataset shape: ", patients.shape)
-    print("Admissions dataset shape: ", admissions.shape)
-    print("Diagnoses dataset shape: ", diagnoses.shape)
-    print("d_icd_diagnoses dataset shape: ", d_icd_diagnoses.shape)
-    print("d_icd_procedures dataset shape: ", d_icd_procedures.shape)
-    print("Procedures dataset shape: ", procedures.shape)
+    # Sample the main data tables that contain patient-level information
+    # We don't sample the reference tables (d_icd_*)
+    if sample_fraction < 1.0:
+        # First, sample patients
+        patients_sampled = sample_data(patients, fraction=sample_fraction)
+        
+        # Then filter other tables to only include the sampled patients
+        sampled_subject_ids = set(patients_sampled['subject_id'])
+        
+        admissions = admissions[admissions['subject_id'].isin(sampled_subject_ids)]
+        diagnoses = diagnoses[diagnoses['subject_id'].isin(sampled_subject_ids)]
+        procedures = procedures[procedures['subject_id'].isin(sampled_subject_ids)]
+        
+        patients = patients_sampled
+        
+        print("\nSampled dataset shapes:")
+        print(f"Patients dataset shape: {patients.shape}")
+        print(f"Admissions dataset shape: {admissions.shape}")
+        print(f"Diagnoses dataset shape: {diagnoses.shape}")
+        print(f"Procedures dataset shape: {procedures.shape}")
 
-    print("Patients data preview: \n", patients.head())
+    print("\nPatients data preview: \n", patients.head())
     print("Admissions data preview: \n", admissions.head())
     print("Diagnoses data preview: \n", diagnoses.head())
     print("d_icd_diagnoses data preview: \n", d_icd_diagnoses.head())
     print("d_icd_procedures data preview: \n", d_icd_procedures.head())
     print("Procedures data preview: \n", procedures.head())
 
-    #check for missing values
+    # Check for missing values
     print("Patients missing values: ", patients.isnull().sum())
     print("Admissions missing values: ", admissions.isnull().sum())
     print("Diagnoses missing values: ", diagnoses.isnull().sum())
@@ -132,7 +167,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     #create procedure presence feature
     procedure_counts = procedures_with_desc["long_title"].value_counts()
-    min_procedure_freq = 200
+    min_procedure_freq = 25
 
     common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
     print(f"Using {len(common_procedures)} common procedures for feature engineering out of {len(procedure_counts)} total procedures")
@@ -145,7 +180,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     #checking if procedures are more than the frequency threshold
     if len(procedures_filtered) == 0:
         print("WARNING: No procedures match the frequency threshold. Reducing threshold.")
-        min_procedure_freq = 10
+        min_procedure_freq = 5
         common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
         procedures_filtered = procedures_with_desc[procedures_with_desc['long_title'].isin(common_procedures)]
         print(f"Using {len(common_procedures)} procedures with reduced threshold")
@@ -160,7 +195,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     
     #create comorbidity presence feature
     comorbidity_counts = comorbidities["long_title"].value_counts()
-    min_comorbidity_freq = 600
+    min_comorbidity_freq = 20
     common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
     print(f"Using {len(common_comorbidities)} common comorbidities for feature engineering out of {len(comorbidity_counts)} total comorbidities")
     comorbidities_filtered = comorbidities[comorbidities["long_title"].isin(common_comorbidities)]
@@ -287,6 +322,8 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     feature_counts.to_csv('output/feature_counts.csv')
     
     return transactions_matrix
-patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data()
+
+sample_fraction = 0.1  # Use 10% of the data
+patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
 transactions_base, diagnoses_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses)
 transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
