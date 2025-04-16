@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from mlxtend.frequent_patterns import apriori, association_rules
 import matplotlib.pyplot as plt
+import ast
 import os
 
 def sample_data(data, fraction=0.1, seed=42):
@@ -180,7 +181,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     #checking if procedures are more than the frequency threshold
     if len(procedures_filtered) == 0:
         print("WARNING: No procedures match the frequency threshold. Reducing threshold.")
-        min_procedure_freq = 5
+        min_procedure_freq = 10
         common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
         procedures_filtered = procedures_with_desc[procedures_with_desc['long_title'].isin(common_procedures)]
         print(f"Using {len(common_procedures)} procedures with reduced threshold")
@@ -195,7 +196,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     
     #create comorbidity presence feature
     comorbidity_counts = comorbidities["long_title"].value_counts()
-    min_comorbidity_freq = 20
+    min_comorbidity_freq = 40
     common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
     print(f"Using {len(common_comorbidities)} common comorbidities for feature engineering out of {len(comorbidity_counts)} total comorbidities")
     comorbidities_filtered = comorbidities[comorbidities["long_title"].isin(common_comorbidities)]
@@ -203,7 +204,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     print(f"Filtered comorbidities dataset preview: \n{comorbidities_filtered.head()}")
     if len(comorbidities_filtered) == 0:
         print("WARNING: No comorbidities match the frequency threshold. Reducing threshold.")
-        min_comorbidity_freq = 10
+        min_comorbidity_freq = 20
         common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
         comorbidities_filtered = comorbidities[comorbidities['long_title'].isin(common_comorbidities)]
         print(f"Using {len(common_comorbidities)} comorbidities with reduced threshold")
@@ -323,7 +324,153 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     
     return transactions_matrix
 
-sample_fraction = 0.1  # Use 10% of the data
+def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5):
+    print("Starting association rule mining...")
+    
+    # Convert the DataFrame to a one-hot encoded format
+    transactions_matrix_bool = transactions_matrix.astype(bool)
+
+
+    min_support_floor = min_support/10
+
+    min_confidence_floor = min_confidence/2
+
+    # Check if we should use a sample
+    sample_size = 0
+    try:
+        sample_size = int(os.environ.get('SAMPLE_SIZE', '0'))
+    except (ValueError, TypeError):
+        sample_size = 0
+    
+    if sample_size > 0 and sample_size < transactions_matrix.shape[0]:
+        print(f"Using a sample of {sample_size} transactions")
+        transactions_matrix_bool = transactions_matrix_bool.sample(sample_size)
+    
+
+    # 1. Find frequent itemsets with adaptive support threshold
+    # Try to find a reasonable number of itemsets
+    frequent_itemsets = pd.DataFrame()
+    
+    try:
+        frequent_itemsets = apriori(transactions_matrix_bool, 
+                                  min_support=min_support,
+                                  use_colnames=True,
+                                  max_len=4)  # Limit to combinations of at most 4 items
+        
+        # If we found too few itemsets, try with a lower threshold
+        if len(frequent_itemsets) < 10:
+            old_support = min_support
+            min_support = max(min_support_floor, min_support / 2)
+            print(f"Found too few itemsets ({len(frequent_itemsets)}). Reducing support from {old_support} to {min_support}")
+            
+            frequent_itemsets = apriori(transactions_matrix_bool, 
+                                      min_support=min_support,
+                                      use_colnames=True,
+                                      max_len=4)
+    except Exception as e:
+        print(f"ERROR in apriori algorithm: {str(e)}")
+        print("Trying with a smaller dataset...")
+        
+        # Sample the data if it's too large
+        if transactions_matrix.shape[0] > 10000:
+            sample_size = min(10000, int(transactions_matrix.shape[0] * 0.5))
+            transactions_sample = transactions_matrix.sample(sample_size)
+            try:
+                frequent_itemsets = apriori(transactions_sample.astype(bool), 
+                                          min_support=min_support,
+                                          use_colnames=True,
+                                          max_len=3)
+                print(f"Successfully ran apriori on a sample of {sample_size} transactions")
+            except Exception as e2:
+                print(f"ERROR in apriori algorithm even with sampling: {str(e2)}")
+                return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    
+    if frequent_itemsets.empty:
+        print("No frequent itemsets found. Cannot generate rules.")
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    
+    print(f"Found {len(frequent_itemsets)} frequent itemsets with min_support={min_support}")
+    
+    # Save frequent itemsets
+    os.makedirs('output', exist_ok=True)
+    frequent_itemsets.to_csv('output/frequent_itemsets.csv')
+    # 2. Generate association rules with adaptive confidence threshold
+    rules = pd.DataFrame()
+    
+    try:
+        rules = association_rules(frequent_itemsets, 
+                                 metric='confidence',
+                                 min_threshold=min_confidence)
+        
+        # If we found too few rules, try with a lower threshold
+        if len(rules) < 10:
+            old_confidence = min_confidence
+            min_confidence = max(min_confidence_floor, min_confidence / 1.5)
+            print(f"Found too few rules ({len(rules)}). Reducing confidence from {old_confidence} to {min_confidence}")
+            
+            rules = association_rules(frequent_itemsets, 
+                                    metric='confidence',
+                                    min_threshold=min_confidence)
+    except Exception as e:
+        print(f"ERROR in association_rules algorithm: {str(e)}")
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    if rules.empty:
+        print("No rules generated. Cannot proceed with rule filtering.")
+        return frequent_itemsets, pd.DataFrame(), pd.DataFrame()
+    
+    print(f"Generated {len(rules)} rules with min_confidence={min_confidence}")
+    
+    # Save all rules
+    rules.to_csv('output/all_rules.csv', index=False)
+    
+    # 3. Filter rules to focus on diagnoses
+    diagnosis_cols = [col for col in transactions_matrix.columns if col.startswith('Diagnosis_')]
+    if not diagnosis_cols:
+        print("ERROR: No diagnosis columns found in transaction matrix")
+        return frequent_itemsets, rules, pd.DataFrame()
+    
+    print(f"Found {len(diagnosis_cols)} diagnosis columns to use for rule filtering")
+
+    # Convert string representations of sets to actual sets, if needed
+    if isinstance(rules['antecedents'].iloc[0], str):
+        rules['antecedents'] = rules['antecedents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        rules['consequents'] = rules['consequents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+    
+    # Filter for rules that predict diagnoses
+    diagnosis_rules = rules[rules['consequents'].apply(
+        lambda x: any(item in diagnosis_cols for item in x)
+    )].copy()
+    
+    if diagnosis_rules.empty:
+        print("WARNING: No rules found with diagnoses in the consequent")
+        return frequent_itemsets, rules, pd.DataFrame()
+    
+    print(f"Found {len(diagnosis_rules)} rules with diagnoses in the consequent")
+    
+    # Additional filters to focus on more interesting rules
+    if len(diagnosis_rules) > 1000:
+        print(f"Too many rules ({len(diagnosis_rules)}). Filtering to more interesting ones...")
+        
+        # Filter by lift (stronger associations)
+        high_lift_rules = diagnosis_rules[diagnosis_rules['lift'] > 1.5]
+        if len(high_lift_rules) >= 100:
+            diagnosis_rules = high_lift_rules
+            print(f"Filtered to {len(diagnosis_rules)} rules with lift > 1.5")
+    
+    # Sort by lift and then confidence
+    diagnosis_rules = diagnosis_rules.sort_values(['lift', 'confidence'], ascending=[False, False])
+    
+    # Save diagnosis rules
+    diagnosis_rules.to_csv('output/diagnosis_rules.csv', index=False)
+    
+    return frequent_itemsets, rules, diagnosis_rules
+
+sample_fraction = 0.01  # Use 10% of the data
 patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
 transactions_base, diagnoses_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses)
-transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
+#check if the transaction_matrix_csv is already existing
+if os.path.exists('output/transaction_matrix.csv'):
+    transactions_matrix = pd.read_csv('output/transaction_matrix.csv', index_col=0)
+else:
+    transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
+frequent_itemsets, rules, diagnosis_rules = mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5)
