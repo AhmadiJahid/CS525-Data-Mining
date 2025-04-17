@@ -1,0 +1,1487 @@
+group_id,antecedent_movie,antecedent_rating,consequent_movie,consequent_rating,support,confidence,lift
+Group1,Forrest Gump (1994),high,,,,,
+Group1,,,"Shawshank Redemption, The (1994)",high,0.015493448911473123,0.16498673740053052,1.4582909642628132
+Group2,"Shawshank Redemption, The (1994)",high,,,,,
+Group2,,,Forrest Gump (1994),high,0.015493448911473123,0.13694407749889914,1.458290964262813
+Group3,Pulp Fiction (1994),high,,,,,
+Group3,,,Forrest Gump (1994),high,0.01260399541672894,0.13232217573221758,1.4090732273065272
+Group4,Forrest Gump (1994),high,,,,,
+Group4,,,Pulp Fiction (1994),high,0.01260399541672894,0.13421750663129975,1.4090732273065272
+Group5,"Silence of the Lambs, The (1991)",high,,,,,
+Group5,,,"Shawshank Redemption, The (1994)",high,0.016190903203307926,0.1808569838619922,1.5985654940826812
+Group6,"Shawshank Redemption, The (1994)",high,,,,,
+Group6,,,"Silence of the Lambs, The (1991)",high,0.016190903203307926,0.1431087626596213,1.5985654940826812
+Group7,Forrest Gump (1994),high,,,,,
+Group7,,,"Silence of the Lambs, The (1991)",high,0.01150799581527425,0.12254641909814325,1.3688782807774231
+Group8,"Silence of the Lambs, The (1991)",high,,,,,
+Group8,,,Forrest Gump (1994),high,0.01150799581527425,0.12854757929883137,1.368878280777423
+Group9,Pulp Fiction (1994),high,,,,,
+Group9,,,"Silence of the Lambs, The (1991)",high,0.014746176455935834,0.15481171548117154,1.7292907984716506
+Group10,"Silence of the Lambs, The (1991)",high,,,,,
+Group10,,,Pulp Fiction (1994),high,0.014746176455935834,0.16471897607122982,1.7292907984716508
+Group11,"Matrix, The (1999)",high,,,,,
+Group11,,,"Silence of the Lambs, The (1991)",high,0.011308723160464305,0.12390829694323142,1.38409084281663
+Group12,"Silence of the Lambs, The (1991)",high,,,,,
+Group12,,,"Matrix, The (1999)",high,0.011308723160464305,0.1263216471897607,1.38409084281663
+Group13,"Shawshank Redemption, The (1994)",high,,,,,
+Group13,,,Schindler's List (1993),high,0.014696358292233348,0.12989872302950242,1.7348350414978058
+Group14,Schindler's List (1993),high,,,,,
+Group14,,,"Shawshank Redemption, The (1994)",high,0.014696358292233348,0.19627411842980705,1.7348350414978058
+Group15,Forrest Gump (1994),high,,,,,
+Group15,,,Schindler's List (1993),high,0.012454540925621482,0.13262599469496023,1.7712585439201174
+Group16,Schindler's List (1993),high,,,,,
+Group16,,,Forrest Gump (1994),high,0.012454540925621482,0.16633399866932802,1.7712585439201176
+Group17,"Silence of the Lambs, The (1991)",high,,,,,
+Group17,,,Schindler's List (1993),high,0.011557813978976735,0.12910406232609906,1.724222117812233
+Group18,Schindler's List (1993),high,,,,,
+Group18,,,"Silence of the Lambs, The (1991)",high,0.011557813978976735,0.1543579507651364,1.724222117812233
+Group19,Pulp Fiction (1994),high,,,,,
+Group19,,,Schindler's List (1993),high,0.01150799581527425,0.12081589958158996,1.6135313055896576
+Group20,Schindler's List (1993),high,,,,,
+Group20,,,Pulp Fiction (1994),high,0.01150799581527425,0.1536926147704591,1.6135313055896576
+Group21,Schindler's List (1993),high,,,,,
+Group21,,,Fight Club (1999),high,0.008419269665720121,0.11244178310046574,1.3949591546203022
+Group22,Fight Club (1999),high,,,,,
+Group22,,,Schindler's List (1993),high,0.008419269665720121,0.10444993819530285,1.3949591546203022
+Group23,"Matrix, The (1999)",high,,,,,
+Group23,,,Schindler's List (1993),high,0.008170178847207691,0.08951965065502182,1.1955608433787446
+Group24,Schindler's List (1993),high,,,,,
+Group24,,,"Matrix, The (1999)",high,0.008170178847207691,0.10911510312707917,1.1955608433787446
+Group25,"Silence of the Lambs, The (1991)",high,,,,,
+Group25,,,Terminator 2: Judgment Day (1991),high,0.009913814576794699,0.11074012242626599,1.785450985913604
+Group26,Terminator 2: Judgment Day (1991),high,,,,,
+Group26,,,"Silence of the Lambs, The (1991)",high,0.009913814576794699,0.15983935742971886,1.785450985913604
+Group27,Forrest Gump (1994),high,,,,,
+Group27,,,Terminator 2: Judgment Day (1991),high,0.009764360085687242,0.10397877984084881,1.6764385925665528
+Group28,Terminator 2: Judgment Day (1991),high,,,,,
+Group28,,,Forrest Gump (1994),high,0.009764360085687242,0.157429718875502,1.6764385925665526
+Group29,"Shawshank Redemption, The (1994)",high,,,,,
+Group29,,,Terminator 2: Judgment Day (1991),high,0.009614905594579783,0.08498458828709818,1.3701973017565636
+Group30,Terminator 2: Judgment Day (1991),high,,,,,
+Group30,,,"Shawshank Redemption, The (1994)",high,0.009614905594579783,0.15502008032128511,1.3701973017565636
+Group31,Pulp Fiction (1994),high,,,,,
+Group31,,,Terminator 2: Judgment Day (1991),high,0.008967269466447467,0.09414225941422595,1.5178454403387611
+Group32,Terminator 2: Judgment Day (1991),high,,,,,
+Group32,,,Pulp Fiction (1994),high,0.008967269466447467,0.14457831325301204,1.517845440338761
+Group33,"Matrix, The (1999)",high,,,,,
+Group33,,,Terminator 2: Judgment Day (1991),high,0.008767996811637523,0.09606986899563318,1.5489240806018834
+Group34,Terminator 2: Judgment Day (1991),high,,,,,
+Group34,,,"Matrix, The (1999)",high,0.008767996811637523,0.14136546184738955,1.5489240806018834
+Group35,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group35,,,Terminator 2: Judgment Day (1991),high,0.00782145170129029,0.1253993610223642,2.0218003002425036
+Group36,Terminator 2: Judgment Day (1991),high,,,,,
+Group36,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.00782145170129029,0.12610441767068273,2.0218003002425036
+Group37,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group37,,,Terminator 2: Judgment Day (1991),high,0.00807054251980272,0.11824817518248175,1.9065025063758683
+Group38,Terminator 2: Judgment Day (1991),high,,,,,
+Group38,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.00807054251980272,0.13012048192771083,1.9065025063758683
+Group39,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group39,,,Terminator 2: Judgment Day (1991),high,0.008120360683505206,0.12255639097744361,1.9759634024821089
+Group40,Terminator 2: Judgment Day (1991),high,,,,,
+Group40,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008120360683505206,0.13092369477911645,1.9759634024821087
+Group41,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group41,,,Terminator 2: Judgment Day (1991),high,0.007622179046480347,0.09795134443021768,1.5792589050182806
+Group42,Terminator 2: Judgment Day (1991),high,,,,,
+Group42,,,Star Wars: Episode IV - A New Hope (1977),high,0.007622179046480347,0.12289156626506025,1.5792589050182806
+Group43,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group43,,,"Shawshank Redemption, The (1994)",high,0.0075723608827778606,0.15816857440166493,1.3980263293547424
+Group44,"Shawshank Redemption, The (1994)",high,,,,,
+Group44,,,Ace Ventura: When Nature Calls (1995),low,0.0075723608827778606,0.06693086745926904,1.3980263293547424
+Group45,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group45,,,Ace Ventura: When Nature Calls (1995),low,0.017535993623275046,0.3302063789868668,6.897224396881765
+Group46,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group46,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.017535993623275046,0.3662851196670135,6.897224396881765
+Group47,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group47,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007273451900562946,0.15192507804370448,3.11819232267002
+Group48,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group48,,,Ace Ventura: When Nature Calls (1995),low,0.007273451900562946,0.14928425357873212,3.1181923226700206
+Group49,Ace Ventura: Pet Detective (1994),low,,,,,
+Group49,,,Ace Ventura: When Nature Calls (1995),low,0.021471628555771435,0.3824312333629104,7.988077156393028
+Group50,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group50,,,Ace Ventura: Pet Detective (1994),low,0.021471628555771435,0.44849115504682624,7.988077156393028
+Group51,Pulp Fiction (1994),high,,,,,
+Group51,,,Ace Ventura: When Nature Calls (1995),low,0.007373088227967917,0.07740585774058577,1.6168239151163144
+Group52,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group52,,,Pulp Fiction (1994),high,0.007373088227967917,0.15400624349635794,1.6168239151163144
+Group53,Ace Ventura: Pet Detective (1994),low,,,,,
+Group53,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group53,,,Ace Ventura: When Nature Calls (1995),low,0.012305086434514024,0.5266524520255864,11.000514744546926
+Group54,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group54,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group54,,,Ace Ventura: Pet Detective (1994),low,0.012305086434514024,0.7017045454545454,12.498061526982333
+Group55,Ace Ventura: Pet Detective (1994),low,,,,,
+Group55,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group55,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.012305086434514024,0.5730858468677493,10.791324769396184
+Group56,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group56,,,Ace Ventura: Pet Detective (1994),low,0.012305086434514024,0.23170731707317072,10.791324769396185
+Group56,,,Ace Ventura: When Nature Calls (1995),low,0.012305086434514024,0.23170731707317072,10.791324769396185
+Group57,Ace Ventura: Pet Detective (1994),low,,,,,
+Group57,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.012305086434514024,0.21916592724046138,12.498061526982333
+Group57,,,Ace Ventura: When Nature Calls (1995),low,0.012305086434514024,0.21916592724046138,12.498061526982333
+Group58,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group58,,,Ace Ventura: Pet Detective (1994),low,0.012305086434514024,0.2570239334027055,11.000514744546926
+Group58,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.012305086434514024,0.2570239334027055,11.000514744546926
+Group59,Forrest Gump (1994),high,,,,,
+Group59,,,"Lion King, The (1994)",high,0.007074179245753001,0.0753315649867374,1.897277922181656
+Group60,"Lion King, The (1994)",high,,,,,
+Group60,,,Forrest Gump (1994),high,0.007074179245753001,0.178168130489335,1.897277922181656
+Group61,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group61,,,Beverly Hills Cop III (1994),low,0.007422906391670403,0.1550468262226847,6.721932921745032
+Group62,Beverly Hills Cop III (1994),low,,,,,
+Group62,,,Ace Ventura: When Nature Calls (1995),low,0.007422906391670403,0.32181425485961124,6.721932921745032
+Group63,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group63,,,Addams Family Values (1993),low,0.007671997210182833,0.16024973985431842,7.533238941676192
+Group64,Addams Family Values (1993),low,,,,,
+Group64,,,Ace Ventura: When Nature Calls (1995),low,0.007671997210182833,0.36065573770491804,7.533238941676191
+Group65,"Matrix, The (1999)",high,,,,,
+Group65,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.008817814975340009,0.09661572052401746,1.5490154617241232
+Group66,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group66,,,"Matrix, The (1999)",high,0.008817814975340009,0.14137380191693288,1.5490154617241232
+Group67,Pulp Fiction (1994),high,,,,,
+Group67,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.008718178647935037,0.09152719665271966,1.467432442819522
+Group68,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group68,,,Pulp Fiction (1994),high,0.008718178647935037,0.13977635782747602,1.467432442819522
+Group69,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group69,,,"Shawshank Redemption, The (1994)",high,0.00782145170129029,0.1253993610223642,1.1083845767511742
+Group70,"Shawshank Redemption, The (1994)",high,,,,,
+Group70,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.00782145170129029,0.06913254073095552,1.1083845767511742
+Group71,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group71,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.008269815174612664,0.13258785942492013,1.9202280679916464
+Group72,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group72,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.008269815174612664,0.11976911976911979,1.9202280679916466
+Group73,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group73,,,Star Wars: Episode IV - A New Hope (1977),high,0.013052358890051312,0.2092651757188498,2.689231672346013
+Group74,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group74,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.013052358890051312,0.1677336747759283,2.689231672346013
+Group75,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group75,,,Forrest Gump (1994),high,0.008269815174612664,0.13258785942492013,1.411902441504733
+Group76,Forrest Gump (1994),high,,,,,
+Group76,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.008269815174612664,0.08806366047745359,1.4119024415047332
+Group77,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group77,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.012155631943406566,0.19488817891373802,2.8554674564492433
+Group78,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group78,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.012155631943406566,0.1781021897810219,2.8554674564492433
+Group79,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group79,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.010013450904199672,0.16054313099041534,2.4229941867448175
+Group80,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group80,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.010013450904199672,0.1511278195488722,2.4229941867448175
+Group81,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group81,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.013052358890051312,0.18903318903318903,3.0874395471628993
+Group82,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group82,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.013052358890051312,0.21318144833197722,3.0874395471628997
+Group83,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group83,,,"Shawshank Redemption, The (1994)",high,0.009714541921984756,0.15866558177379986,1.4024192967615519
+Group84,"Shawshank Redemption, The (1994)",high,,,,,
+Group84,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.009714541921984756,0.08586525759577279,1.4024192967615519
+Group85,Pulp Fiction (1994),high,,,,,
+Group85,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.008020724356100234,0.0842050209205021,1.3753029983215936
+Group86,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group86,,,Pulp Fiction (1994),high,0.008020724356100234,0.13100081366965013,1.3753029983215936
+Group87,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group87,,,"Silence of the Lambs, The (1991)",high,0.0070243610820505155,0.11472742066720912,1.2815378492225311
+Group88,"Silence of the Lambs, The (1991)",high,,,,,
+Group88,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.0070243610820505155,0.07846410684474123,1.2815378492225311
+Group89,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group89,,,Fight Club (1999),high,0.008817814975340009,0.14401952807160293,1.7867144542529578
+Group90,Fight Club (1999),high,,,,,
+Group90,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.008817814975340009,0.10939431396786156,1.7867144542529578
+Group91,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group91,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.012155631943406566,0.19853539462978032,3.058481179127844
+Group92,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group92,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.012155631943406566,0.18726016884113586,3.058481179127844
+Group93,"Matrix, The (1999)",high,,,,,
+Group93,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.009814178249389727,0.10753275109170304,1.7563099370738449
+Group94,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group94,,,"Matrix, The (1999)",high,0.009814178249389727,0.16029292107404394,1.7563099370738449
+Group95,Forrest Gump (1994),high,,,,,
+Group95,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.007522542719075375,0.08010610079575597,1.3083561930620096
+Group96,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group96,,,Forrest Gump (1994),high,0.007522542719075375,0.12286411716842963,1.3083561930620096
+Group97,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group97,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.00782145170129029,0.1277461350691619,1.8717139921483845
+Group98,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group98,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.00782145170129029,0.11459854014598539,1.8717139921483847
+Group99,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group99,,,"Godfather, The (1972)",high,0.007173815573157973,0.11716842961757527,1.7473416699209425
+Group100,"Godfather, The (1972)",high,,,,,
+Group100,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.007173815573157973,0.10698365527488857,1.7473416699209425
+Group101,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group101,,,Star Wars: Episode IV - A New Hope (1977),high,0.0077218153738853185,0.12611879576891782,1.6207314900572904
+Group102,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group102,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.0077218153738853185,0.09923175416133163,1.6207314900572904
+Group103,"Dark Knight, The (2008)",high,,,,,
+Group103,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.007622179046480347,0.13503971756398941,2.2055754683986653
+Group104,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group104,,,"Dark Knight, The (2008)",high,0.007622179046480347,0.12449145646867373,2.2055754683986653
+Group105,"Dark Knight, The (2008)",high,,,,,
+Group105,,,Forrest Gump (1994),high,0.0077218153738853185,0.13680494263018533,1.4568093439871141
+Group106,Forrest Gump (1994),high,,,,,
+Group106,,,"Dark Knight, The (2008)",high,0.0077218153738853185,0.08222811671087533,1.4568093439871144
+Group107,"Dark Knight, The (2008)",high,,,,,
+Group107,,,Fight Club (1999),high,0.008668360484232552,0.15357458075904679,1.905254981196753
+Group108,Fight Club (1999),high,,,,,
+Group108,,,"Dark Knight, The (2008)",high,0.008668360484232552,0.10754017305315205,1.905254981196753
+Group109,"Dark Knight, The (2008)",high,,,,,
+Group109,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.008269815174612664,0.14651368049426303,2.257075294367876
+Group110,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group110,,,"Dark Knight, The (2008)",high,0.008269815174612664,0.12739831158864162,2.257075294367876
+Group111,"Matrix, The (1999)",high,,,,,
+Group111,,,"Dark Knight, The (2008)",high,0.008269815174612664,0.0906113537117904,1.6053324828391602
+Group112,"Dark Knight, The (2008)",high,,,,,
+Group112,,,"Matrix, The (1999)",high,0.008269815174612664,0.14651368049426303,1.6053324828391602
+Group113,"Dark Knight, The (2008)",high,,,,,
+Group113,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007771633537587804,0.13768755516328332,1.9940853497782007
+Group114,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group114,,,"Dark Knight, The (2008)",high,0.007771633537587804,0.11255411255411256,1.9940853497782007
+Group115,"Dark Knight, The (2008)",high,,,,,
+Group115,,,"Shawshank Redemption, The (1994)",high,0.008817814975340009,0.1562224183583407,1.3808245723060204
+Group116,"Shawshank Redemption, The (1994)",high,,,,,
+Group116,,,"Dark Knight, The (2008)",high,0.008817814975340009,0.07793923381770144,1.3808245723060204
+Group117,Toy Story (1995),high,,,,,
+Group117,,,"Shawshank Redemption, The (1994)",high,0.008269815174612664,0.15118397085610202,1.3362905534982543
+Group118,"Shawshank Redemption, The (1994)",high,,,,,
+Group118,,,Toy Story (1995),high,0.008269815174612664,0.07309555261999119,1.3362905534982543
+Group119,Toy Story (1995),high,,,,,
+Group119,,,Pulp Fiction (1994),high,0.007074179245753001,0.12932604735883424,1.357720579829435
+Group120,Pulp Fiction (1994),high,,,,,
+Group120,,,Toy Story (1995),high,0.007074179245753001,0.07426778242677824,1.357720579829435
+Group121,Toy Story (1995),high,,,,,
+Group121,,,Forrest Gump (1994),high,0.007223633736860459,0.1320582877959927,1.4062631357713324
+Group122,Forrest Gump (1994),high,,,,,
+Group122,,,Toy Story (1995),high,0.007223633736860459,0.07692307692307693,1.4062631357713327
+Group123,Toy Story (1995),high,,,,,
+Group123,,,Star Wars: Episode IV - A New Hope (1977),high,0.007273451900562946,0.1329690346083789,1.7087627603674709
+Group124,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group124,,,Toy Story (1995),high,0.007273451900562946,0.09346991037131883,1.7087627603674707
+Group125,"Godfather, The (1972)",high,,,,,
+Group125,,,Fargo (1996),high,0.0070243610820505155,0.10475482912332838,1.9308941092677416
+Group126,Fargo (1996),high,,,,,
+Group126,,,"Godfather, The (1972)",high,0.0070243610820505155,0.12947658402203857,1.9308941092677419
+Group127,Pulp Fiction (1994),high,,,,,
+Group127,,,Fargo (1996),high,0.00916654212125741,0.09623430962343096,1.7738395749046187
+Group128,Fargo (1996),high,,,,,
+Group128,,,Pulp Fiction (1994),high,0.00916654212125741,0.1689623507805326,1.7738395749046185
+Group129,"Shawshank Redemption, The (1994)",high,,,,,
+Group129,,,Fargo (1996),high,0.009017087630149953,0.07970057243505065,1.469081350311085
+Group130,Fargo (1996),high,,,,,
+Group130,,,"Shawshank Redemption, The (1994)",high,0.009017087630149953,0.1662075298438935,1.469081350311085
+Group131,"Silence of the Lambs, The (1991)",high,,,,,
+Group131,,,Fargo (1996),high,0.008618542320530066,0.09627156371730662,1.7745262612465527
+Group132,Fargo (1996),high,,,,,
+Group132,,,"Silence of the Lambs, The (1991)",high,0.008618542320530066,0.1588613406795225,1.7745262612465527
+Group133,"Usual Suspects, The (1995)",high,,,,,
+Group133,,,Fargo (1996),high,0.00807054251980272,0.11432604093154551,2.1073155368401406
+Group134,Fargo (1996),high,,,,,
+Group134,,,"Usual Suspects, The (1995)",high,0.00807054251980272,0.1487603305785124,2.1073155368401406
+Group135,"Shawshank Redemption, The (1994)",high,,,,,
+Group135,,,"Sixth Sense, The (1999)",high,0.0075723608827778606,0.06693086745926904,1.359821156386546
+Group136,"Sixth Sense, The (1999)",high,,,,,
+Group136,,,"Shawshank Redemption, The (1994)",high,0.0075723608827778606,0.15384615384615385,1.359821156386546
+Group137,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group137,,,"Sixth Sense, The (1999)",high,0.007273451900562946,0.10533910533910534,2.1401537059431797
+Group138,"Sixth Sense, The (1999)",high,,,,,
+Group138,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007273451900562946,0.14777327935222673,2.1401537059431797
+Group139,"Matrix, The (1999)",high,,,,,
+Group139,,,"Sixth Sense, The (1999)",high,0.007970906192397749,0.08733624454148471,1.7743931545356504
+Group140,"Sixth Sense, The (1999)",high,,,,,
+Group140,,,"Matrix, The (1999)",high,0.007970906192397749,0.16194331983805668,1.7743931545356504
+Group141,Forrest Gump (1994),high,,,,,
+Group141,,,"Sixth Sense, The (1999)",high,0.007123997409455488,0.07586206896551725,1.541274605612174
+Group142,"Sixth Sense, The (1999)",high,,,,,
+Group142,,,Forrest Gump (1994),high,0.007123997409455488,0.14473684210526316,1.5412746056121738
+Group143,Blade Runner (1982),high,,,,,
+Group143,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.007223633736860459,0.1724137931034483,2.52617669267556
+Group144,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group144,,,Blade Runner (1982),high,0.007223633736860459,0.10583941605839416,2.52617669267556
+Group145,Blade Runner (1982),high,,,,,
+Group145,,,"Shawshank Redemption, The (1994)",high,0.0070243610820505155,0.1676575505350773,1.4818978475960398
+Group146,"Shawshank Redemption, The (1994)",high,,,,,
+Group146,,,Blade Runner (1982),high,0.0070243610820505155,0.062087186261558784,1.4818978475960398
+Group147,Eternal Sunshine of the Spotless Mind (2004),high,,,,,
+Group147,,,Fight Club (1999),high,0.0070243610820505155,0.16926770708283315,2.099944798685853
+Group148,Fight Club (1999),high,,,,,
+Group148,,,Eternal Sunshine of the Spotless Mind (2004),high,0.0070243610820505155,0.08714462299134734,2.099944798685853
+Group149,Pulp Fiction (1994),high,,,,,
+Group149,,,Eternal Sunshine of the Spotless Mind (2004),high,0.007074179245753001,0.07426778242677824,1.7896484953814162
+Group150,Eternal Sunshine of the Spotless Mind (2004),high,,,,,
+Group150,,,Pulp Fiction (1994),high,0.007074179245753001,0.17046818727490995,1.789648495381416
+Group151,Snatch (2000),high,,,,,
+Group151,,,Fight Club (1999),high,0.007123997409455488,0.22807017543859648,2.829451564634702
+Group152,Fight Club (1999),high,,,,,
+Group152,,,Snatch (2000),high,0.007123997409455488,0.08838071693448703,2.829451564634702
+Group153,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group153,,,Ace Ventura: Pet Detective (1994),low,0.023364718776465898,0.4399624765478424,7.836172840944844
+Group154,Ace Ventura: Pet Detective (1994),low,,,,,
+Group154,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.023364718776465898,0.4161490683229813,7.836172840944844
+Group155,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group155,,,"Shawshank Redemption, The (1994)",high,0.007373088227967917,0.13883677298311445,1.227155677714688
+Group156,"Shawshank Redemption, The (1994)",high,,,,,
+Group156,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007373088227967917,0.06516952884191986,1.227155677714688
+Group157,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group157,,,Home Alone (1990),low,0.009614905594579783,0.18105065666041273,5.634464854487542
+Group158,Home Alone (1990),low,,,,,
+Group158,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.009614905594579783,0.2992248062015504,5.634464854487543
+Group159,Home Alone (1990),low,,,,,
+Group159,,,Ace Ventura: When Nature Calls (1995),low,0.008419269665720121,0.262015503875969,5.472879510200131
+Group160,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group160,,,Home Alone (1990),low,0.008419269665720121,0.17585848074921956,5.472879510200131
+Group161,Home Alone (1990),low,,,,,
+Group161,,,Waterworld (1995),low,0.007472724555372889,0.23255813953488375,5.537532069850203
+Group162,Waterworld (1995),low,,,,,
+Group162,,,Home Alone (1990),low,0.007472724555372889,0.1779359430604982,5.537532069850203
+Group163,Home Alone (1990),low,,,,,
+Group163,,,Ace Ventura: Pet Detective (1994),low,0.010411996213819559,0.32403100775193805,5.7713171416190345
+Group164,Ace Ventura: Pet Detective (1994),low,,,,,
+Group164,,,Home Alone (1990),low,0.010411996213819559,0.18544809228039041,5.7713171416190345
+Group165,Home Alone (1990),low,,,,,
+Group165,,,"Mask, The (1994)",low,0.007671997210182833,0.23875968992248064,6.876073537753163
+Group166,"Mask, The (1994)",low,,,,,
+Group166,,,Home Alone (1990),low,0.007671997210182833,0.22094691535150648,6.876073537753163
+Group167,Batman Forever (1995),low,,,,,
+Group167,,,Home Alone (1990),low,0.0075723608827778606,0.16450216450216448,5.119460384576664
+Group168,Home Alone (1990),low,,,,,
+Group168,,,Batman Forever (1995),low,0.0075723608827778606,0.2356589147286822,5.119460384576664
+Group169,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group169,,,Cliffhanger (1993),low,0.007223633736860459,0.13602251407129456,5.250730624909799
+Group170,Cliffhanger (1993),low,,,,,
+Group170,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007223633736860459,0.27884615384615385,5.250730624909799
+Group171,Batman Forever (1995),low,,,,,
+Group171,,,Cliffhanger (1993),low,0.008170178847207691,0.17748917748917747,6.851423576423576
+Group172,Cliffhanger (1993),low,,,,,
+Group172,,,Batman Forever (1995),low,0.008170178847207691,0.3153846153846154,6.851423576423576
+Group173,Pulp Fiction (1994),high,,,,,
+Group173,,,"Shawshank Redemption, The (1994)",high,0.016091266875902954,0.16893305439330544,1.4931718189506034
+Group174,"Shawshank Redemption, The (1994)",high,,,,,
+Group174,,,Pulp Fiction (1994),high,0.016091266875902954,0.14222809335094672,1.4931718189506034
+Group175,"Matrix, The (1999)",high,,,,,
+Group175,,,"Shawshank Redemption, The (1994)",high,0.014347631146315947,0.15720524017467247,1.389511574648261
+Group176,"Shawshank Redemption, The (1994)",high,,,,,
+Group176,,,"Matrix, The (1999)",high,0.014347631146315947,0.12681638044914134,1.389511574648261
+Group177,"Matrix, The (1999)",high,,,,,
+Group177,,,Pulp Fiction (1994),high,0.011906541124894136,0.13045851528384278,1.3696097161572052
+Group178,Pulp Fiction (1994),high,,,,,
+Group178,,,"Matrix, The (1999)",high,0.011906541124894136,0.125,1.3696097161572052
+Group179,"Matrix, The (1999)",high,,,,,
+Group179,,,Forrest Gump (1994),high,0.010910177850844418,0.11954148471615719,1.272974123452214
+Group180,Forrest Gump (1994),high,,,,,
+Group180,,,"Matrix, The (1999)",high,0.010910177850844418,0.11618037135278515,1.272974123452214
+Group181,"Shawshank Redemption, The (1994)",high,,,,,
+Group181,,,Fight Club (1999),high,0.014447267473720918,0.12769704975781593,1.5842168601907536
+Group182,Fight Club (1999),high,,,,,
+Group182,,,"Shawshank Redemption, The (1994)",high,0.014447267473720918,0.1792336217552534,1.5842168601907536
+Group183,"Matrix, The (1999)",high,,,,,
+Group183,,,Fight Club (1999),high,0.013201813381158771,0.14465065502183405,1.7945442510836063
+Group184,Fight Club (1999),high,,,,,
+Group184,,,"Matrix, The (1999)",high,0.013201813381158771,0.16378244746600742,1.7945442510836063
+Group185,Pulp Fiction (1994),high,,,,,
+Group185,,,Fight Club (1999),high,0.013002540726348827,0.1365062761506276,1.693504623715419
+Group186,Fight Club (1999),high,,,,,
+Group186,,,Pulp Fiction (1994),high,0.013002540726348827,0.16131025957972805,1.693504623715419
+Group187,"Silence of the Lambs, The (1991)",high,,,,,
+Group187,,,Fight Club (1999),high,0.009614905594579783,0.10740122426265998,1.3324256950706885
+Group188,Fight Club (1999),high,,,,,
+Group188,,,"Silence of the Lambs, The (1991)",high,0.009614905594579783,0.11928306551297899,1.3324256950706885
+Group189,Forrest Gump (1994),high,,,,,
+Group189,,,Fight Club (1999),high,0.010661087032331987,0.11352785145888594,1.4084329804290592
+Group190,Fight Club (1999),high,,,,,
+Group190,,,Forrest Gump (1994),high,0.010661087032331987,0.13226205191594562,1.4084329804290592
+Group191,"Usual Suspects, The (1995)",high,,,,,
+Group191,,,"Shawshank Redemption, The (1994)",high,0.013151995217456285,0.1863091037402964,1.6467558958075603
+Group192,"Shawshank Redemption, The (1994)",high,,,,,
+Group192,,,"Usual Suspects, The (1995)",high,0.013151995217456285,0.11624834874504623,1.6467558958075603
+Group193,Pulp Fiction (1994),high,,,,,
+Group193,,,"Usual Suspects, The (1995)",high,0.012055995616001593,0.12656903765690375,1.7929571580007262
+Group194,"Usual Suspects, The (1995)",high,,,,,
+Group194,,,Pulp Fiction (1994),high,0.012055995616001593,0.17078334509527168,1.7929571580007262
+Group195,"Usual Suspects, The (1995)",high,,,,,
+Group195,,,"Silence of the Lambs, The (1991)",high,0.010910177850844418,0.1545518701482004,1.7263882523566092
+Group196,"Silence of the Lambs, The (1991)",high,,,,,
+Group196,,,"Usual Suspects, The (1995)",high,0.010910177850844418,0.12186978297161935,1.7263882523566092
+Group197,"Usual Suspects, The (1995)",high,,,,,
+Group197,,,Fight Club (1999),high,0.008618542320530066,0.12208892025405788,1.514642086687085
+Group198,Fight Club (1999),high,,,,,
+Group198,,,"Usual Suspects, The (1995)",high,0.008618542320530066,0.10692212608158222,1.5146420866870853
+Group199,"Matrix, The (1999)",high,,,,,
+Group199,,,"Usual Suspects, The (1995)",high,0.008469087829422607,0.0927947598253275,1.3145160296215943
+Group200,"Usual Suspects, The (1995)",high,,,,,
+Group200,,,"Matrix, The (1999)",high,0.008469087829422607,0.11997177134791813,1.314516029621594
+Group201,"Usual Suspects, The (1995)",high,,,,,
+Group201,,,Forrest Gump (1994),high,0.0077218153738853185,0.10938602681721947,1.164830618727876
+Group202,Forrest Gump (1994),high,,,,,
+Group202,,,"Usual Suspects, The (1995)",high,0.0077218153738853185,0.08222811671087533,1.1648306187278763
+Group203,"Usual Suspects, The (1995)",high,,,,,
+Group203,,,Schindler's List (1993),high,0.008817814975340009,0.12491178546224417,1.6682330469618278
+Group204,Schindler's List (1993),high,,,,,
+Group204,,,"Usual Suspects, The (1995)",high,0.008817814975340009,0.11776447105788422,1.6682330469618278
+Group205,"Usual Suspects, The (1995)",high,,,,,
+Group205,,,Star Wars: Episode IV - A New Hope (1977),high,0.0075723608827778606,0.10726887791107974,1.3784943574322046
+Group206,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group206,,,"Usual Suspects, The (1995)",high,0.0075723608827778606,0.0973111395646607,1.3784943574322048
+Group207,"Shawshank Redemption, The (1994)",high,,,,,
+Group207,,,Good Will Hunting (1997),high,0.008718178647935037,0.07705856450902686,1.6062269630214911
+Group208,Good Will Hunting (1997),high,,,,,
+Group208,,,"Shawshank Redemption, The (1994)",high,0.008718178647935037,0.181723779854621,1.6062269630214914
+Group209,"Matrix, The (1999)",high,,,,,
+Group209,,,Good Will Hunting (1997),high,0.007771633537587804,0.08515283842794759,1.7749459249887767
+Group210,Good Will Hunting (1997),high,,,,,
+Group210,,,"Matrix, The (1999)",high,0.007771633537587804,0.16199376947040497,1.7749459249887767
+Group211,"Silence of the Lambs, The (1991)",high,,,,,
+Group211,,,Good Will Hunting (1997),high,0.007522542719075375,0.08402893711741792,1.7515190599770818
+Group212,Good Will Hunting (1997),high,,,,,
+Group212,,,"Silence of the Lambs, The (1991)",high,0.007522542719075375,0.15680166147455868,1.751519059977082
+Group213,Fight Club (1999),high,,,,,
+Group213,,,Good Will Hunting (1997),high,0.007373088227967917,0.09147095179233622,1.9066421758334007
+Group214,Good Will Hunting (1997),high,,,,,
+Group214,,,Fight Club (1999),high,0.007373088227967917,0.15368639667705086,1.9066421758334007
+Group215,"Usual Suspects, The (1995)",high,,,,,
+Group215,,,Good Will Hunting (1997),high,0.007123997409455488,0.10091743119266056,2.103546829003401
+Group216,Good Will Hunting (1997),high,,,,,
+Group216,,,"Usual Suspects, The (1995)",high,0.007123997409455488,0.14849428868120457,2.103546829003401
+Group217,Forrest Gump (1994),high,,,,,
+Group217,,,Good Will Hunting (1997),high,0.007472724555372889,0.07957559681697614,1.6586925803812689
+Group218,Good Will Hunting (1997),high,,,,,
+Group218,,,Forrest Gump (1994),high,0.007472724555372889,0.1557632398753894,1.6586925803812687
+Group219,"Fugitive, The (1993)",high,,,,,
+Group219,,,"Silence of the Lambs, The (1991)",high,0.008568724156827578,0.17731958762886596,1.9807101182383007
+Group220,"Silence of the Lambs, The (1991)",high,,,,,
+Group220,,,"Fugitive, The (1993)",high,0.008568724156827578,0.09571508069003894,1.9807101182383005
+Group221,"Fugitive, The (1993)",high,,,,,
+Group221,,,"Shawshank Redemption, The (1994)",high,0.0077218153738853185,0.15979381443298968,1.4123915619169536
+Group222,"Shawshank Redemption, The (1994)",high,,,,,
+Group222,,,"Fugitive, The (1993)",high,0.0077218153738853185,0.06825187142228092,1.4123915619169536
+Group223,"Fugitive, The (1993)",high,,,,,
+Group223,,,Forrest Gump (1994),high,0.007671997210182833,0.15876288659793814,1.69063523749624
+Group224,Forrest Gump (1994),high,,,,,
+Group224,,,"Fugitive, The (1993)",high,0.007671997210182833,0.0816976127320955,1.6906352374962401
+Group225,Ace Ventura: Pet Detective (1994),low,,,,,
+Group225,,,Congo (1995),low,0.0070243610820505155,0.12511091393078969,4.227864268236939
+Group226,Congo (1995),low,,,,,
+Group226,,,Ace Ventura: Pet Detective (1994),low,0.0070243610820505155,0.23737373737373738,4.227864268236939
+Group227,Waterworld (1995),low,,,,,
+Group227,,,Congo (1995),low,0.007921088028695263,0.18861209964412812,6.3737553470649555
+Group228,Congo (1995),low,,,,,
+Group228,,,Waterworld (1995),low,0.007921088028695263,0.2676767676767677,6.3737553470649555
+Group229,Batman Forever (1995),low,,,,,
+Group229,,,Congo (1995),low,0.007921088028695263,0.17207792207792208,5.815017053653418
+Group230,Congo (1995),low,,,,,
+Group230,,,Batman Forever (1995),low,0.007921088028695263,0.2676767676767677,5.815017053653417
+Group231,Judge Dredd (1995),low,,,,,
+Group231,,,Congo (1995),low,0.009066905793852439,0.28,9.462020202020204
+Group232,Congo (1995),low,,,,,
+Group232,,,Judge Dredd (1995),low,0.009066905793852439,0.3063973063973064,9.462020202020202
+Group233,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group233,,,Congo (1995),low,0.008219997010910177,0.17169614984391257,5.8021158515435305
+Group234,Congo (1995),low,,,,,
+Group234,,,Ace Ventura: When Nature Calls (1995),low,0.008219997010910177,0.27777777777777773,5.80211585154353
+Group235,"Princess Bride, The (1987)",high,,,,,
+Group235,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.007622179046480347,0.16612377850162868,2.5072200044084156
+Group236,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group236,,,"Princess Bride, The (1987)",high,0.007622179046480347,0.11503759398496241,2.507220004408415
+Group237,"Princess Bride, The (1987)",high,,,,,
+Group237,,,Star Wars: Episode IV - A New Hope (1977),high,0.007373088227967917,0.16069489685124866,2.06506316548983
+Group238,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group238,,,"Princess Bride, The (1987)",high,0.007373088227967917,0.09475032010243278,2.0650631654898297
+Group239,"Princess Bride, The (1987)",high,,,,,
+Group239,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.0077218153738853185,0.16829533116178066,2.46583370978863
+Group240,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group240,,,"Princess Bride, The (1987)",high,0.0077218153738853185,0.11313868613138686,2.4658337097886305
+Group241,One Flew Over the Cuckoo's Nest (1975),high,,,,,
+Group241,,,Pulp Fiction (1994),high,0.007422906391670403,0.16427783902976845,1.7246595516969363
+Group242,Pulp Fiction (1994),high,,,,,
+Group242,,,One Flew Over the Cuckoo's Nest (1975),high,0.007422906391670403,0.07792887029288703,1.7246595516969365
+Group243,"Godfather: Part II, The (1974)",high,,,,,
+Group243,,,"Godfather, The (1972)",high,0.009814178249389727,0.23149236192714454,3.452263135931332
+Group244,"Godfather, The (1972)",high,,,,,
+Group244,,,"Godfather: Part II, The (1974)",high,0.009814178249389727,0.14635958395245172,3.452263135931332
+Group245,"Godfather: Part II, The (1974)",high,,,,,
+Group245,,,Pulp Fiction (1994),high,0.007472724555372889,0.1762632197414806,1.8504872436562447
+Group246,Pulp Fiction (1994),high,,,,,
+Group246,,,"Godfather: Part II, The (1974)",high,0.007472724555372889,0.07845188284518828,1.8504872436562447
+Group247,"Usual Suspects, The (1995)",high,,,,,
+Group247,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008020724356100234,0.11362032462949895,1.7148126137503252
+Group248,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group248,,,"Usual Suspects, The (1995)",high,0.008020724356100234,0.12105263157894737,1.714812613750325
+Group249,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group249,,,"Shawshank Redemption, The (1994)",high,0.009465451103472326,0.14285714285714285,1.262691073787507
+Group250,"Shawshank Redemption, The (1994)",high,,,,,
+Group250,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.009465451103472326,0.0836635843240863,1.262691073787507
+Group251,Pulp Fiction (1994),high,,,,,
+Group251,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.00916654212125741,0.09623430962343096,1.4524145090760374
+Group252,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group252,,,Pulp Fiction (1994),high,0.00916654212125741,0.13834586466165413,1.4524145090760374
+Group253,Forrest Gump (1994),high,,,,,
+Group253,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008718178647935037,0.09283819628647215,1.4011587323747035
+Group254,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group254,,,Forrest Gump (1994),high,0.008718178647935037,0.13157894736842107,1.4011587323747037
+Group255,"Silence of the Lambs, The (1991)",high,,,,,
+Group255,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008369451502017636,0.09348914858096828,1.410983217643441
+Group256,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group256,,,"Silence of the Lambs, The (1991)",high,0.008369451502017636,0.12631578947368421,1.4109832176434407
+Group257,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group257,,,Schindler's List (1993),high,0.007273451900562946,0.10977443609022558,1.46606936502934
+Group258,Schindler's List (1993),high,,,,,
+Group258,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.007273451900562946,0.09713905522288756,1.46606936502934
+Group259,"Godfather, The (1972)",high,,,,,
+Group259,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.00782145170129029,0.11664190193164933,1.760415712386464
+Group260,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group260,,,"Godfather, The (1972)",high,0.00782145170129029,0.11804511278195488,1.760415712386464
+Group261,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group261,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.010810541523439446,0.1389244558258643,2.096714738189905
+Group262,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group262,,,Star Wars: Episode IV - A New Hope (1977),high,0.010810541523439446,0.1631578947368421,2.096714738189905
+Group263,"Matrix, The (1999)",high,,,,,
+Group263,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.010063269067902158,0.11026200873362445,1.6641272942180778
+Group264,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group264,,,"Matrix, The (1999)",high,0.010063269067902158,0.1518796992481203,1.664127294218078
+Group265,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group265,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008120360683505206,0.1176046176046176,1.7749454805845784
+Group266,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group266,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.008120360683505206,0.12255639097744361,1.7749454805845784
+Group267,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group267,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.01076072335973696,0.162406015037594,2.3795444816420614
+Group268,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group268,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.01076072335973696,0.15766423357664233,2.3795444816420614
+Group269,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group269,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.00782145170129029,0.11804511278195488,1.8185107819433466
+Group270,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group270,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.00782145170129029,0.1204911742133538,1.8185107819433466
+Group271,"Matrix, The (1999)",high,,,,,
+Group271,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.01135854132416679,0.1244541484716157,1.91724337856542
+Group272,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group272,,,"Matrix, The (1999)",high,0.01135854132416679,0.17498081350729086,1.91724337856542
+Group273,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group273,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.008269815174612664,0.12116788321167885,1.866617743444382
+Group274,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group274,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.008269815174612664,0.12739831158864162,1.8666177434443818
+Group275,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group275,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.014546903801125891,0.2106782106782107,3.245543916303702
+Group276,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group276,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.014546903801125891,0.2240982348426708,3.2455439163037023
+Group277,Pulp Fiction (1994),high,,,,,
+Group277,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.007871269864992776,0.08263598326359832,1.2730253968152028
+Group278,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group278,,,Pulp Fiction (1994),high,0.007871269864992776,0.12125863392171911,1.2730253968152028
+Group279,"Shawshank Redemption, The (1994)",high,,,,,
+Group279,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.010860359687141932,0.09599295464553059,1.4787924624710174
+Group280,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group280,,,"Shawshank Redemption, The (1994)",high,0.010860359687141932,0.16730621642363777,1.4787924624710176
+Group281,Forrest Gump (1994),high,,,,,
+Group281,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.008170178847207691,0.08700265251989389,1.3402948918126096
+Group282,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group282,,,Forrest Gump (1994),high,0.008170178847207691,0.12586339217191098,1.3402948918126096
+Group283,Fight Club (1999),high,,,,,
+Group283,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.00891745130274498,0.11063040791100123,1.7042856316174428
+Group284,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group284,,,Fight Club (1999),high,0.00891745130274498,0.13737528779739064,1.7042856316174428
+Group285,"Silence of the Lambs, The (1991)",high,,,,,
+Group285,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.00782145170129029,0.08736783528102392,1.3459206121227885
+Group286,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group286,,,"Silence of the Lambs, The (1991)",high,0.00782145170129029,0.1204911742133538,1.3459206121227885
+Group287,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group287,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.007970906192397749,0.10243277848911653,1.5779993573384776
+Group288,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group288,,,Star Wars: Episode IV - A New Hope (1977),high,0.007970906192397749,0.12279355333844975,1.5779993573384776
+Group289,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group289,,,Ace Ventura: Pet Detective (1994),low,0.007522542719075375,0.17276887871853547,3.077186958755246
+Group290,Ace Ventura: Pet Detective (1994),low,,,,,
+Group290,,,Independence Day (a.k.a. ID4) (1996),low,0.007522542719075375,0.13398402839396628,3.077186958755246
+Group291,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group291,,,Independence Day (a.k.a. ID4) (1996),low,0.007323270064265431,0.1378986866791745,3.167094207907402
+Group292,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group292,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007323270064265431,0.16819221967963388,3.1670942079074025
+Group293,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group293,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.0102625417227121,0.23569794050343248,4.837591778860327
+Group294,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group294,,,Independence Day (a.k.a. ID4) (1996),low,0.0102625417227121,0.21063394683026584,4.837591778860328
+Group295,Batman Forever (1995),low,,,,,
+Group295,,,Independence Day (a.k.a. ID4) (1996),low,0.009066905793852439,0.19696969696969696,4.523767422508842
+Group296,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group296,,,Batman Forever (1995),low,0.009066905793852439,0.20823798627002288,4.523767422508841
+Group297,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group297,,,Waterworld (1995),low,0.007422906391670403,0.17048054919908467,4.059378486445109
+Group298,Waterworld (1995),low,,,,,
+Group298,,,Independence Day (a.k.a. ID4) (1996),low,0.007422906391670403,0.17674970344009489,4.059378486445108
+Group299,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group299,,,Waterworld (1995),low,0.010013450904199672,0.18855534709193247,4.489764510292242
+Group300,Waterworld (1995),low,,,,,
+Group300,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.010013450904199672,0.23843416370106763,4.489764510292242
+Group301,Ace Ventura: Pet Detective (1994),low,,,,,
+Group301,,,Waterworld (1995),low,0.010611268868629502,0.18899733806566102,4.500288928816149
+Group302,Waterworld (1995),low,,,,,
+Group302,,,Ace Ventura: Pet Detective (1994),low,0.010611268868629502,0.25266903914590744,4.500288928816149
+Group303,Batman Forever (1995),low,,,,,
+Group303,,,Waterworld (1995),low,0.011458177651571764,0.24891774891774893,5.927077074763908
+Group304,Waterworld (1995),low,,,,,
+Group304,,,Batman Forever (1995),low,0.011458177651571764,0.27283511269276395,5.927077074763908
+Group305,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group305,,,Waterworld (1995),low,0.008120360683505206,0.16666666666666666,3.9685646500593115
+Group306,Waterworld (1995),low,,,,,
+Group306,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.008120360683505206,0.1933570581257414,3.9685646500593115
+Group307,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group307,,,Waterworld (1995),low,0.009365814776067355,0.19562955254942768,4.658211160527475
+Group308,Waterworld (1995),low,,,,,
+Group308,,,Ace Ventura: When Nature Calls (1995),low,0.009365814776067355,0.22301304863582444,4.658211160527475
+Group309,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group309,,,Titanic (1997),low,0.007671997210182833,0.17620137299771169,4.593363844393593
+Group310,Titanic (1997),low,,,,,
+Group310,,,Independence Day (a.k.a. ID4) (1996),low,0.007671997210182833,0.2,4.593363844393593
+Group311,Titanic (1997),low,,,,,
+Group311,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.009116723957554924,0.23766233766233769,4.877910126683133
+Group312,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group312,,,Titanic (1997),low,0.009116723957554924,0.18711656441717792,4.877910126683133
+Group313,Batman Forever (1995),low,,,,,
+Group313,,,Charlie's Angels (2000),low,0.007472724555372889,0.16233766233766234,4.668486957168906
+Group314,Charlie's Angels (2000),low,,,,,
+Group314,,,Batman Forever (1995),low,0.007472724555372889,0.2148997134670487,4.668486957168906
+Group315,Wild Wild West (1999),low,,,,,
+Group315,,,Charlie's Angels (2000),low,0.007970906192397749,0.24390243902439027,7.014116989307429
+Group316,Charlie's Angels (2000),low,,,,,
+Group316,,,Wild Wild West (1999),low,0.007970906192397749,0.22922636103151864,7.01411698930743
+Group317,Wild Wild West (1999),low,,,,,
+Group317,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.008817814975340009,0.2698170731707317,5.537871277869221
+Group318,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group318,,,Wild Wild West (1999),low,0.008817814975340009,0.18098159509202452,5.53787127786922
+Group319,Wild Wild West (1999),low,,,,,
+Group319,,,Batman & Robin (1997),low,0.008668360484232552,0.2652439024390244,8.103867357166722
+Group320,Batman & Robin (1997),low,,,,,
+Group320,,,Wild Wild West (1999),low,0.008668360484232552,0.2648401826484018,8.103867357166722
+Group321,Wild Wild West (1999),low,,,,,
+Group321,,,Armageddon (1998),low,0.008618542320530066,0.26371951219512196,7.750573599257223
+Group322,Armageddon (1998),low,,,,,
+Group322,,,Wild Wild West (1999),low,0.008618542320530066,0.253294289897511,7.7505735992572244
+Group323,Judge Dredd (1995),low,,,,,
+Group323,,,Waterworld (1995),low,0.008170178847207691,0.2523076923076923,6.007796331782096
+Group324,Waterworld (1995),low,,,,,
+Group324,,,Judge Dredd (1995),low,0.008170178847207691,0.19454329774614468,6.007796331782096
+Group325,Batman Forever (1995),low,,,,,
+Group325,,,Judge Dredd (1995),low,0.009365814776067355,0.20346320346320346,6.283256743256743
+Group326,Judge Dredd (1995),low,,,,,
+Group326,,,Batman Forever (1995),low,0.009365814776067355,0.28923076923076924,6.283256743256743
+Group327,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group327,,,Judge Dredd (1995),low,0.008369451502017636,0.17481789802289283,5.398645641559273
+Group328,Judge Dredd (1995),low,,,,,
+Group328,,,Ace Ventura: When Nature Calls (1995),low,0.008369451502017636,0.25846153846153846,5.398645641559273
+Group329,Judge Dredd (1995),low,,,,,
+Group329,,,Batman & Robin (1997),low,0.007123997409455488,0.22,6.721552511415525
+Group330,Batman & Robin (1997),low,,,,,
+Group330,,,Judge Dredd (1995),low,0.007123997409455488,0.21765601217656014,6.721552511415526
+Group331,Ace Ventura: Pet Detective (1994),low,,,,,
+Group331,,,Judge Dredd (1995),low,0.007472724555372889,0.13309671694764863,4.110231383523309
+Group332,Judge Dredd (1995),low,,,,,
+Group332,,,Ace Ventura: Pet Detective (1994),low,0.007472724555372889,0.23076923076923078,4.110231383523309
+Group333,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group333,,,Twister (1996),low,0.010212723559009615,0.2345537757437071,7.461486435029212
+Group334,Twister (1996),low,,,,,
+Group334,,,Independence Day (a.k.a. ID4) (1996),low,0.010212723559009615,0.3248811410459588,7.461486435029212
+Group335,Twister (1996),low,,,,,
+Group335,,,Waterworld (1995),low,0.007223633736860459,0.22979397781299524,5.471713542871
+Group336,Waterworld (1995),low,,,,,
+Group336,,,Twister (1996),low,0.007223633736860459,0.1720047449584816,5.471713542871
+Group337,Armageddon (1998),low,,,,,
+Group337,,,Twister (1996),low,0.0075723608827778606,0.22254758418740847,7.079552547375357
+Group338,Twister (1996),low,,,,,
+Group338,,,Armageddon (1998),low,0.0075723608827778606,0.2408874801901743,7.079552547375357
+Group339,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group339,,,Twister (1996),low,0.007422906391670403,0.1523517382413088,4.846523679425977
+Group340,Twister (1996),low,,,,,
+Group340,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007422906391670403,0.23613312202852613,4.846523679425976
+Group341,Batman Forever (1995),low,,,,,
+Group341,,,Twister (1996),low,0.008718178647935037,0.1893939393939394,6.0248883446189305
+Group342,Twister (1996),low,,,,,
+Group342,,,Batman Forever (1995),low,0.008718178647935037,0.277337559429477,6.0248883446189305
+Group343,Anaconda (1997),low,,,,,
+Group343,,,Batman & Robin (1997),low,0.007223633736860459,0.3318077803203661,10.137560995998035
+Group344,Batman & Robin (1997),low,,,,,
+Group344,,,Anaconda (1997),low,0.007223633736860459,0.2207001522070015,10.137560995998035
+Group345,"Matrix Reloaded, The (2003)",low,,,,,
+Group345,,,"Matrix Revolutions, The (2003)",low,0.009714541921984756,0.44318181818181823,21.592205428067082
+Group346,"Matrix Revolutions, The (2003)",low,,,,,
+Group346,,,"Matrix Reloaded, The (2003)",low,0.009714541921984756,0.4733009708737865,21.592205428067082
+Group347,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group347,,,"Matrix Revolutions, The (2003)",low,0.007223633736860459,0.14826175869120653,7.223442432545118
+Group348,"Matrix Revolutions, The (2003)",low,,,,,
+Group348,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007223633736860459,0.35194174757281554,7.223442432545119
+Group349,Kill Bill: Vol. 1 (2003),low,,,,,
+Group349,,,Kill Bill: Vol. 2 (2004),low,0.009266178448662381,0.5,32.27170418006431
+Group350,Kill Bill: Vol. 2 (2004),low,,,,,
+Group350,,,Kill Bill: Vol. 1 (2003),low,0.009266178448662381,0.5980707395498392,32.27170418006431
+Group351,Inception (2010),high,,,,,
+Group351,,,Fight Club (1999),high,0.008867633139042494,0.1585040071237756,1.966409724966346
+Group352,Fight Club (1999),high,,,,,
+Group352,,,Inception (2010),high,0.008867633139042494,0.1100123609394314,1.966409724966346
+Group353,Forrest Gump (1994),high,,,,,
+Group353,,,Inception (2010),high,0.007323270064265431,0.07798408488063661,1.3939221155912902
+Group354,Inception (2010),high,,,,,
+Group354,,,Forrest Gump (1994),high,0.007323270064265431,0.13089937666963491,1.39392211559129
+Group355,"Dark Knight, The (2008)",high,,,,,
+Group355,,,Inception (2010),high,0.009066905793852439,0.16063548102383055,2.871269822432191
+Group356,Inception (2010),high,,,,,
+Group356,,,"Dark Knight, The (2008)",high,0.009066905793852439,0.1620658949243099,2.871269822432191
+Group357,"Matrix, The (1999)",high,,,,,
+Group357,,,Inception (2010),high,0.008817814975340009,0.09661572052401746,1.7269522333736442
+Group358,Inception (2010),high,,,,,
+Group358,,,"Matrix, The (1999)",high,0.008817814975340009,0.15761353517364204,1.7269522333736445
+Group359,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group359,,,Inception (2010),high,0.007422906391670403,0.1075036075036075,1.9215671535350967
+Group360,Inception (2010),high,,,,,
+Group360,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007422906391670403,0.13268032056990206,1.9215671535350969
+Group361,Inception (2010),high,,,,,
+Group361,,,"Shawshank Redemption, The (1994)",high,0.009565087430877297,0.1709706144256456,1.511181481006598
+Group362,"Shawshank Redemption, The (1994)",high,,,,,
+Group362,,,Inception (2010),high,0.009565087430877297,0.08454425363276089,1.5111814810065978
+Group363,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group363,,,Inception (2010),high,0.007472724555372889,0.12205044751830757,2.1815838228272377
+Group364,Inception (2010),high,,,,,
+Group364,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.007472724555372889,0.13357079252003562,2.1815838228272377
+Group365,Inception (2010),high,,,,,
+Group365,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.007074179245753001,0.12644701691896706,1.9479439528890454
+Group366,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group366,,,Inception (2010),high,0.007074179245753001,0.10897927858787414,1.9479439528890452
+Group367,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group367,,,Fight Club (1999),high,0.008419269665720121,0.10819462227912932,1.3422686359758733
+Group368,Fight Club (1999),high,,,,,
+Group368,,,Star Wars: Episode IV - A New Hope (1977),high,0.008419269665720121,0.10444993819530285,1.3422686359758733
+Group369,"Silence of the Lambs, The (1991)",high,,,,,
+Group369,,,Star Wars: Episode IV - A New Hope (1977),high,0.008518905993125093,0.09515859766277128,1.2228671772630013
+Group370,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group370,,,"Silence of the Lambs, The (1991)",high,0.008518905993125093,0.10947503201024328,1.2228671772630013
+Group371,Forrest Gump (1994),high,,,,,
+Group371,,,Star Wars: Episode IV - A New Hope (1977),high,0.00831963333831515,0.08859416445623343,1.138508747202288
+Group372,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group372,,,Forrest Gump (1994),high,0.00831963333831515,0.10691421254801538,1.138508747202288
+Group373,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group373,,,"Shawshank Redemption, The (1994)",high,0.01185672296119165,0.15236875800256083,1.3467626945774565
+Group374,"Shawshank Redemption, The (1994)",high,,,,,
+Group374,,,Star Wars: Episode IV - A New Hope (1977),high,0.01185672296119165,0.10479964773227653,1.3467626945774565
+Group375,"Matrix, The (1999)",high,,,,,
+Group375,,,Star Wars: Episode IV - A New Hope (1977),high,0.011707268470084192,0.12827510917030566,1.6484419118921547
+Group376,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group376,,,"Matrix, The (1999)",high,0.011707268470084192,0.15044814340588988,1.6484419118921547
+Group377,Pulp Fiction (1994),high,,,,,
+Group377,,,Star Wars: Episode IV - A New Hope (1977),high,0.00941563293976984,0.09884937238493724,1.270296704150349
+Group378,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group378,,,Pulp Fiction (1994),high,0.00941563293976984,0.1209987195902689,1.270296704150349
+Group379,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group379,,,"Shawshank Redemption, The (1994)",high,0.010561450704927016,0.15295815295815296,1.3519722608229874
+Group380,"Shawshank Redemption, The (1994)",high,,,,,
+Group380,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.010561450704927016,0.09335094671950682,1.3519722608229874
+Group381,Pulp Fiction (1994),high,,,,,
+Group381,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.008020724356100234,0.0842050209205021,1.2195147077469255
+Group382,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group382,,,Pulp Fiction (1994),high,0.008020724356100234,0.11616161616161617,1.2195147077469255
+Group383,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group383,,,"Silence of the Lambs, The (1991)",high,0.00782145170129029,0.11327561327561327,1.2653207486262577
+Group384,"Silence of the Lambs, The (1991)",high,,,,,
+Group384,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.00782145170129029,0.08736783528102392,1.2653207486262577
+Group385,"Matrix, The (1999)",high,,,,,
+Group385,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.011109450505654362,0.12172489082969432,1.7629031267131703
+Group386,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group386,,,"Matrix, The (1999)",high,0.011109450505654362,0.1608946608946609,1.7629031267131703
+Group387,"Usual Suspects, The (1995)",high,,,,,
+Group387,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007074179245753001,0.10021171489061396,1.4513345981235888
+Group388,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group388,,,"Usual Suspects, The (1995)",high,0.007074179245753001,0.10245310245310245,1.4513345981235888
+Group389,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group389,,,Fight Club (1999),high,0.010860359687141932,0.15728715728715728,1.9513134167027864
+Group390,Fight Club (1999),high,,,,,
+Group390,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.010860359687141932,0.134734239802225,1.9513134167027866
+Group391,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group391,,,Star Wars: Episode IV - A New Hope (1977),high,0.008718178647935037,0.12626262626262627,1.6225798316067204
+Group392,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group392,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.008718178647935037,0.11203585147247119,1.6225798316067204
+Group393,Forrest Gump (1994),high,,,,,
+Group393,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.008568724156827578,0.09124668435013263,1.321496893910687
+Group394,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group394,,,Forrest Gump (1994),high,0.008568724156827578,0.1240981240981241,1.321496893910687
+Group395,Batman Forever (1995),low,,,,,
+Group395,,,Mrs. Doubtfire (1993),low,0.007074179245753001,0.15367965367965367,6.735396699370497
+Group396,Mrs. Doubtfire (1993),low,,,,,
+Group396,,,Batman Forever (1995),low,0.007074179245753001,0.3100436681222707,6.735396699370497
+Group397,Ace Ventura: Pet Detective (1994),low,,,,,
+Group397,,,Mrs. Doubtfire (1993),low,0.007173815573157973,0.12777284826974267,5.599965902442237
+Group398,Mrs. Doubtfire (1993),low,,,,,
+Group398,,,Ace Ventura: Pet Detective (1994),low,0.007173815573157973,0.31441048034934493,5.599965902442237
+Group399,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group399,,,Mrs. Doubtfire (1993),low,0.00807054251980272,0.1519699812382739,6.66046601178138
+Group400,Mrs. Doubtfire (1993),low,,,,,
+Group400,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.00807054251980272,0.3537117903930131,6.660466011781381
+Group401,Forrest Gump (1994),high,,,,,
+Group401,,,"Godfather, The (1972)",high,0.007422906391670403,0.07904509283819629,1.1788054595402038
+Group402,"Godfather, The (1972)",high,,,,,
+Group402,,,Forrest Gump (1994),high,0.007422906391670403,0.11069836552748887,1.1788054595402038
+Group403,"Godfather, The (1972)",high,,,,,
+Group403,,,Fight Club (1999),high,0.009863996413092213,0.14710252600297177,1.824962301889773
+Group404,Fight Club (1999),high,,,,,
+Group404,,,"Godfather, The (1972)",high,0.009863996413092213,0.12237330037082819,1.8249623018897732
+Group405,"Matrix, The (1999)",high,,,,,
+Group405,,,"Godfather, The (1972)",high,0.009365814776067355,0.10262008733624454,1.5303811390047823
+Group406,"Godfather, The (1972)",high,,,,,
+Group406,,,"Matrix, The (1999)",high,0.009365814776067355,0.1396731054977712,1.5303811390047823
+Group407,"Godfather, The (1972)",high,,,,,
+Group407,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.007921088028695263,0.11812778603268947,1.730787627032245
+Group408,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group408,,,"Godfather, The (1972)",high,0.007921088028695263,0.11605839416058394,1.7307876270322449
+Group409,"Usual Suspects, The (1995)",high,,,,,
+Group409,,,"Godfather, The (1972)",high,0.008668360484232552,0.12279463655610445,1.8312457203496917
+Group410,"Godfather, The (1972)",high,,,,,
+Group410,,,"Usual Suspects, The (1995)",high,0.008668360484232552,0.12927191679049035,1.8312457203496915
+Group411,"Godfather, The (1972)",high,,,,,
+Group411,,,"Silence of the Lambs, The (1991)",high,0.009216360284959896,0.137444279346211,1.535291607855589
+Group412,"Silence of the Lambs, The (1991)",high,,,,,
+Group412,,,"Godfather, The (1972)",high,0.009216360284959896,0.10294936004451863,1.535291607855589
+Group413,Pulp Fiction (1994),high,,,,,
+Group413,,,"Godfather, The (1972)",high,0.009565087430877297,0.100418410041841,1.4975473586700405
+Group414,"Godfather, The (1972)",high,,,,,
+Group414,,,Pulp Fiction (1994),high,0.009565087430877297,0.1426448736998514,1.4975473586700403
+Group415,"Godfather, The (1972)",high,,,,,
+Group415,,,"Shawshank Redemption, The (1994)",high,0.010362178050117073,0.1545319465081724,1.3658827662961446
+Group416,"Shawshank Redemption, The (1994)",high,,,,,
+Group416,,,"Godfather, The (1972)",high,0.010362178050117073,0.09158960810215765,1.3658827662961446
+Group417,"Godfather, The (1972)",high,,,,,
+Group417,,,Schindler's List (1993),high,0.007522542719075375,0.11218424962852898,1.498253122284406
+Group418,Schindler's List (1993),high,,,,,
+Group418,,,"Godfather, The (1972)",high,0.007522542719075375,0.10046573519627412,1.4982531222844062
+Group419,Pulp Fiction (1994),high,,,,,
+Group419,,,Monty Python and the Holy Grail (1975),high,0.008120360683505206,0.0852510460251046,1.8867081001785275
+Group420,Monty Python and the Holy Grail (1975),high,,,,,
+Group420,,,Pulp Fiction (1994),high,0.008120360683505206,0.1797133406835722,1.8867081001785275
+Group421,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group421,,,Monty Python and the Holy Grail (1975),high,0.00782145170129029,0.11459854014598539,2.5362034138372267
+Group422,Monty Python and the Holy Grail (1975),high,,,,,
+Group422,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.00782145170129029,0.17309812568908486,2.5362034138372267
+Group423,"Matrix, The (1999)",high,,,,,
+Group423,,,Monty Python and the Holy Grail (1975),high,0.007173815573157973,0.07860262008733623,1.739570444336384
+Group424,Monty Python and the Holy Grail (1975),high,,,,,
+Group424,,,"Matrix, The (1999)",high,0.007173815573157973,0.15876515986769568,1.739570444336384
+Group425,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group425,,,Indiana Jones and the Last Crusade (1989),high,0.007223633736860459,0.115814696485623,2.7479295538485937
+Group426,Indiana Jones and the Last Crusade (1989),high,,,,,
+Group426,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.007223633736860459,0.17139479905437352,2.7479295538485937
+Group427,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group427,,,Indiana Jones and the Last Crusade (1989),high,0.010461814377522045,0.15789473684210528,3.7463605823068313
+Group428,Indiana Jones and the Last Crusade (1989),high,,,,,
+Group428,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.010461814377522045,0.24822695035460993,3.746360582306831
+Group429,Indiana Jones and the Last Crusade (1989),high,,,,,
+Group429,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.007273451900562946,0.17257683215130024,2.5285655122431017
+Group430,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group430,,,Indiana Jones and the Last Crusade (1989),high,0.007273451900562946,0.10656934306569343,2.528565512243102
+Group431,"Matrix, The (1999)",high,,,,,
+Group431,,,American Beauty (1999),high,0.009365814776067355,0.10262008733624454,1.7108745955983693
+Group432,American Beauty (1999),high,,,,,
+Group432,,,"Matrix, The (1999)",high,0.009365814776067355,0.15614617940199335,1.7108745955983693
+Group433,"Usual Suspects, The (1995)",high,,,,,
+Group433,,,American Beauty (1999),high,0.0070243610820505155,0.09950599858856739,1.6589567356049113
+Group434,American Beauty (1999),high,,,,,
+Group434,,,"Usual Suspects, The (1995)",high,0.0070243610820505155,0.117109634551495,1.6589567356049113
+Group435,Fight Club (1999),high,,,,,
+Group435,,,American Beauty (1999),high,0.009465451103472326,0.11742892459826948,1.9577664480573616
+Group436,American Beauty (1999),high,,,,,
+Group436,,,Fight Club (1999),high,0.009465451103472326,0.15780730897009967,1.9577664480573616
+Group437,"Shawshank Redemption, The (1994)",high,,,,,
+Group437,,,American Beauty (1999),high,0.008967269466447467,0.07926023778071334,1.3214208911729723
+Group438,American Beauty (1999),high,,,,,
+Group438,,,"Shawshank Redemption, The (1994)",high,0.008967269466447467,0.14950166112956811,1.3214208911729726
+Group439,Pulp Fiction (1994),high,,,,,
+Group439,,,American Beauty (1999),high,0.009515269267174812,0.09989539748953974,1.665448765620873
+Group440,American Beauty (1999),high,,,,,
+Group440,,,Pulp Fiction (1994),high,0.009515269267174812,0.1586378737541528,1.6654487656208732
+Group441,"Silence of the Lambs, The (1991)",high,,,,,
+Group441,,,American Beauty (1999),high,0.008120360683505206,0.09070673344462993,1.5122560302608443
+Group442,American Beauty (1999),high,,,,,
+Group442,,,"Silence of the Lambs, The (1991)",high,0.008120360683505206,0.13538205980066445,1.5122560302608443
+Group443,Forrest Gump (1994),high,,,,,
+Group443,,,American Beauty (1999),high,0.007871269864992776,0.08381962864721484,1.3974347224547703
+Group444,American Beauty (1999),high,,,,,
+Group444,,,Forrest Gump (1994),high,0.007871269864992776,0.13122923588039864,1.3974347224547703
+Group445,Memento (2000),high,,,,,
+Group445,,,Fight Club (1999),high,0.008170178847207691,0.1646586345381526,2.0427643826232
+Group446,Fight Club (1999),high,,,,,
+Group446,,,Memento (2000),high,0.008170178847207691,0.10135970333745364,2.0427643826232
+Group447,"Usual Suspects, The (1995)",high,,,,,
+Group447,,,Memento (2000),high,0.007173815573157973,0.10162314749470713,2.048073734599655
+Group448,Memento (2000),high,,,,,
+Group448,,,"Usual Suspects, The (1995)",high,0.007173815573157973,0.14457831325301207,2.048073734599655
+Group449,Memento (2000),high,,,,,
+Group449,,,"Shawshank Redemption, The (1994)",high,0.009066905793852439,0.18273092369477914,1.6151289437804057
+Group450,"Shawshank Redemption, The (1994)",high,,,,,
+Group450,,,Memento (2000),high,0.009066905793852439,0.08014090708938794,1.6151289437804057
+Group451,"Matrix, The (1999)",high,,,,,
+Group451,,,Memento (2000),high,0.00891745130274498,0.097707423580786,1.9691577445151782
+Group452,Memento (2000),high,,,,,
+Group452,,,"Matrix, The (1999)",high,0.00891745130274498,0.17971887550200802,1.9691577445151784
+Group453,Pulp Fiction (1994),high,,,,,
+Group453,,,Memento (2000),high,0.007522542719075375,0.07897489539748954,1.591629593688562
+Group454,Memento (2000),high,,,,,
+Group454,,,Pulp Fiction (1994),high,0.007522542719075375,0.15160642570281124,1.5916295936885618
+Group455,Memento (2000),high,,,,,
+Group455,,,"Silence of the Lambs, The (1991)",high,0.007671997210182833,0.15461847389558234,1.7271322351174314
+Group456,"Silence of the Lambs, The (1991)",high,,,,,
+Group456,,,Memento (2000),high,0.007671997210182833,0.08569838619922092,1.7271322351174314
+Group457,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group457,,,Memento (2000),high,0.007123997409455488,0.10317460317460318,2.0793411742206924
+Group458,Memento (2000),high,,,,,
+Group458,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007123997409455488,0.14357429718875503,2.0793411742206924
+Group459,"Matrix, The (1999)",high,,,,,
+Group459,,,Back to the Future (1985),high,0.009116723957554924,0.09989082969432314,1.9448192283745378
+Group460,Back to the Future (1985),high,,,,,
+Group460,,,"Matrix, The (1999)",high,0.009116723957554924,0.17749757516973813,1.9448192283745378
+Group461,"Shawshank Redemption, The (1994)",high,,,,,
+Group461,,,Back to the Future (1985),high,0.0077218153738853185,0.06825187142228092,1.3288262027734676
+Group462,Back to the Future (1985),high,,,,,
+Group462,,,"Shawshank Redemption, The (1994)",high,0.0077218153738853185,0.15033947623666344,1.3288262027734676
+Group463,Pulp Fiction (1994),high,,,,,
+Group463,,,Back to the Future (1985),high,0.007223633736860459,0.075836820083682,1.4765009597863714
+Group464,Back to the Future (1985),high,,,,,
+Group464,,,Pulp Fiction (1994),high,0.007223633736860459,0.14064015518913675,1.4765009597863714
+Group465,Back to the Future (1985),high,,,,,
+Group465,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.008219997010910177,0.1600387972841901,2.3448604218142686
+Group466,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group466,,,Back to the Future (1985),high,0.008219997010910177,0.12043795620437954,2.344860421814268
+Group467,Forrest Gump (1994),high,,,,,
+Group467,,,Back to the Future (1985),high,0.008518905993125093,0.09071618037135279,1.766193878364854
+Group468,Back to the Future (1985),high,,,,,
+Group468,,,Forrest Gump (1994),high,0.008518905993125093,0.1658583899127061,1.7661938783648539
+Group469,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group469,,,Back to the Future (1985),high,0.008518905993125093,0.12857142857142856,2.503214632118609
+Group470,Back to the Future (1985),high,,,,,
+Group470,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.008518905993125093,0.1658583899127061,2.503214632118609
+Group471,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group471,,,Back to the Future (1985),high,0.007373088227967917,0.09475032010243278,1.8447363486092467
+Group472,Back to the Future (1985),high,,,,,
+Group472,,,Star Wars: Episode IV - A New Hope (1977),high,0.007373088227967917,0.14354995150339475,1.8447363486092465
+Group473,Star Wars: Episode VI - Return of the Jedi (1983),high,,,,,
+Group473,,,Back to the Future (1985),high,0.007671997210182833,0.12300319488817892,2.3948042007666492
+Group474,Back to the Future (1985),high,,,,,
+Group474,,,Star Wars: Episode VI - Return of the Jedi (1983),high,0.007671997210182833,0.14936954413191078,2.3948042007666492
+Group475,Forrest Gump (1994),high,,,,,
+Group475,,,Jurassic Park (1993),high,0.007273451900562946,0.07745358090185678,1.5439183013336357
+Group476,Jurassic Park (1993),high,,,,,
+Group476,,,Forrest Gump (1994),high,0.007273451900562946,0.14498510427010924,1.5439183013336355
+Group477,Jurassic Park (1993),high,,,,,
+Group477,,,"Shawshank Redemption, The (1994)",high,0.007472724555372889,0.14895729890764647,1.3166093619432795
+Group478,"Shawshank Redemption, The (1994)",high,,,,,
+Group478,,,Jurassic Park (1993),high,0.007472724555372889,0.06605019815059446,1.3166093619432797
+Group479,"Silence of the Lambs, The (1991)",high,,,,,
+Group479,,,Jurassic Park (1993),high,0.007123997409455488,0.07957707289927657,1.5862468563129877
+Group480,Jurassic Park (1993),high,,,,,
+Group480,,,"Silence of the Lambs, The (1991)",high,0.007123997409455488,0.1420059582919563,1.5862468563129877
+Group481,Jurassic Park (1993),high,,,,,
+Group481,,,Terminator 2: Judgment Day (1991),high,0.007074179245753001,0.141012909632572,2.273535851449492
+Group482,Terminator 2: Judgment Day (1991),high,,,,,
+Group482,,,Jurassic Park (1993),high,0.007074179245753001,0.11405622489959838,2.273535851449492
+Group483,Pulp Fiction (1994),high,,,,,
+Group483,,,Reservoir Dogs (1992),high,0.007472724555372889,0.07845188284518828,2.03721170032531
+Group484,Reservoir Dogs (1992),high,,,,,
+Group484,,,Pulp Fiction (1994),high,0.007472724555372889,0.19404915912031048,2.03721170032531
+Group485,Gladiator (2000),high,,,,,
+Group485,,,"Shawshank Redemption, The (1994)",high,0.008269815174612664,0.1599229287090559,1.413532782024165
+Group486,"Shawshank Redemption, The (1994)",high,,,,,
+Group486,,,Gladiator (2000),high,0.008269815174612664,0.07309555261999119,1.413532782024165
+Group487,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group487,,,Gladiator (2000),high,0.0075723608827778606,0.10966810966810966,2.12077838667434
+Group488,Gladiator (2000),high,,,,,
+Group488,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.0075723608827778606,0.1464354527938343,2.1207783866743406
+Group489,Gladiator (2000),high,,,,,
+Group489,,,"Lord of the Rings: The Two Towers, The (2002)",high,0.007173815573157973,0.13872832369942195,2.265820701072821
+Group490,"Lord of the Rings: The Two Towers, The (2002)",high,,,,,
+Group490,,,Gladiator (2000),high,0.007173815573157973,0.11716842961757527,2.2658207010728213
+Group491,Gladiator (2000),high,,,,,
+Group491,,,"Lord of the Rings: The Return of the King, The (2003)",high,0.0070243610820505155,0.13583815028901733,2.0926164165398657
+Group492,"Lord of the Rings: The Return of the King, The (2003)",high,,,,,
+Group492,,,Gladiator (2000),high,0.0070243610820505155,0.10821181887950883,2.0926164165398657
+Group493,Forrest Gump (1994),high,,,,,
+Group493,,,Gladiator (2000),high,0.008469087829422607,0.09018567639257294,1.7440241639962588
+Group494,Gladiator (2000),high,,,,,
+Group494,,,Forrest Gump (1994),high,0.008469087829422607,0.16377649325626203,1.7440241639962588
+Group495,Gladiator (2000),high,,,,,
+Group495,,,Fight Club (1999),high,0.007671997210182833,0.14836223506743737,1.8405903241709953
+Group496,Fight Club (1999),high,,,,,
+Group496,,,Gladiator (2000),high,0.007671997210182833,0.09517923362175526,1.8405903241709956
+Group497,"Matrix, The (1999)",high,,,,,
+Group497,,,Gladiator (2000),high,0.00891745130274498,0.097707423580786,1.8894808415579165
+Group498,Gladiator (2000),high,,,,,
+Group498,,,"Matrix, The (1999)",high,0.00891745130274498,0.1724470134874759,1.8894808415579167
+Group499,Pulp Fiction (1994),high,,,,,
+Group499,,,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),high,0.007921088028695263,0.08315899581589958,1.7757984287367579
+Group500,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),high,,,,,
+Group500,,,Pulp Fiction (1994),high,0.007921088028695263,0.1691489361702128,1.775798428736758
+Group501,"Shawshank Redemption, The (1994)",high,,,,,
+Group501,,,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),high,0.007173815573157973,0.06340819022457067,1.3540346833806458
+Group502,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),high,,,,,
+Group502,,,"Shawshank Redemption, The (1994)",high,0.007173815573157973,0.15319148936170213,1.3540346833806458
+Group503,Forrest Gump (1994),high,,,,,
+Group503,,,Braveheart (1995),high,0.009565087430877297,0.10185676392572944,1.719571759698206
+Group504,Braveheart (1995),high,,,,,
+Group504,,,Forrest Gump (1994),high,0.009565087430877297,0.16148023549201007,1.719571759698206
+Group505,"Matrix, The (1999)",high,,,,,
+Group505,,,Braveheart (1995),high,0.008469087829422607,0.0927947598253275,1.5665847047719084
+Group506,Braveheart (1995),high,,,,,
+Group506,,,"Matrix, The (1999)",high,0.008469087829422607,0.14297729184188393,1.5665847047719084
+Group507,Pulp Fiction (1994),high,,,,,
+Group507,,,Braveheart (1995),high,0.008967269466447467,0.09414225941422595,1.5893335350897877
+Group508,Braveheart (1995),high,,,,,
+Group508,,,Pulp Fiction (1994),high,0.008967269466447467,0.15138772077375948,1.5893335350897877
+Group509,Braveheart (1995),high,,,,,
+Group509,,,Terminator 2: Judgment Day (1991),high,0.008120360683505206,0.13708999158957105,2.210287069218843
+Group510,Terminator 2: Judgment Day (1991),high,,,,,
+Group510,,,Braveheart (1995),high,0.008120360683505206,0.13092369477911645,2.210287069218843
+Group511,Braveheart (1995),high,,,,,
+Group511,,,"Shawshank Redemption, The (1994)",high,0.00966472375828227,0.1631623212783852,1.442165246596665
+Group512,"Shawshank Redemption, The (1994)",high,,,,,
+Group512,,,Braveheart (1995),high,0.00966472375828227,0.0854249229414355,1.442165246596665
+Group513,Braveheart (1995),high,,,,,
+Group513,,,"Silence of the Lambs, The (1991)",high,0.008618542320530066,0.1455004205214466,1.6252809911669435
+Group514,"Silence of the Lambs, The (1991)",high,,,,,
+Group514,,,Braveheart (1995),high,0.008618542320530066,0.09627156371730662,1.6252809911669435
+Group515,Pulp Fiction (1994),high,,,,,
+Group515,,,Léon: The Professional (a.k.a. The Professional) (Léon) (1994),high,0.007671997210182833,0.08054393305439331,2.0311034776392423
+Group516,Léon: The Professional (a.k.a. The Professional) (Léon) (1994),high,,,,,
+Group516,,,Pulp Fiction (1994),high,0.007671997210182833,0.1934673366834171,2.0311034776392423
+Group517,Batman Forever (1995),low,,,,,
+Group517,,,Batman & Robin (1997),low,0.01394908583669606,0.30303030303030304,9.258336792583368
+Group518,Batman & Robin (1997),low,,,,,
+Group518,,,Batman Forever (1995),low,0.01394908583669606,0.426179604261796,9.258336792583368
+Group519,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group519,,,Batman & Robin (1997),low,0.008668360484232552,0.17791411042944785,5.435722889878702
+Group520,Batman & Robin (1997),low,,,,,
+Group520,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.008668360484232552,0.2648401826484018,5.435722889878701
+Group521,Batman & Robin (1997),low,,,,,
+Group521,,,Waterworld (1995),low,0.007074179245753001,0.2161339421613394,5.1464491352367325
+Group522,Waterworld (1995),low,,,,,
+Group522,,,Batman & Robin (1997),low,0.007074179245753001,0.16844602609727163,5.1464491352367325
+Group523,Armageddon (1998),low,,,,,
+Group523,,,Batman & Robin (1997),low,0.007671997210182833,0.22547584187408493,6.888853232783115
+Group524,Batman & Robin (1997),low,,,,,
+Group524,,,Armageddon (1998),low,0.007671997210182833,0.2343987823439878,6.888853232783115
+Group525,"Mask, The (1994)",low,,,,,
+Group525,,,Waterworld (1995),low,0.0077218153738853185,0.2223816355810617,5.295215386736241
+Group526,Waterworld (1995),low,,,,,
+Group526,,,"Mask, The (1994)",low,0.0077218153738853185,0.18386714116251482,5.295215386736241
+Group527,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group527,,,"Mask, The (1994)",low,0.011109450505654362,0.23204994797086367,6.682838745508102
+Group528,"Mask, The (1994)",low,,,,,
+Group528,,,Ace Ventura: When Nature Calls (1995),low,0.011109450505654362,0.31994261119081785,6.682838745508103
+Group529,Batman Forever (1995),low,,,,,
+Group529,,,"Mask, The (1994)",low,0.009365814776067355,0.20346320346320346,5.859565112075873
+Group530,"Mask, The (1994)",low,,,,,
+Group530,,,Batman Forever (1995),low,0.009365814776067355,0.26972740315638455,5.859565112075873
+Group531,Ace Ventura: Pet Detective (1994),low,,,,,
+Group531,,,"Mask, The (1994)",low,0.013301449708563742,0.23691215616681455,6.822866156006412
+Group532,"Mask, The (1994)",low,,,,,
+Group532,,,Ace Ventura: Pet Detective (1994),low,0.013301449708563742,0.38307030129124825,6.822866156006412
+Group533,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group533,,,"Mask, The (1994)",low,0.012803268071538884,0.24108818011257035,6.9431320507885586
+Group534,"Mask, The (1994)",low,,,,,
+Group534,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.012803268071538884,0.3687230989956959,6.9431320507885586
+Group535,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group535,,,"Mask, The (1994)",low,0.007323270064265431,0.16819221967963388,4.843791141505439
+Group536,"Mask, The (1994)",low,,,,,
+Group536,,,Independence Day (a.k.a. ID4) (1996),low,0.007323270064265431,0.2109038737446198,4.843791141505439
+Group537,Ace Ventura: Pet Detective (1994),low,,,,,
+Group537,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group537,,,"Mask, The (1994)",low,0.00782145170129029,0.36426914153132245,10.490637701518272
+Group538,"Mask, The (1994)",low,,,,,
+Group538,Ace Ventura: Pet Detective (1994),low,,,,,
+Group538,,,Ace Ventura: When Nature Calls (1995),low,0.00782145170129029,0.5880149812734082,12.282231757649452
+Group539,"Mask, The (1994)",low,,,,,
+Group539,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group539,,,Ace Ventura: Pet Detective (1994),low,0.00782145170129029,0.7040358744394618,12.539584833738523
+Group540,Ace Ventura: Pet Detective (1994),low,,,,,
+Group540,,,"Mask, The (1994)",low,0.00782145170129029,0.13930789707187222,12.539584833738525
+Group540,,,Ace Ventura: When Nature Calls (1995),low,0.00782145170129029,0.13930789707187222,12.539584833738525
+Group541,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group541,,,"Mask, The (1994)",low,0.00782145170129029,0.16337148803329862,12.28223175764945
+Group541,,,Ace Ventura: Pet Detective (1994),low,0.00782145170129029,0.16337148803329862,12.28223175764945
+Group542,"Mask, The (1994)",low,,,,,
+Group542,,,Ace Ventura: Pet Detective (1994),low,0.00782145170129029,0.22525107604017217,10.490637701518272
+Group542,,,Ace Ventura: When Nature Calls (1995),low,0.00782145170129029,0.22525107604017217,10.490637701518272
+Group543,Ace Ventura: Pet Detective (1994),low,,,,,
+Group543,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group543,,,"Mask, The (1994)",low,0.008469087829422607,0.36247334754797444,10.438920380675023
+Group544,"Mask, The (1994)",low,,,,,
+Group544,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group544,,,Ace Ventura: Pet Detective (1994),low,0.008469087829422607,0.6614785992217899,11.781597091551896
+Group545,"Mask, The (1994)",low,,,,,
+Group545,Ace Ventura: Pet Detective (1994),low,,,,,
+Group545,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.008469087829422607,0.6367041198501873,11.989269979130215
+Group546,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group546,,,"Mask, The (1994)",low,0.008469087829422607,0.15947467166979362,11.989269979130215
+Group546,,,Ace Ventura: Pet Detective (1994),low,0.008469087829422607,0.15947467166979362,11.989269979130215
+Group547,Ace Ventura: Pet Detective (1994),low,,,,,
+Group547,,,"Mask, The (1994)",low,0.008469087829422607,0.15084294587400177,11.781597091551896
+Group547,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.008469087829422607,0.15084294587400177,11.781597091551896
+Group548,"Mask, The (1994)",low,,,,,
+Group548,,,Ace Ventura: Pet Detective (1994),low,0.008469087829422607,0.24390243902439024,10.438920380675022
+Group548,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.008469087829422607,0.24390243902439024,10.438920380675022
+Group549,"Mask, The (1994)",low,,,,,
+Group549,,,"Nutty Professor, The (1996)",low,0.007522542719075375,0.21664275466284075,6.794796897417504
+Group550,"Nutty Professor, The (1996)",low,,,,,
+Group550,,,"Mask, The (1994)",low,0.007522542719075375,0.2359375,6.794796897417504
+Group551,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group551,,,"Nutty Professor, The (1996)",low,0.007223633736860459,0.14826175869120653,4.650091065950919
+Group552,"Nutty Professor, The (1996)",low,,,,,
+Group552,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007223633736860459,0.22656249999999997,4.650091065950919
+Group553,Ace Ventura: Pet Detective (1994),low,,,,,
+Group553,,,"Nutty Professor, The (1996)",low,0.00831963333831515,0.1481810115350488,4.647558507098491
+Group554,"Nutty Professor, The (1996)",low,,,,,
+Group554,,,Ace Ventura: Pet Detective (1994),low,0.00831963333831515,0.2609375,4.647558507098491
+Group555,Batman Forever (1995),low,,,,,
+Group555,,,"Nutty Professor, The (1996)",low,0.007074179245753001,0.15367965367965367,4.820018262987013
+Group556,"Nutty Professor, The (1996)",low,,,,,
+Group556,,,Batman Forever (1995),low,0.007074179245753001,0.221875,4.820018262987013
+Group557,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group557,,,"Nutty Professor, The (1996)",low,0.00831963333831515,0.17377731529656607,5.450362578043704
+Group558,"Nutty Professor, The (1996)",low,,,,,
+Group558,,,Ace Ventura: When Nature Calls (1995),low,0.00831963333831515,0.2609375,5.450362578043704
+Group559,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group559,,,"Nutty Professor, The (1996)",low,0.007522542719075375,0.14165103189493433,4.442751817542214
+Group560,"Nutty Professor, The (1996)",low,,,,,
+Group560,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007522542719075375,0.2359375,4.442751817542214
+Group561,Austin Powers: The Spy Who Shagged Me (1999),low,,,,,
+Group561,,,Ace Ventura: Pet Detective (1994),low,0.007223633736860459,0.25754884547069273,4.587203172256624
+Group562,Ace Ventura: Pet Detective (1994),low,,,,,
+Group562,,,Austin Powers: The Spy Who Shagged Me (1999),low,0.007223633736860459,0.12866015971606032,4.587203172256623
+Group563,Batman Forever (1995),low,,,,,
+Group563,,,Batman (1989),low,0.00831963333831515,0.18073593073593075,7.9909963384633
+Group564,Batman (1989),low,,,,,
+Group564,,,Batman Forever (1995),low,0.00831963333831515,0.36784140969163,7.990996338463299
+Group565,Batman Forever (1995),low,,,,,
+Group565,,,Ace Ventura: When Nature Calls (1995),low,0.010461814377522045,0.22727272727272727,4.747185696717434
+Group566,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group566,,,Batman Forever (1995),low,0.010461814377522045,0.21852237252861603,4.747185696717435
+Group567,Batman Forever (1995),low,,,,,
+Group567,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.010162905395307129,0.22077922077922077,4.531391920962473
+Group568,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group568,,,Batman Forever (1995),low,0.010162905395307129,0.2085889570552147,4.531391920962473
+Group569,Batman Forever (1995),low,,,,,
+Group569,,,Pulp Fiction (1994),high,0.0070243610820505155,0.1525974025974026,1.602033296201706
+Group570,Pulp Fiction (1994),high,,,,,
+Group570,,,Batman Forever (1995),low,0.0070243610820505155,0.07374476987447699,1.6020332962017063
+Group571,Batman Forever (1995),low,,,,,
+Group571,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.01135854132416679,0.24675324675324672,4.646414561048707
+Group572,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group572,,,Batman Forever (1995),low,0.01135854132416679,0.21388367729831143,4.646414561048707
+Group573,Batman Forever (1995),low,,,,,
+Group573,,,Ace Ventura: Pet Detective (1994),low,0.012404722761918995,0.26948051948051943,4.79971824980698
+Group574,Ace Ventura: Pet Detective (1994),low,,,,,
+Group574,,,Batman Forever (1995),low,0.012404722761918995,0.22094055013309669,4.79971824980698
+Group575,Ace Ventura: Pet Detective (1994),low,,,,,
+Group575,Batman Forever (1995),low,,,,,
+Group575,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007074179245753001,0.570281124497992,10.738511268337891
+Group576,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group576,Batman Forever (1995),low,,,,,
+Group576,,,Ace Ventura: Pet Detective (1994),low,0.007074179245753001,0.6228070175438597,11.092817447345071
+Group577,Ace Ventura: Pet Detective (1994),low,,,,,
+Group577,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group577,,,Batman Forever (1995),low,0.007074179245753001,0.302771855010661,6.577423642455626
+Group578,Batman Forever (1995),low,,,,,
+Group578,,,Ace Ventura: Pet Detective (1994),low,0.007074179245753001,0.15367965367965367,6.577423642455625
+Group578,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007074179245753001,0.15367965367965367,6.577423642455625
+Group579,Ace Ventura: Pet Detective (1994),low,,,,,
+Group579,,,Dumb & Dumber (Dumb and Dumber) (1994),low,0.007074179245753001,0.12599822537710736,11.092817447345071
+Group579,,,Batman Forever (1995),low,0.007074179245753001,0.12599822537710736,11.092817447345071
+Group580,Dumb & Dumber (Dumb and Dumber) (1994),low,,,,,
+Group580,,,Ace Ventura: Pet Detective (1994),low,0.007074179245753001,0.13320825515947465,10.738511268337891
+Group580,,,Batman Forever (1995),low,0.007074179245753001,0.13320825515947465,10.738511268337891
+Group581,"Matrix Reloaded, The (2003)",low,,,,,
+Group581,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007223633736860459,0.32954545454545453,6.763768823201338
+Group582,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group582,,,"Matrix Reloaded, The (2003)",low,0.007223633736860459,0.14826175869120653,6.763768823201338
+Group583,Johnny Mnemonic (1995),low,,,,,
+Group583,,,Judge Dredd (1995),low,0.007373088227967917,0.3238512035010941,10.001023396734556
+Group584,Judge Dredd (1995),low,,,,,
+Group584,,,Johnny Mnemonic (1995),low,0.007373088227967917,0.2276923076923077,10.001023396734556
+Group585,Ace Ventura: Pet Detective (1994),low,,,,,
+Group585,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007671997210182833,0.13664596273291926,2.8045955111839347
+Group586,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group586,,,Ace Ventura: Pet Detective (1994),low,0.007671997210182833,0.1574642126789366,2.8045955111839342
+Group587,"Terminator, The (1984)",high,,,,,
+Group587,,,Terminator 2: Judgment Day (1991),high,0.007074179245753001,0.18275418275418276,2.9465258718270766
+Group588,Terminator 2: Judgment Day (1991),high,,,,,
+Group588,,,"Terminator, The (1984)",high,0.007074179245753001,0.11405622489959838,2.946525871827076
+Group589,"Terminator, The (1984)",high,,,,,
+Group589,,,"Matrix, The (1999)",high,0.007472724555372889,0.19305019305019305,2.1152273608605485
+Group590,"Matrix, The (1999)",high,,,,,
+Group590,,,"Terminator, The (1984)",high,0.007472724555372889,0.08187772925764192,2.1152273608605485
+Group591,"Terminator, The (1984)",high,,,,,
+Group591,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.0070243610820505155,0.18146718146718147,2.7387900252561908
+Group592,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group592,,,"Terminator, The (1984)",high,0.0070243610820505155,0.10601503759398496,2.7387900252561908
+Group593,Coneheads (1993),low,,,,,
+Group593,,,Ace Ventura: When Nature Calls (1995),low,0.008767996811637523,0.31150442477876106,6.506585139005276
+Group594,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group594,,,Coneheads (1993),low,0.008767996811637523,0.18314255983350675,6.506585139005276
+Group595,Coneheads (1993),low,,,,,
+Group595,,,Judge Dredd (1995),low,0.00782145170129029,0.2778761061946903,8.581241660993873
+Group596,Judge Dredd (1995),low,,,,,
+Group596,,,Coneheads (1993),low,0.00782145170129029,0.24153846153846154,8.581241660993873
+Group597,Coneheads (1993),low,,,,,
+Group597,,,Ace Ventura: Pet Detective (1994),low,0.007123997409455488,0.2530973451327434,4.5079174878878066
+Group598,Ace Ventura: Pet Detective (1994),low,,,,,
+Group598,,,Coneheads (1993),low,0.007123997409455488,0.12688553682342502,4.507917487887806
+Group599,Godzilla (1998),low,,,,,
+Group599,,,Batman & Robin (1997),low,0.00782145170129029,0.3481152993348115,10.63579665684577
+Group600,Batman & Robin (1997),low,,,,,
+Group600,,,Godzilla (1998),low,0.00782145170129029,0.2389649923896499,10.635796656845772
+Group601,"Amelie (Fabuleux destin d'Amélie Poulain, Le) (2001)",high,,,,,
+Group601,,,Fight Club (1999),high,0.007123997409455488,0.17023809523809524,2.111983489316617
+Group602,Fight Club (1999),high,,,,,
+Group602,,,"Amelie (Fabuleux destin d'Amélie Poulain, Le) (2001)",high,0.007123997409455488,0.08838071693448703,2.111983489316617
+Group603,"Lord of the Rings: The Two Towers, The (2002)",low,,,,,
+Group603,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,0.01708763014995267,0.7456521739130434,28.72836101143286
+Group604,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,,,,,
+Group604,,,"Lord of the Rings: The Two Towers, The (2002)",low,0.01708763014995267,0.6583493282149712,28.72836101143286
+Group605,"Lord of the Rings: The Two Towers, The (2002)",low,,,,,
+Group605,,,"Lord of the Rings: The Return of the King, The (2003)",low,0.016439994021820354,0.7173913043478259,30.96816269284712
+Group606,"Lord of the Rings: The Return of the King, The (2003)",low,,,,,
+Group606,,,"Lord of the Rings: The Two Towers, The (2002)",low,0.016439994021820354,0.7096774193548386,30.96816269284712
+Group607,"Lord of the Rings: The Two Towers, The (2002)",low,,,,,
+Group607,"Lord of the Rings: The Return of the King, The (2003)",low,,,,,
+Group607,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,0.014497085637423404,0.8818181818181818,33.9745419647531
+Group608,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,,,,,
+Group608,"Lord of the Rings: The Two Towers, The (2002)",low,,,,,
+Group608,,,"Lord of the Rings: The Return of the King, The (2003)",low,0.014497085637423404,0.8483965014577259,36.62336123389448
+Group609,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,,,,,
+Group609,"Lord of the Rings: The Return of the King, The (2003)",low,,,,,
+Group609,,,"Lord of the Rings: The Two Towers, The (2002)",low,0.014497085637423404,0.8686567164179104,37.90553536664503
+Group610,"Lord of the Rings: The Two Towers, The (2002)",low,,,,,
+Group610,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,0.014497085637423404,0.6326086956521738,37.905535366645026
+Group610,,,"Lord of the Rings: The Return of the King, The (2003)",low,0.014497085637423404,0.6326086956521738,37.905535366645026
+Group611,"Lord of the Rings: The Return of the King, The (2003)",low,,,,,
+Group611,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,0.014497085637423404,0.6258064516129032,36.62336123389448
+Group611,,,"Lord of the Rings: The Two Towers, The (2002)",low,0.014497085637423404,0.6258064516129032,36.62336123389448
+Group612,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,,,,,
+Group612,,,"Lord of the Rings: The Two Towers, The (2002)",low,0.014497085637423404,0.5585412667946257,33.9745419647531
+Group612,,,"Lord of the Rings: The Return of the King, The (2003)",low,0.014497085637423404,0.5585412667946257,33.9745419647531
+Group613,Independence Day (a.k.a. ID4) (1996),low,,,,,
+Group613,,,Armageddon (1998),low,0.010113087231604643,0.2322654462242563,6.826155639911415
+Group614,Armageddon (1998),low,,,,,
+Group614,,,Independence Day (a.k.a. ID4) (1996),low,0.010113087231604643,0.2972181551976574,6.8261556399114145
+Group615,Armageddon (1998),low,,,,,
+Group615,,,Waterworld (1995),low,0.007422906391670403,0.21815519765739383,5.194578033899011
+Group616,Waterworld (1995),low,,,,,
+Group616,,,Armageddon (1998),low,0.007422906391670403,0.17674970344009489,5.194578033899011
+Group617,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group617,,,Armageddon (1998),low,0.009814178249389727,0.20143149284253578,5.919962453628434
+Group618,Armageddon (1998),low,,,,,
+Group618,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.009814178249389727,0.2884333821376281,5.919962453628434
+Group619,Batman Forever (1995),low,,,,,
+Group619,,,Armageddon (1998),low,0.008120360683505206,0.1764069264069264,5.184504002585993
+Group620,Armageddon (1998),low,,,,,
+Group620,,,Batman Forever (1995),low,0.008120360683505206,0.23865300146412882,5.184504002585993
+Group621,"Matrix, The (1999)",high,,,,,
+Group621,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.011308723160464305,0.12390829694323142,1.8154826602492586
+Group622,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group622,,,"Matrix, The (1999)",high,0.011308723160464305,0.1656934306569343,1.8154826602492586
+Group623,Pulp Fiction (1994),high,,,,,
+Group623,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.008668360484232552,0.09100418410041841,1.33337736310051
+Group624,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group624,,,Pulp Fiction (1994),high,0.008668360484232552,0.12700729927007298,1.33337736310051
+Group625,"Shawshank Redemption, The (1994)",high,,,,,
+Group625,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.010063269067902158,0.08894760017613386,1.3032446557193686
+Group626,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group626,,,"Shawshank Redemption, The (1994)",high,0.010063269067902158,0.14744525547445256,1.3032446557193686
+Group627,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group627,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.00831963333831515,0.1204906204906205,1.765407463582646
+Group628,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group628,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.00831963333831515,0.12189781021897811,1.7654074635826462
+Group629,"Silence of the Lambs, The (1991)",high,,,,,
+Group629,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.00782145170129029,0.08736783528102392,1.2800982172233526
+Group630,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group630,,,"Silence of the Lambs, The (1991)",high,0.00782145170129029,0.11459854014598539,1.2800982172233526
+Group631,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group631,,,Schindler's List (1993),high,0.007323270064265431,0.1072992700729927,1.4330128065037808
+Group632,Schindler's List (1993),high,,,,,
+Group632,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.007323270064265431,0.09780439121756487,1.4330128065037808
+Group633,Star Wars: Episode IV - A New Hope (1977),high,,,,,
+Group633,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.014347631146315947,0.18437900128040974,2.7014888267895363
+Group634,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group634,,,Star Wars: Episode IV - A New Hope (1977),high,0.014347631146315947,0.21021897810218979,2.7014888267895363
+Group635,Star Wars: Episode V - The Empire Strikes Back (1980),high,,,,,
+Group635,,,Fight Club (1999),high,0.008269815174612664,0.12116788321167885,1.5032156487688688
+Group636,Fight Club (1999),high,,,,,
+Group636,,,Star Wars: Episode V - The Empire Strikes Back (1980),high,0.008269815174612664,0.10259579728059334,1.5032156487688686
+Group637,"Matrix, The (1999)",high,,,,,
+Group637,,,Seven (a.k.a. Se7en) (1995),high,0.008967269466447467,0.09825327510917031,1.6259175525691472
+Group638,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group638,,,"Matrix, The (1999)",high,0.008967269466447467,0.1483924154987634,1.625917552569147
+Group639,"Usual Suspects, The (1995)",high,,,,,
+Group639,,,Seven (a.k.a. Se7en) (1995),high,0.010113087231604643,0.1432604093154552,2.370705850114701
+Group640,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group640,,,"Usual Suspects, The (1995)",high,0.010113087231604643,0.16735366859027204,2.3707058501147005
+Group641,Pulp Fiction (1994),high,,,,,
+Group641,,,Seven (a.k.a. Se7en) (1995),high,0.011557813978976735,0.12133891213389121,2.0079439268455057
+Group642,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group642,,,Pulp Fiction (1994),high,0.011557813978976735,0.1912613355317395,2.0079439268455057
+Group643,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group643,,,"Shawshank Redemption, The (1994)",high,0.011557813978976735,0.1912613355317395,1.6905278679562337
+Group644,"Shawshank Redemption, The (1994)",high,,,,,
+Group644,,,Seven (a.k.a. Se7en) (1995),high,0.011557813978976735,0.10215763980625275,1.6905278679562337
+Group645,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group645,,,"Silence of the Lambs, The (1991)",high,0.011408359487869278,0.1887881286067601,2.108816975806063
+Group646,"Silence of the Lambs, The (1991)",high,,,,,
+Group646,,,Seven (a.k.a. Se7en) (1995),high,0.011408359487869278,0.12743461324429606,2.108816975806063
+Group647,Forrest Gump (1994),high,,,,,
+Group647,,,Seven (a.k.a. Se7en) (1995),high,0.009017087630149953,0.0960212201591512,1.588980999385525
+Group648,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group648,,,Forrest Gump (1994),high,0.009017087630149953,0.14921681780708987,1.5889809993855253
+Group649,Seven (a.k.a. Se7en) (1995),high,,,,,
+Group649,,,Fight Club (1999),high,0.010362178050117073,0.17147568013190437,2.1273370378786876
+Group650,Fight Club (1999),high,,,,,
+Group650,,,Seven (a.k.a. Se7en) (1995),high,0.010362178050117073,0.1285537700865266,2.127337037878688
+Group651,Goodfellas (1990),high,,,,,
+Group651,,,"Godfather, The (1972)",high,0.007522542719075375,0.1745664739884393,2.6033230552525577
+Group652,"Godfather, The (1972)",high,,,,,
+Group652,,,Goodfellas (1990),high,0.007522542719075375,0.11218424962852898,2.6033230552525577
+Group653,Goodfellas (1990),high,,,,,
+Group653,,,"Silence of the Lambs, The (1991)",high,0.007472724555372889,0.17341040462427748,1.9370434346261112
+Group654,"Silence of the Lambs, The (1991)",high,,,,,
+Group654,,,Goodfellas (1990),high,0.007472724555372889,0.08347245409015025,1.937043434626111
+Group655,Goodfellas (1990),high,,,,,
+Group655,,,"Shawshank Redemption, The (1994)",high,0.007472724555372889,0.17341040462427748,1.5327463901466851
+Group656,"Shawshank Redemption, The (1994)",high,,,,,
+Group656,,,Goodfellas (1990),high,0.007472724555372889,0.06605019815059446,1.5327463901466851
+Group657,Pulp Fiction (1994),high,,,,,
+Group657,,,Goodfellas (1990),high,0.007771633537587804,0.0815899581589958,1.8933586475439572
+Group658,Goodfellas (1990),high,,,,,
+Group658,,,Pulp Fiction (1994),high,0.007771633537587804,0.18034682080924855,1.8933586475439572
+Group659,Ace Ventura: Pet Detective (1994),low,,,,,
+Group659,,,"Shawshank Redemption, The (1994)",high,0.007871269864992776,0.14019520851818987,1.2391626686858763
+Group660,"Shawshank Redemption, The (1994)",high,,,,,
+Group660,,,Ace Ventura: Pet Detective (1994),low,0.007871269864992776,0.06957287538529282,1.2391626686858763
+Group661,Forrest Gump (1994),high,,,,,
+Group661,,,Ace Ventura: Pet Detective (1994),low,0.007622179046480347,0.08116710875331566,1.4456675900668192
+Group662,Ace Ventura: Pet Detective (1994),low,,,,,
+Group662,,,Forrest Gump (1994),high,0.007622179046480347,0.13575865128660158,1.445667590066819
+Group663,Ace Ventura: Pet Detective (1994),low,,,,,
+Group663,,,"Silence of the Lambs, The (1991)",high,0.007373088227967917,0.1313220940550133,1.4669050606378864
+Group664,"Silence of the Lambs, The (1991)",high,,,,,
+Group664,,,Ace Ventura: Pet Detective (1994),low,0.007373088227967917,0.08235948803561491,1.4669050606378864
+Group665,Pulp Fiction (1994),high,,,,,
+Group665,,,Ace Ventura: Pet Detective (1994),low,0.008369451502017636,0.08786610878661089,1.5649834974921386
+Group666,Ace Ventura: Pet Detective (1994),low,,,,,
+Group666,,,Pulp Fiction (1994),high,0.008369451502017636,0.14906832298136646,1.5649834974921386
+Group667,Batman Forever (1995),low,,,,,
+Group667,,,Last Action Hero (1993),low,0.0070243610820505155,0.1525974025974026,7.774334168369701
+Group668,Last Action Hero (1993),low,,,,,
+Group668,,,Batman Forever (1995),low,0.0070243610820505155,0.35786802030456855,7.774334168369702
+Group669,Saving Private Ryan (1998),high,,,,,
+Group669,,,"Shawshank Redemption, The (1994)",high,0.008867633139042494,0.171648987463838,1.5171775100667635
+Group670,"Shawshank Redemption, The (1994)",high,,,,,
+Group670,,,Saving Private Ryan (1998),high,0.008867633139042494,0.07837956847203874,1.5171775100667635
+Group671,"Matrix, The (1999)",high,,,,,
+Group671,,,Saving Private Ryan (1998),high,0.008469087829422607,0.0927947598253275,1.7962094638127282
+Group672,Saving Private Ryan (1998),high,,,,,
+Group672,,,"Matrix, The (1999)",high,0.008469087829422607,0.1639344262295082,1.7962094638127282
+Group673,Saving Private Ryan (1998),high,,,,,
+Group673,,,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,0.007323270064265431,0.14175506268081003,2.139435618941278
+Group674,Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981),high,,,,,
+Group674,,,Saving Private Ryan (1998),high,0.007323270064265431,0.1105263157894737,2.1394356189412784
+Group675,Saving Private Ryan (1998),high,,,,,
+Group675,,,"Silence of the Lambs, The (1991)",high,0.0075723608827778606,0.14657666345226616,1.6373029301487694
+Group676,"Silence of the Lambs, The (1991)",high,,,,,
+Group676,,,Saving Private Ryan (1998),high,0.0075723608827778606,0.08458542014468558,1.6373029301487692
+Group677,Forrest Gump (1994),high,,,,,
+Group677,,,Saving Private Ryan (1998),high,0.007074179245753001,0.0753315649867374,1.4581779209052845
+Group678,Saving Private Ryan (1998),high,,,,,
+Group678,,,Forrest Gump (1994),high,0.007074179245753001,0.1369334619093539,1.4581779209052843
+Group679,Pulp Fiction (1994),high,,,,,
+Group679,,,Saving Private Ryan (1998),high,0.007921088028695263,0.08315899581589958,1.6096919219021721
+Group680,Saving Private Ryan (1998),high,,,,,
+Group680,,,Pulp Fiction (1994),high,0.007921088028695263,0.15332690453230474,1.6096919219021721
+Group681,Star Wars: Episode VI - Return of the Jedi (1983),low,,,,,
+Group681,,,Star Wars: Episode IV - A New Hope (1977),low,0.009764360085687242,0.48635235732009924,19.525101736972704
+Group682,Star Wars: Episode IV - A New Hope (1977),low,,,,,
+Group682,,,Star Wars: Episode VI - Return of the Jedi (1983),low,0.009764360085687242,0.39199999999999996,19.5251017369727
+Group683,Star Wars: Episode V - The Empire Strikes Back (1980),low,,,,,
+Group683,,,Star Wars: Episode IV - A New Hope (1977),low,0.010860359687141932,0.6038781163434903,24.24329085872576
+Group684,Star Wars: Episode IV - A New Hope (1977),low,,,,,
+Group684,,,Star Wars: Episode V - The Empire Strikes Back (1980),low,0.010860359687141932,0.436,24.24329085872576
+Group685,Star Wars: Episode VI - Return of the Jedi (1983),low,,,,,
+Group685,,,Star Wars: Episode V - The Empire Strikes Back (1980),low,0.009266178448662381,0.46153846153846145,25.663328361389297
+Group686,Star Wars: Episode V - The Empire Strikes Back (1980),low,,,,,
+Group686,,,Star Wars: Episode VI - Return of the Jedi (1983),low,0.009266178448662381,0.5152354570637119,25.6633283613893
+Group687,Star Wars: Episode VI - Return of the Jedi (1983),low,,,,,
+Group687,Star Wars: Episode V - The Empire Strikes Back (1980),low,,,,,
+Group687,,,Star Wars: Episode IV - A New Hope (1977),low,0.007173815573157973,0.7741935483870969,31.08077419354839
+Group688,Star Wars: Episode VI - Return of the Jedi (1983),low,,,,,
+Group688,Star Wars: Episode IV - A New Hope (1977),low,,,,,
+Group688,,,Star Wars: Episode V - The Empire Strikes Back (1980),low,0.007173815573157973,0.7346938775510204,40.85182882017073
+Group689,Star Wars: Episode V - The Empire Strikes Back (1980),low,,,,,
+Group689,Star Wars: Episode IV - A New Hope (1977),low,,,,,
+Group689,,,Star Wars: Episode VI - Return of the Jedi (1983),low,0.007173815573157973,0.6605504587155964,32.90131354292349
+Group690,Star Wars: Episode VI - Return of the Jedi (1983),low,,,,,
+Group690,,,Star Wars: Episode V - The Empire Strikes Back (1980),low,0.007173815573157973,0.3573200992555831,32.90131354292348
+Group690,,,Star Wars: Episode IV - A New Hope (1977),low,0.007173815573157973,0.3573200992555831,32.90131354292348
+Group691,Star Wars: Episode V - The Empire Strikes Back (1980),low,,,,,
+Group691,,,Star Wars: Episode VI - Return of the Jedi (1983),low,0.007173815573157973,0.39889196675900274,40.851828820170724
+Group691,,,Star Wars: Episode IV - A New Hope (1977),low,0.007173815573157973,0.39889196675900274,40.851828820170724
+Group692,Star Wars: Episode IV - A New Hope (1977),low,,,,,
+Group692,,,Star Wars: Episode VI - Return of the Jedi (1983),low,0.007173815573157973,0.288,31.080774193548386
+Group692,,,Star Wars: Episode V - The Empire Strikes Back (1980),low,0.007173815573157973,0.288,31.080774193548386
+Group693,"Lord of the Rings: The Return of the King, The (2003)",low,,,,,
+Group693,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,0.016689084840332786,0.7204301075268817,27.75660949786391
+Group694,"Lord of the Rings: The Fellowship of the Ring, The (2001)",low,,,,,
+Group694,,,"Lord of the Rings: The Return of the King, The (2003)",low,0.016689084840332786,0.6429942418426104,27.756609497863913
+Group695,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,,,,,
+Group695,,,Pirates of the Caribbean: The Curse of the Black Pearl (2003),high,0.007373088227967917,0.10678210678210678,2.7728812799964158
+Group696,Pirates of the Caribbean: The Curse of the Black Pearl (2003),high,,,,,
+Group696,,,"Lord of the Rings: The Fellowship of the Ring, The (2001)",high,0.007373088227967917,0.19146183699870634,2.7728812799964158
+Group697,Ace Ventura: When Nature Calls (1995),low,,,,,
+Group697,,,"Cable Guy, The (1996)",low,0.007522542719075375,0.15712799167533817,5.808527029280042
+Group698,"Cable Guy, The (1996)",low,,,,,
+Group698,,,Ace Ventura: When Nature Calls (1995),low,0.007522542719075375,0.27808471454880296,5.808527029280043
+Group699,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group699,,,Star Wars: Episode II - Attack of the Clones (2002),low,0.016938175658845214,0.3476482617586912,10.446622093236838
+Group700,Star Wars: Episode II - Attack of the Clones (2002),low,,,,,
+Group700,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.016938175658845214,0.5089820359281436,10.446622093236837
+Group701,Star Wars: Episode III - Revenge of the Sith (2005),low,,,,,
+Group701,,,Star Wars: Episode II - Attack of the Clones (2002),low,0.010959996014546903,0.5670103092783505,17.038320266683126
+Group702,Star Wars: Episode II - Attack of the Clones (2002),low,,,,,
+Group702,,,Star Wars: Episode III - Revenge of the Sith (2005),low,0.010959996014546903,0.32934131736526945,17.038320266683126
+Group703,Star Wars: Episode III - Revenge of the Sith (2005),low,,,,,
+Group703,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.009465451103472326,0.4896907216494845,10.05067674403896
+Group704,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group704,,,Star Wars: Episode III - Revenge of the Sith (2005),low,0.009465451103472326,0.19427402862985685,10.05067674403896
+Group705,Star Wars: Episode III - Revenge of the Sith (2005),low,,,,,
+Group705,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group705,,,Star Wars: Episode II - Attack of the Clones (2002),low,0.007472724555372889,0.7894736842105263,23.723211471793256
+Group706,Star Wars: Episode III - Revenge of the Sith (2005),low,,,,,
+Group706,Star Wars: Episode II - Attack of the Clones (2002),low,,,,,
+Group706,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007472724555372889,0.6818181818181819,13.994004461795873
+Group707,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group707,Star Wars: Episode II - Attack of the Clones (2002),low,,,,,
+Group707,,,Star Wars: Episode III - Revenge of the Sith (2005),low,0.007472724555372889,0.44117647058823534,22.82406003638569
+Group708,Star Wars: Episode III - Revenge of the Sith (2005),low,,,,,
+Group708,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007472724555372889,0.3865979381443299,22.82406003638569
+Group708,,,Star Wars: Episode II - Attack of the Clones (2002),low,0.007472724555372889,0.3865979381443299,22.82406003638569
+Group709,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group709,,,Star Wars: Episode III - Revenge of the Sith (2005),low,0.007472724555372889,0.15337423312883436,13.994004461795873
+Group709,,,Star Wars: Episode II - Attack of the Clones (2002),low,0.007472724555372889,0.15337423312883436,13.994004461795873
+Group710,Star Wars: Episode II - Attack of the Clones (2002),low,,,,,
+Group710,,,Star Wars: Episode III - Revenge of the Sith (2005),low,0.007472724555372889,0.2245508982035928,23.723211471793256
+Group710,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007472724555372889,0.2245508982035928,23.723211471793256
+Group711,Batman Forever (1995),low,,,,,
+Group711,,,"Net, The (1995)",low,0.008419269665720121,0.1829004329004329,7.462114613029247
+Group712,"Net, The (1995)",low,,,,,
+Group712,,,Batman Forever (1995),low,0.008419269665720121,0.3434959349593496,7.4621146130292475
+Group713,Waterworld (1995),low,,,,,
+Group713,,,"Net, The (1995)",low,0.007472724555372889,0.1779359430604982,7.259569481815814
+Group714,"Net, The (1995)",low,,,,,
+Group714,,,Waterworld (1995),low,0.007472724555372889,0.3048780487804878,7.259569481815814
+Group715,Austin Powers: The Spy Who Shagged Me (1999),low,,,,,
+Group715,,,Austin Powers: International Man of Mystery (1997),low,0.0102625417227121,0.3658969804618117,17.36323898063817
+Group716,Austin Powers: International Man of Mystery (1997),low,,,,,
+Group716,,,Austin Powers: The Spy Who Shagged Me (1999),low,0.0102625417227121,0.48699763593380613,17.363238980638172
+Group717,Star Wars: Episode I - The Phantom Menace (1999),low,,,,,
+Group717,,,Mission: Impossible II (2000),low,0.007074179245753001,0.14519427402862983,5.551399357288927
+Group718,Mission: Impossible II (2000),low,,,,,
+Group718,,,Star Wars: Episode I - The Phantom Menace (1999),low,0.007074179245753001,0.2704761904761905,5.551399357288928
+Group719,Charlie's Angels (2000),low,,,,,
+Group719,,,Mission: Impossible II (2000),low,0.007472724555372889,0.2148997134670487,8.216537044617274
+Group720,Mission: Impossible II (2000),low,,,,,
+Group720,,,Charlie's Angels (2000),low,0.007472724555372889,0.28571428571428575,8.216537044617274
+Group721,Batman Forever (1995),low,,,,,
+Group721,,,Mortal Kombat (1995),low,0.007373088227967917,0.16017316017316016,7.0662765805622945
+Group722,Mortal Kombat (1995),low,,,,,
+Group722,,,Batman Forever (1995),low,0.007373088227967917,0.3252747252747253,7.066276580562295

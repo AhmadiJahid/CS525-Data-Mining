@@ -1,0 +1,6 @@
+Rule_ID,Diagnosis,Procedures,Prescriptions
+R6,Myocardial Infarction,Angioplasty,Aspirin
+R7,Appendicitis,Appendectomy,Antibiotics
+R8,Pneumonia,-,"Antibiotics, Oxygen Therapy"
+R9,Hyponatremia,Fluid Restriction,Hypertonic Saline
+R10,Anemia,Blood Transfusion,Iron Supplements
