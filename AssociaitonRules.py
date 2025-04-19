@@ -157,10 +157,30 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         print("WARNING: No abnormal lab events found.")
         lab_summary = pd.DataFrame(index=transactions_base["hadm_id"].unique())
     else:
-        lab_pivot = pd.get_dummies(lab_events_with_desc[['hadm_id', 'lab_result']],
-                                   columns=['lab_result'],
-                                   prefix='Lab',
-                                   prefix_sep='_')
+        # Categorize lab results as below or above range
+        lab_events_with_desc['range_status'] = lab_events_with_desc.apply(
+            lambda row: (
+                'Below' if pd.notnull(row['valuenum']) and pd.notnull(row['ref_range_lower']) and row['valuenum'] < row['ref_range_lower']
+                else 'Above' if pd.notnull(row['valuenum']) and pd.notnull(row['ref_range_upper']) and row['valuenum'] > row['ref_range_upper']
+                else 'Unknown'
+            ), axis=1
+        )
+        print(f"Range status distribution:\n{lab_events_with_desc['range_status'].value_counts()}")
+        
+        lab_events_with_desc['lab_result'] = (
+            lab_events_with_desc['itemid'].astype(str) + '_' + 
+            lab_events_with_desc['label'].fillna('') + '_' + 
+            lab_events_with_desc['range_status']
+        )
+        lab_events_with_desc = lab_events_with_desc[lab_events_with_desc['range_status'] != 'Unknown']
+        print(f"Lab events after filtering Unknown status: {lab_events_with_desc.shape}")
+        
+        lab_pivot = pd.get_dummies(
+            lab_events_with_desc[['hadm_id', 'lab_result']],
+            columns=['lab_result'],
+            prefix='Lab',
+            prefix_sep='_'
+        )
         lab_summary = lab_pivot.groupby('hadm_id').max()
         print(f"Lab summary feature matrix shape: {lab_summary.shape}")
         print(f"Lab summary feature matrix preview: \n{lab_summary.head()}")
