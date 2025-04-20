@@ -81,7 +81,105 @@ def load_data(sample_fraction=0.1):
     print("Diagnoses missing values: ", diagnoses.isnull().sum())
     
     return patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures
-
+def create_readable_rules(rules_df, feature_mappings=None):
+    """
+    Create a human-readable version of the rules.
+    
+    Args:
+        rules_df (DataFrame): The rules DataFrame from association_rules function
+        feature_mappings (dict, optional): Mappings of feature codes to descriptions
+        
+    Returns:
+        DataFrame: A DataFrame with human-readable rules
+    """
+    print("Creating human-readable rules...")
+    
+    # Create a copy to avoid modifying the original
+    readable_rules = rules_df.copy()
+    
+    # Function to format a single itemset to a readable string
+    def format_itemset(itemset, feature_mappings=None):
+        if isinstance(itemset, str):
+            # Parse string representation if needed
+            try:
+                itemset = ast.literal_eval(itemset)
+            except:
+                return itemset
+        
+        items = []
+        for item in itemset:
+            if feature_mappings is not None:
+                # Try to map to a readable description
+                if item.startswith('Procedure_'):
+                    # Extract the code from the feature name
+                    proc_name = item.replace('Procedure_', '')
+                    # Get description if available
+                    if 'procedure_mapping' in feature_mappings:
+                        for code, desc in feature_mappings['procedure_mapping'].items():
+                            if desc == proc_name:
+                                items.append(f"Procedure: {desc}")
+                                break
+                        else:
+                            items.append(f"Procedure: {proc_name}")
+                    else:
+                        items.append(f"Procedure: {proc_name}")
+                elif item.startswith('Diagnosis_'):
+                    # Extract the code from the feature name
+                    diag_name = item.replace('Diagnosis_', '')
+                    # Get description if available
+                    if 'diagnosis_mapping' in feature_mappings:
+                        for code, desc in feature_mappings['diagnosis_mapping'].items():
+                            if desc == diag_name:
+                                items.append(f"Diagnosis: {desc}")
+                                break
+                        else:
+                            items.append(f"Diagnosis: {diag_name}")
+                    else:
+                        items.append(f"Diagnosis: {diag_name}")
+                elif item.startswith('Gender_'):
+                    items.append(f"Gender: {item.replace('Gender_', '')}")
+                elif item.startswith('Age_'):
+                    items.append(f"Age Category: {item.replace('Age_', '')}")
+                else:
+                    items.append(item)
+            else:
+                # Just clean up the feature name a bit
+                if item.startswith('Procedure_'):
+                    items.append(f"Procedure: {item.replace('Procedure_', '')}")
+                elif item.startswith('Diagnosis_'):
+                    items.append(f"Diagnosis: {item.replace('Diagnosis_', '')}")
+                elif item.startswith('Gender_'):
+                    items.append(f"Gender: {item.replace('Gender_', '')}")
+                elif item.startswith('Age_'):
+                    items.append(f"Age Category: {item.replace('Age_', '')}")
+                else:
+                    items.append(item)
+        
+        return items
+    
+    # Format antecedents and consequents
+    readable_rules['readable_antecedents'] = readable_rules['antecedents'].apply(
+        lambda x: format_itemset(x, feature_mappings)
+    )
+    
+    readable_rules['readable_consequents'] = readable_rules['consequents'].apply(
+        lambda x: format_itemset(x, feature_mappings)
+    )
+    
+    # Create rule strings
+    readable_rules['rule_string'] = readable_rules.apply(
+        lambda x: f"{x['readable_antecedents']} => {x['readable_consequents']} "
+                 f"(Support: {x['support']:.3f}, Confidence: {x['confidence']:.3f}, Lift: {x['lift']:.3f})",
+        axis=1
+    )
+    
+    # Save to CSV
+    os.makedirs('output', exist_ok=True)
+    readable_rules[['rule_string', 'support', 'confidence', 'lift', 'readable_antecedents', 'readable_consequents']].to_csv('output/readable_rules.csv', index=False)
+    
+    print(f"Saved {len(readable_rules)} human-readable rules")
+    
+    return readable_rules
 def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses):
     def categorize_age(age):
         if age < 18:
