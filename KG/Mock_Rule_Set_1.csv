@@ -1,0 +1,6 @@
+Rule_ID,Age_Group,Gender,Symptoms,Lab_Test_Results,Diagnosis
+R1,>60,Male,Chest Pain,Troponin=High,Myocardial Infarction
+R2,20-40,Female,"Fever, Abdominal Pain",WBC=High,Appendicitis
+R3,-,-,"Cough, Fever",CRP=High,Pneumonia
+R4,-,-,Headache,Sodium=Low,Hyponatremia
+R5,-,-,Fatigue,Hemoglobin=Low,Anemia
