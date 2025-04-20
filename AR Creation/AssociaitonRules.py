@@ -1,12 +1,103 @@
-
-
-import pandas as pd
+def main(sample_fraction=0.01, min_support=0.01, min_confidence=0.5, visualize=True, generate_report=True):
+    """
+    Main function to run the full pipeline.
+    
+    Args:
+        sample_fraction (float): Fraction of data to sample
+        min_support (float): Minimum support threshold for Apriori
+        min_confidence (float): Minimum confidence threshold for rules
+        visualize (bool): Whether to create visualizations
+        generate_report (bool): Whether to generate HTML report
+        
+    Returns:
+        tuple: (frequent_itemsets, rules, procedure_rules)
+    """
+    # 1. Load data
+    patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
+    
+    # 2. Preprocess data
+    transactions_base, diagnoses_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses)
+    
+    # 3. Check if the transaction_matrix.csv already exists
+    if os.path.exists('output/transaction_matrix.csv'):
+        print("Loading existing transaction matrix...")
+        transactions_matrix = pd.read_csv('output/transaction_matrix.csv', index_col=0)
+        
+        # Create human-readable versions if they don't exist yet
+        if not os.path.exists('output/detailed_transaction_matrix.csv'):
+            print("Creating human-readable transaction matrices...")
+            create_readable_transaction_matrix(transactions_matrix)
+            create_detailed_transaction_matrix(transactions_matrix, transactions_base, diagnoses_with_desc, procedures)
+    else:
+        # 4. Engineer features
+        transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
+    
+    # 5. Mine association rules
+    frequent_itemsets, rules, procedure_rules = mine_association_rules(transactions_matrix, min_support, min_confidence)
+    
+    # 6. Create visualizations if requested and available
+    if visualize and visualization_available:
+        print("\nCreating visualizations...")
+        
+        # Visualize feature distribution in transaction matrix
+        visualize_feature_distribution(transactions_matrix, save_path='output/feature_distribution.png')
+        
+        # Visualize rule metrics
+        if not rules.empty:
+            visualize_rule_metrics(rules, save_path='output/rule_metrics.png')
+            visualize_rules_summary(rules, save_path='output/rules_summary.png')
+        
+        # Visualize procedure rules network
+        if not procedure_rules.empty:
+            visualize_rules_network(procedure_rules, max_rules=50, min_lift=1.0, 
+                                   save_path='output/procedure_rules_network.png')
+    
+    # 7. Generate HTML report if requested
+    if generate_report and visualization_available:
+        print("\nGenerating HTML report...")
+        report_path = create_html_report(transactions_matrix, rules, procedure_rules)
+        if report_path:
+            print(f"HTML report generated at: {report_path}")
+    
+    return frequent_itemsets, rules, procedure_rulesimport pandas as pd
 import numpy as np
 from mlxtend.frequent_patterns import apriori, association_rules
 import matplotlib.pyplot as plt
 import ast
 import os
+import pickle
 
+# Import visualization functions
+try:
+    import networkx as nx
+    from visualization import (
+        visualize_rules_network, 
+        visualize_rule_metrics, 
+        visualize_feature_distribution, 
+        visualize_rules_summary,
+        create_html_report
+    )
+    visualization_available = True
+except ImportError:
+    print("Networkx not available. Network visualizations will be skipped.")
+    visualization_available = False
+    
+    # Define empty visualization functions to avoid errors
+    def visualize_rules_network(*args, **kwargs):
+        print("Networkx not available. Skipping network visualization.")
+    
+    def visualize_rule_metrics(*args, **kwargs):
+        print("Visualization functions not available. Skipping rule metrics visualization.")
+    
+    def visualize_feature_distribution(*args, **kwargs):
+        print("Visualization functions not available. Skipping feature distribution visualization.")
+    
+    def visualize_rules_summary(*args, **kwargs):
+        print("Visualization functions not available. Skipping rules summary visualization.")
+        
+    def create_html_report(*args, **kwargs):
+        print("Visualization functions not available. Skipping HTML report generation.")
+        return None
 def sample_data(data, fraction=0.1, seed=42):
     if data is None or data.empty:
         return data
@@ -546,7 +637,6 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         'diagnosis_mapping': diagnosis_mapping
     }
     
-    import pickle
     with open('output/feature_mappings.pkl', 'wb') as f:
         pickle.dump(mappings, f)
     
@@ -786,6 +876,8 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
         print(f"WARNING: Could not create readable rules: {str(e)}")
     
     return frequent_itemsets, rules, procedure_rules, diagnosis_to_proc_demo_rules
+
+
 
 sample_fraction = 0.01  # Use 10% of the data
 patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
