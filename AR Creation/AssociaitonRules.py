@@ -16,6 +16,8 @@ def sample_data(data, fraction=0.1, seed=42):
     
     # Calculate how many rows to sample (at least min_rows)
     sample_size = max(min_rows, int(len(data) * fraction))
+
+    print("Sample size of the data:", sample_size)
     
     # Sample the data with a fixed random seed for reproducibility
     return data.sample(n=sample_size, random_state=seed)
@@ -143,6 +145,55 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses):
     print(f"Transactions base preview: \n{transactions_base.head()}")
 
     return transactions_base, diagnoses_with_desc
+
+def create_readable_transaction_matrix(transactions_matrix):
+    """
+    Converts a one-hot encoded transaction matrix to a human-readable format.
+    
+    Args:
+        transactions_matrix (DataFrame): The one-hot encoded transaction matrix
+        
+    Returns:
+        DataFrame: A DataFrame where each row contains the hadm_id and a list of active features
+    """
+    print("Creating human-readable transaction matrix...")
+    
+    # Create a new DataFrame to store the results
+    readable_matrix = pd.DataFrame(index=transactions_matrix.index)
+    readable_matrix['hadm_id'] = readable_matrix.index
+    readable_matrix['active_features'] = ''
+    
+    # For each row, collect the names of the columns where the value is 1
+    for idx in transactions_matrix.index:
+        # Get boolean series where True indicates a 1 in the original matrix
+        active_cols = transactions_matrix.loc[idx] == 1
+        
+        # Get the names of active columns
+        active_features = active_cols.index[active_cols].tolist()
+        
+        # Store in the new DataFrame
+        readable_matrix.loc[idx, 'active_features'] = str(active_features)
+    
+    # Split the features by category for better readability
+    readable_matrix['demographics'] = readable_matrix['active_features'].apply(
+        lambda x: [f for f in eval(x) if f.startswith(('Gender_', 'Age_')) or f == 'anchor_age']
+    )
+    
+    readable_matrix['procedures'] = readable_matrix['active_features'].apply(
+        lambda x: [f for f in eval(x) if f.startswith('Procedure_')]
+    )
+    
+    readable_matrix['diagnoses'] = readable_matrix['active_features'].apply(
+        lambda x: [f for f in eval(x) if f.startswith('Diagnosis_')]
+    )
+    
+    # Save to CSV
+    os.makedirs('output', exist_ok=True)
+    readable_matrix.to_csv('output/readable_transaction_matrix.csv', index=False)
+    
+    print(f"Saved human-readable transaction matrix with {len(readable_matrix)} rows")
+    
+    return readable_matrix
 
 
 def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc):
