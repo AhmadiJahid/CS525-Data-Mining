@@ -12,7 +12,7 @@ def sample_data(data, fraction=0.1, seed=42):
         return data
         
     # For small datasets, use at least 1000 rows or the original size, whichever is smaller
-    min_rows = min(1000, len(data))
+    min_rows = min(5000, len(data))
     
     # Calculate how many rows to sample (at least min_rows)
     sample_size = max(min_rows, int(len(data) * fraction))
@@ -49,16 +49,16 @@ def load_data(sample_fraction=0.1):
     # We don't sample the reference tables (d_icd_*)
     if sample_fraction < 1.0:
         # First, sample patients
-        patients_sampled = sample_data(patients, fraction=sample_fraction)
+        admissions_sampled = sample_data(admissions, fraction=sample_fraction)
         
         # Then filter other tables to only include the sampled patients
-        sampled_subject_ids = set(patients_sampled['subject_id'])
+        sampled_subject_ids = set(admissions_sampled['subject_id'])
+        sampled_hadm_ids = set(admissions_sampled['hadm_id'])        
+        patients= patients[patients['subject_id'].isin(sampled_subject_ids)]
+        diagnoses = diagnoses[diagnoses['hadm_id'].isin(sampled_hadm_ids)]
+        procedures = procedures[procedures['hadm_id'].isin(sampled_hadm_ids)]
         
-        admissions = admissions[admissions['subject_id'].isin(sampled_subject_ids)]
-        diagnoses = diagnoses[diagnoses['subject_id'].isin(sampled_subject_ids)]
-        procedures = procedures[procedures['subject_id'].isin(sampled_subject_ids)]
-        
-        patients = patients_sampled
+        admissions = admissions_sampled
         
         print("\nSampled dataset shapes:")
         print(f"Patients dataset shape: {patients.shape}")
@@ -100,12 +100,12 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses):
     # No action needed as only dod is missing which is expected
 
     #Handle missing values in admissions
-    essential_columns = ['hadm_id', 'subject_id', 'admittime', 'dischtime', 'admission_type', "discharge_location", "race", "hospital_expire_flag"]
+    essential_columns = ['hadm_id', 'subject_id']
     admissions_subset = admissions[essential_columns].copy()
 
-    admissions_subset["discharge_location"] = admissions_subset["discharge_location"].fillna("Unknown")
+    #admissions_subset["discharge_location"] = admissions_subset["discharge_location"].fillna("Unknown")
 
-    print(f"Missing values in discharge_location after handling: {admissions_subset['discharge_location'].isna().sum()}")
+    #print(f"Missing values in discharge_location after handling: {admissions_subset['discharge_location'].isna().sum()}")
 
     patients["age_category"] = patients["anchor_age"].apply(categorize_age)
 
@@ -140,6 +140,7 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses):
         
     print(f"Created base transaction dataset with {len(transactions_base)} rows and {transactions_base.shape[1]} columns")
     print(f"Columns in transactions_base: {transactions_base.columns.tolist()}")
+    print(f"Transactions base preview: \n{transactions_base.head()}")
 
     return transactions_base, diagnoses_with_desc
 
@@ -162,9 +163,9 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         procedures_with_desc["long_title"] = procedures_with_desc["long_title"].fillna("Unlabeled_" + procedures_with_desc["icd_code"].astype(str))
 
     #get comorbidities
-    comorbidities = diagnoses_with_desc[diagnoses_with_desc["seq_num"] > 1].copy()
+    #comorbidities = diagnoses_with_desc[diagnoses_with_desc["seq_num"] > 1].copy()
 
-    print(f"Found {len(comorbidities)} comorbidities")
+    #print(f"Found {len(comorbidities)} comorbidities")
 
     #create procedure presence feature
     procedure_counts = procedures_with_desc["long_title"].value_counts()
@@ -195,6 +196,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         procedures_by_admission = pd.DataFrame(index = transactions_base["hadm_id"].unique())
     
     #create comorbidity presence feature
+    '''
     comorbidity_counts = comorbidities["long_title"].value_counts()
     min_comorbidity_freq = 40
     common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
@@ -215,11 +217,11 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     else:
         print("WARNING: No comorbidities found after filtering. Skipping comorbidity feature engineering.")
         comorbidities_by_admission = pd.DataFrame(index = transactions_base["hadm_id"].unique())
-    
+    '''
     #create demographic features
-    demographic_cols = ["hadm_id", "anchor_age", "gender", "age_category", "admission_type", "discharge_location", "race", "hospital_expire_flag"]
+    demographic_cols = ["hadm_id", "anchor_age", "gender", "age_category"]
 
-    demographic_features = pd.get_dummies(transactions_base[demographic_cols], columns=["gender", "age_category", "admission_type", "discharge_location", "race"], prefix=["Gender", "Age", "AdmType", "Discharge", "Race"], prefix_sep="_")
+    demographic_features = pd.get_dummies(transactions_base[demographic_cols], columns=["gender", "age_category"], prefix=["Gender", "Age"], prefix_sep="_")
 
     if "hospital_expire_flag" in demographic_features.columns:
         demographic_features["Expired_In_Hospital"] = demographic_features["hospital_expire_flag"]
@@ -236,7 +238,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     #list to keep track of dataframes with potential join issues
 
     empty_dfs = []  
-    for name, df in [("Procedures", procedures_by_admission), ("Comorbidities", comorbidities_by_admission), ("Demographics", demographics_by_admission)]:
+    for name, df in [("Procedures", procedures_by_admission), ("Demographics", demographics_by_admission)]:
         if df.empty:
             print(f"WARNING: {name} dataframe is empty.")
             empty_dfs.append(name)
@@ -251,6 +253,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     if empty_dfs:
         print(f"WARNING: The following dataframes were empty and not included in the final dataset: {', '.join(empty_dfs)}")
 
+
     #fill missing values with 0
     all_features = all_features.fillna(0)
 
@@ -260,8 +263,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     # We want at least 10 diagnoses, but respect max_features budget
     diagnosis_feature_limit = max(10, max_features_count - len(demographics_by_admission.columns) - 
-                            (len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0) - 
-                            (len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0))
+                            (len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0))
 
     # Simply take the top N most frequent diagnoses
     common_diagnoses = diagnosis_counts.nlargest(min(diagnosis_feature_limit, len(diagnosis_counts))).index.tolist()
@@ -288,6 +290,11 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     print(f"Diagnosis features preview: \n{diagnosis_by_admission.head()}")
 
     transactions_matrix = all_features.join(diagnosis_by_admission, how='inner')
+
+    #printing transaction matrix shape
+    print("TRANSACTİON MATRİX")
+    print(f"Transaction matrix shape after joining features and outcomes: {transactions_matrix.shape}")
+    print(f"Transaction matrix preview: \n{transactions_matrix.head()}")
     if transactions_matrix.empty:
         print("ERROR: Empty transaction matrix after joining features and outcomes.")
         print("Please check that hadm_ids are consistent across your datasets.")
@@ -304,7 +311,6 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     print(f"Final transaction matrix: {transactions_matrix.shape[0]} rows and {transactions_matrix.shape[1]} columns")
     print(f"Features include {len(demographics_by_admission.columns)} demographic features, " 
          f"{len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0} procedure features, "
-         f"{len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0} comorbidity features, "
          f"and {len(diagnosis_by_admission.columns) if hasattr(diagnosis_by_admission, 'columns') else 0} diagnosis outcomes")
     
     # Save the transaction matrix
@@ -315,7 +321,6 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     feature_counts = pd.Series({
         'demographic_features': len(demographics_by_admission.columns),
         'procedure_features': len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0,
-        'comorbidity_features': len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0,
         'diagnosis_features': len(diagnosis_by_admission.columns) if hasattr(diagnosis_by_admission, 'columns') else 0,
         'total_features': transactions_matrix.shape[1],
         'total_transactions': transactions_matrix.shape[0]
@@ -424,12 +429,12 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
     rules.to_csv('output/all_rules.csv', index=False)
     
     # 3. Filter rules to focus on diagnoses
-    diagnosis_cols = [col for col in transactions_matrix.columns if col.startswith('Diagnosis_')]
-    if not diagnosis_cols:
-        print("ERROR: No diagnosis columns found in transaction matrix")
+    procedure_cols = [col for col in transactions_matrix.columns if col.startswith('Procedure_')]
+    if not procedure_cols:
+        print("ERROR: No procedures columns found in transaction matrix")
         return frequent_itemsets, rules, pd.DataFrame()
     
-    print(f"Found {len(diagnosis_cols)} diagnosis columns to use for rule filtering")
+    print(f"Found {len(procedure_cols)} procedures columns to use for rule filtering")
 
     # Convert string representations of sets to actual sets, if needed
     if isinstance(rules['antecedents'].iloc[0], str):
@@ -437,33 +442,33 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
         rules['consequents'] = rules['consequents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
     
     # Filter for rules that predict diagnoses
-    diagnosis_rules = rules[rules['consequents'].apply(
-        lambda x: any(item in diagnosis_cols for item in x)
+    procedure_rules = rules[rules['consequents'].apply(
+        lambda x: any(item in procedure_cols for item in x)
     )].copy()
     
-    if diagnosis_rules.empty:
+    if procedure_rules.empty:
         print("WARNING: No rules found with diagnoses in the consequent")
         return frequent_itemsets, rules, pd.DataFrame()
     
-    print(f"Found {len(diagnosis_rules)} rules with diagnoses in the consequent")
+    print(f"Found {len(procedure_rules)} rules with diagnoses in the consequent")
     
     # Additional filters to focus on more interesting rules
-    if len(diagnosis_rules) > 1000:
-        print(f"Too many rules ({len(diagnosis_rules)}). Filtering to more interesting ones...")
+    if len(procedure_rules) > 1000:
+        print(f"Too many rules ({len(procedure_rules)}). Filtering to more interesting ones...")
         
         # Filter by lift (stronger associations)
-        high_lift_rules = diagnosis_rules[diagnosis_rules['lift'] > 1.5]
+        high_lift_rules = procedure_rules[procedure_rules['lift'] > 1.5]
         if len(high_lift_rules) >= 100:
-            diagnosis_rules = high_lift_rules
-            print(f"Filtered to {len(diagnosis_rules)} rules with lift > 1.5")
+            procedure_rules = high_lift_rules
+            print(f"Filtered to {len(procedure_rules)} rules with lift > 1.5")
     
     # Sort by lift and then confidence
-    diagnosis_rules = diagnosis_rules.sort_values(['lift', 'confidence'], ascending=[False, False])
+    procedure_rules = procedure_rules.sort_values(['lift', 'confidence'], ascending=[False, False])
     
     # Save diagnosis rules
-    diagnosis_rules.to_csv('output/diagnosis_rules.csv', index=False)
+    procedure_rules.to_csv('output/diagnosis_rules.csv', index=False)
     
-    return frequent_itemsets, rules, diagnosis_rules
+    return frequent_itemsets, rules, procedure_rules
 
 sample_fraction = 0.01  # Use 10% of the data
 patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
