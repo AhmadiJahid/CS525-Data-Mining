@@ -195,7 +195,105 @@ def create_readable_transaction_matrix(transactions_matrix):
     
     return readable_matrix
 
-
+def create_detailed_transaction_matrix(transactions_matrix, transactions_base, diagnoses_with_desc, procedures_with_desc):
+    """
+    Creates a detailed, human-readable transaction matrix with decoded feature descriptions.
+    
+    Args:
+        transactions_matrix (DataFrame): The one-hot encoded transaction matrix
+        transactions_base (DataFrame): The base transactions dataframe with raw data
+        diagnoses_with_desc (DataFrame): The diagnoses dataframe with descriptions
+        procedures_with_desc (DataFrame): The procedures dataframe with descriptions
+        
+    Returns:
+        DataFrame: A detailed, human-readable transaction matrix
+    """
+    print("Creating detailed human-readable transaction matrix...")
+    
+    # Create a mapping of hadm_id to patient info
+    patient_info = transactions_base[['hadm_id', 'subject_id', 'anchor_age', 'gender', 'age_category', 'primary_diagnosis', 'primary_diagnosis_code']].drop_duplicates()
+    patient_info_dict = patient_info.set_index('hadm_id').to_dict('index')
+    
+    # Create a new dataframe
+    detailed_matrix = pd.DataFrame(index=transactions_matrix.index)
+    detailed_matrix['hadm_id'] = detailed_matrix.index
+    
+    # Add patient demographic information
+    detailed_matrix['subject_id'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('subject_id', 'Unknown'))
+    detailed_matrix['age'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('anchor_age', 'Unknown'))
+    detailed_matrix['gender'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('gender', 'Unknown'))
+    detailed_matrix['age_category'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('age_category', 'Unknown'))
+    detailed_matrix['primary_diagnosis'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('primary_diagnosis', 'Unknown'))
+    detailed_matrix['primary_diagnosis_code'] = detailed_matrix['hadm_id'].map(lambda x: patient_info_dict.get(x, {}).get('primary_diagnosis_code', 'Unknown'))
+    
+    # Create column for active procedures
+    # Get procedure columns from transaction matrix
+    procedure_columns = [col for col in transactions_matrix.columns if col.startswith('Procedure_')]
+    
+    # For each admission, find which procedures are active (value = 1)
+    def get_active_procedures(hadm_id):
+        # Check if hadm_id exists in transactions_matrix
+        if hadm_id not in transactions_matrix.index:
+            return []
+        
+        # Get active procedures
+        row = transactions_matrix.loc[hadm_id]
+        active_procs = [col for col in procedure_columns if row[col] == 1]
+        
+        # Extract procedure names from column names
+        proc_names = [col.replace('Procedure_', '') for col in active_procs]
+        
+        return proc_names
+    
+    # Map procedure ICD codes to descriptions if available
+    detailed_matrix['active_procedures'] = detailed_matrix['hadm_id'].apply(get_active_procedures)
+    
+    # Get procedure descriptions from procedures_with_desc
+    if procedures_with_desc is not None and not procedures_with_desc.empty:
+        proc_desc_dict = dict(zip(
+            procedures_with_desc['long_title'],
+            procedures_with_desc['long_title']
+        ))
+        
+        def format_procedures(proc_list):
+            if not proc_list:
+                return []
+            return [f"{proc}" for proc in proc_list]
+        
+        detailed_matrix['active_procedures'] = detailed_matrix['active_procedures'].apply(format_procedures)
+    
+    # Get diagnosis columns
+    diagnosis_columns = [col for col in transactions_matrix.columns if col.startswith('Diagnosis_')]
+    
+    # For each admission, find which diagnoses are active
+    def get_active_diagnoses(hadm_id):
+        # Check if hadm_id exists in transactions_matrix
+        if hadm_id not in transactions_matrix.index:
+            return []
+        
+        # Get active diagnoses
+        row = transactions_matrix.loc[hadm_id]
+        active_diags = [col for col in diagnosis_columns if row[col] == 1]
+        
+        # Extract diagnosis names from column names
+        diag_names = [col.replace('Diagnosis_', '') for col in active_diags]
+        
+        return diag_names
+    
+    detailed_matrix['active_diagnoses'] = detailed_matrix['hadm_id'].apply(get_active_diagnoses)
+    
+    # Count the number of active features in each category
+    detailed_matrix['procedure_count'] = detailed_matrix['active_procedures'].apply(len)
+    detailed_matrix['diagnosis_count'] = detailed_matrix['active_diagnoses'].apply(len)
+    detailed_matrix['total_feature_count'] = detailed_matrix['procedure_count'] + detailed_matrix['diagnosis_count']
+    
+    # Save to CSV
+    os.makedirs('output', exist_ok=True)
+    detailed_matrix.to_csv('output/detailed_transaction_matrix.csv', index=False)
+    
+    print(f"Saved detailed human-readable transaction matrix with {len(detailed_matrix)} rows")
+    
+    return detailed_matrix
 def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc):
     print("Starting feature engineering...")
 
