@@ -881,12 +881,93 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
 
 
 
-sample_fraction = 0.01  # Use 10% of the data
-patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
-transactions_base, diagnoses_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses)
-#check if the transaction_matrix_csv is already existing
-if os.path.exists('output/transaction_matrix.csv'):
-    transactions_matrix = pd.read_csv('output/transaction_matrix.csv', index_col=0)
-else:
-    transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
-frequent_itemsets, rules, diagnosis_rules = mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5)
+if __name__ == "__main__":
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Run the association rule mining pipeline')
+    parser.add_argument('--sample_fraction', type=float, default=0.01, help='Fraction of data to sample')
+    parser.add_argument('--min_support', type=float, default=0.01, help='Minimum support threshold')
+    parser.add_argument('--min_confidence', type=float, default=0.5, help='Minimum confidence threshold')
+    parser.add_argument('--skip_visualizations', action='store_true', help='Skip creating visualizations')
+    parser.add_argument('--skip_report', action='store_true', help='Skip generating HTML report')
+    parser.add_argument('--read_only', action='store_true', help='Only read existing data without reprocessing')
+    
+    args = parser.parse_args()
+    
+    print(f"Running pipeline with:")
+    print(f"  - sample_fraction: {args.sample_fraction}")
+    print(f"  - min_support: {args.min_support}")
+    print(f"  - min_confidence: {args.min_confidence}")
+    print(f"  - visualizations: {'Disabled' if args.skip_visualizations else 'Enabled'}")
+    print(f"  - HTML report: {'Disabled' if args.skip_report else 'Enabled'}")
+    print(f"  - mode: {'Read-only' if args.read_only else 'Full processing'}")
+    
+    # If we're in read-only mode, we'll just load existing files
+    if args.read_only:
+        print("\nRunning in read-only mode. Loading existing data...")
+        
+        if os.path.exists('output/transaction_matrix.csv'):
+            transactions_matrix = pd.read_csv('output/transaction_matrix.csv', index_col=0)
+            print(f"Loaded transaction matrix with shape {transactions_matrix.shape}")
+            
+            if os.path.exists('output/all_rules.csv'):
+                rules = pd.read_csv('output/all_rules.csv')
+                print(f"Loaded {len(rules)} rules")
+                
+                # Convert string representations of sets to actual sets for visualization
+                if 'antecedents' in rules.columns and isinstance(rules['antecedents'].iloc[0], str):
+                    rules['antecedents'] = rules['antecedents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+                    rules['consequents'] = rules['consequents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+            else:
+                rules = pd.DataFrame()
+                print("No rules file found.")
+            
+            if os.path.exists('output/procedure_rules.csv'):
+                procedure_rules = pd.read_csv('output/procedure_rules.csv')
+                print(f"Loaded {len(procedure_rules)} procedure rules")
+                
+                # Convert string representations of sets to actual sets for visualization
+                if 'antecedents' in procedure_rules.columns and isinstance(procedure_rules['antecedents'].iloc[0], str):
+                    procedure_rules['antecedents'] = procedure_rules['antecedents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+                    procedure_rules['consequents'] = procedure_rules['consequents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+            else:
+                procedure_rules = pd.DataFrame()
+                print("No procedure rules file found.")
+            
+            # Create visualizations if requested
+            if not args.skip_visualizations and visualization_available:
+                print("\nCreating visualizations from existing data...")
+                
+                # Visualize feature distribution in transaction matrix
+                visualize_feature_distribution(transactions_matrix, save_path='output/feature_distribution.png')
+                
+                # Visualize rule metrics
+                if not rules.empty:
+                    visualize_rule_metrics(rules, save_path='output/rule_metrics.png')
+                    visualize_rules_summary(rules, save_path='output/rules_summary.png')
+                
+                # Visualize procedure rules network
+                if not procedure_rules.empty:
+                    visualize_rules_network(procedure_rules, max_rules=50, min_lift=1.0, 
+                                          save_path='output/procedure_rules_network.png')
+        else:
+            print("ERROR: No transaction matrix file found. Cannot proceed in read-only mode.")
+    else:
+        # Run the full pipeline
+        frequent_itemsets, rules, procedure_rules = main(
+            args.sample_fraction, 
+            args.min_support, 
+            args.min_confidence,
+            not args.skip_visualizations,
+            not args.skip_report
+        )
+        
+        print("\nPipeline completed successfully!")
+        
+        if not procedure_rules.empty:
+            print(f"\nTop 5 procedure rules by lift:")
+            print(procedure_rules.sort_values('lift', ascending=False).head(5)[['antecedents', 'consequents', 'support', 'confidence', 'lift']])
+            
+            print("\nCheck the output directory for detailed results and human-readable formats.")
+        else:
+            print("\nNo procedure rules were found. Try adjusting the parameters or check your data.")
