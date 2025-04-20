@@ -59,7 +59,9 @@ def main(sample_fraction=0.01, min_support=0.01, min_confidence=0.5, visualize=T
         if report_path:
             print(f"HTML report generated at: {report_path}")
     
-    return frequent_itemsets, rules, procedure_rulesimport pandas as pd
+    return frequent_itemsets, rules, procedure_rules
+
+import pandas as pd
 import numpy as np
 from mlxtend.frequent_patterns import apriori, association_rules
 import matplotlib.pyplot as plt
