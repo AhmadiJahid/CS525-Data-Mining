@@ -533,15 +533,14 @@ def filter_diagnosis_to_procedure_demographic_rules(rules_df, transactions_matri
         print(f"WARNING: Could not create readable filtered rules: {str(e)}")
     
     return filtered_rules
+
 def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5):
     print("Starting association rule mining...")
     
     # Convert the DataFrame to a one-hot encoded format
     transactions_matrix_bool = transactions_matrix.astype(bool)
 
-
     min_support_floor = min_support/10
-
     min_confidence_floor = min_confidence/2
 
     # Check if we should use a sample
@@ -555,7 +554,6 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
         print(f"Using a sample of {sample_size} transactions")
         transactions_matrix_bool = transactions_matrix_bool.sample(sample_size)
     
-
     # 1. Find frequent itemsets with adaptive support threshold
     # Try to find a reasonable number of itemsets
     frequent_itemsets = pd.DataFrame()
@@ -592,17 +590,18 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
                 print(f"Successfully ran apriori on a sample of {sample_size} transactions")
             except Exception as e2:
                 print(f"ERROR in apriori algorithm even with sampling: {str(e2)}")
-                return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+                return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     
     if frequent_itemsets.empty:
         print("No frequent itemsets found. Cannot generate rules.")
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     
     print(f"Found {len(frequent_itemsets)} frequent itemsets with min_support={min_support}")
     
     # Save frequent itemsets
     os.makedirs('output', exist_ok=True)
     frequent_itemsets.to_csv('output/frequent_itemsets.csv')
+    
     # 2. Generate association rules with adaptive confidence threshold
     rules = pd.DataFrame()
     
@@ -622,21 +621,22 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
                                     min_threshold=min_confidence)
     except Exception as e:
         print(f"ERROR in association_rules algorithm: {str(e)}")
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    
     if rules.empty:
         print("No rules generated. Cannot proceed with rule filtering.")
-        return frequent_itemsets, pd.DataFrame(), pd.DataFrame()
+        return frequent_itemsets, pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     
     print(f"Generated {len(rules)} rules with min_confidence={min_confidence}")
     
     # Save all rules
     rules.to_csv('output/all_rules.csv', index=False)
     
-    # 3. Filter rules to focus on diagnoses
+    # 3. Filter rules to focus on procedures
     procedure_cols = [col for col in transactions_matrix.columns if col.startswith('Procedure_')]
     if not procedure_cols:
         print("ERROR: No procedures columns found in transaction matrix")
-        return frequent_itemsets, rules, pd.DataFrame()
+        return frequent_itemsets, rules, pd.DataFrame(), pd.DataFrame()
     
     print(f"Found {len(procedure_cols)} procedures columns to use for rule filtering")
 
@@ -645,34 +645,49 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
         rules['antecedents'] = rules['antecedents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
         rules['consequents'] = rules['consequents'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
     
-    # Filter for rules that predict diagnoses
+    # Filter for rules that predict procedures
     procedure_rules = rules[rules['consequents'].apply(
         lambda x: any(item in procedure_cols for item in x)
     )].copy()
     
     if procedure_rules.empty:
-        print("WARNING: No rules found with diagnoses in the consequent")
-        return frequent_itemsets, rules, pd.DataFrame()
-    
-    print(f"Found {len(procedure_rules)} rules with diagnoses in the consequent")
-    
-    # Additional filters to focus on more interesting rules
-    if len(procedure_rules) > 1000:
-        print(f"Too many rules ({len(procedure_rules)}). Filtering to more interesting ones...")
+        print("WARNING: No rules found with procedures in the consequent")
+    else:
+        print(f"Found {len(procedure_rules)} rules with procedures in the consequent")
         
-        # Filter by lift (stronger associations)
-        high_lift_rules = procedure_rules[procedure_rules['lift'] > 1.5]
-        if len(high_lift_rules) >= 100:
-            procedure_rules = high_lift_rules
-            print(f"Filtered to {len(procedure_rules)} rules with lift > 1.5")
+        # Additional filters to focus on more interesting rules
+        if len(procedure_rules) > 1000:
+            print(f"Too many rules ({len(procedure_rules)}). Filtering to more interesting ones...")
+            
+            # Filter by lift (stronger associations)
+            high_lift_rules = procedure_rules[procedure_rules['lift'] > 1.5]
+            if len(high_lift_rules) >= 100:
+                procedure_rules = high_lift_rules
+                print(f"Filtered to {len(procedure_rules)} rules with lift > 1.5")
+        
+        # Sort by lift and then confidence
+        procedure_rules = procedure_rules.sort_values(['lift', 'confidence'], ascending=[False, False])
+        
+        # Save procedure rules
+        procedure_rules.to_csv('output/procedure_rules.csv', index=False)
     
-    # Sort by lift and then confidence
-    procedure_rules = procedure_rules.sort_values(['lift', 'confidence'], ascending=[False, False])
+    # 4. Filter for diagnosis -> procedure/demographic rules
+    diagnosis_to_proc_demo_rules = filter_diagnosis_to_procedure_demographic_rules(rules, transactions_matrix)
     
-    # Save diagnosis rules
-    procedure_rules.to_csv('output/diagnosis_rules.csv', index=False)
+    # 5. Create human-readable versions of the rules
+    try:
+        # Load the feature mappings if available
+        if os.path.exists('output/feature_mappings.pkl'):
+            with open('output/feature_mappings.pkl', 'rb') as f:
+                feature_mappings = pickle.load(f)
+            
+            # Create human-readable versions of the rules
+            if not procedure_rules.empty:
+                readable_rules = create_readable_rules(procedure_rules, feature_mappings)
+    except Exception as e:
+        print(f"WARNING: Could not create readable rules: {str(e)}")
     
-    return frequent_itemsets, rules, procedure_rules
+    return frequent_itemsets, rules, procedure_rules, diagnosis_to_proc_demo_rules
 
 sample_fraction = 0.01  # Use 10% of the data
 patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures = load_data(sample_fraction)
