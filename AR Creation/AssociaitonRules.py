@@ -468,6 +468,71 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     
     return transactions_matrix
 
+
+def filter_diagnosis_to_procedure_demographic_rules(rules_df, transactions_matrix):
+    """
+    Filter rules where antecedents (LHS) are diagnoses and consequents (RHS) are 
+    procedures or demographic features.
+    
+    Args:
+        rules_df (DataFrame): The complete set of association rules
+        transactions_matrix (DataFrame): The transaction matrix to identify feature types
+        
+    Returns:
+        DataFrame: Filtered rules
+    """
+    if rules_df.empty:
+        print("No rules to filter.")
+        return pd.DataFrame()
+    
+    # Identify feature types from the transaction matrix
+    diagnosis_cols = [col for col in transactions_matrix.columns if col.startswith('Diagnosis_')]
+    procedure_cols = [col for col in transactions_matrix.columns if col.startswith('Procedure_')]
+    demographic_cols = [col for col in transactions_matrix.columns 
+                       if col.startswith(('Gender_', 'Age_')) or col == 'anchor_age']
+    
+    # Filter rules where:
+    # 1. Antecedents (LHS) contain only diagnosis features
+    # 2. Consequents (RHS) contain only procedure or demographic features
+    filtered_rules = rules_df[rules_df.apply(
+        lambda row: (
+            # Check that all antecedents are diagnoses
+            all(item in diagnosis_cols for item in row['antecedents'])
+            and 
+            # Check that all consequents are either procedures or demographics
+            all(item in procedure_cols or item in demographic_cols for item in row['consequents'])
+        ),
+        axis=1
+    )]
+    
+    # Check if we found any matching rules
+    if filtered_rules.empty:
+        print("No rules matching the Diagnosis → Procedure/Demographic pattern.")
+        return pd.DataFrame()
+    
+    print(f"Found {len(filtered_rules)} rules where diagnoses predict procedures or demographics.")
+    
+    # Sort by lift for most interesting rules first
+    filtered_rules = filtered_rules.sort_values('lift', ascending=False)
+    
+    # Save the filtered rules
+    os.makedirs('output', exist_ok=True)
+    filtered_rules.to_csv('output/diagnosis_to_proc_demo_rules.csv', index=False)
+    
+    # Create a human-readable version
+    try:
+        # Load the feature mappings if available
+        if os.path.exists('output/feature_mappings.pkl'):
+            with open('output/feature_mappings.pkl', 'rb') as f:
+                feature_mappings = pickle.load(f)
+            
+            # Create a human-readable version of the filtered rules
+            readable_filtered_rules = create_readable_rules(filtered_rules, feature_mappings)
+            readable_filtered_rules.to_csv('output/readable_diagnosis_to_proc_demo_rules.csv', index=False)
+    except Exception as e:
+        print(f"WARNING: Could not create readable filtered rules: {str(e)}")
+    
+    return filtered_rules
 def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5):
     print("Starting association rule mining...")
     
