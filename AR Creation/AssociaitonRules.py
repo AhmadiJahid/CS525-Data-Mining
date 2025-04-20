@@ -294,6 +294,7 @@ def create_detailed_transaction_matrix(transactions_matrix, transactions_base, d
     print(f"Saved detailed human-readable transaction matrix with {len(detailed_matrix)} rows")
     
     return detailed_matrix
+
 def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc):
     print("Starting feature engineering...")
 
@@ -311,12 +312,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         print(f"WARNING: {len(missing_proc_desc)} procedure codes have no description in the dictionary")
         procedures_with_desc["long_title"] = procedures_with_desc["long_title"].fillna("Unlabeled_" + procedures_with_desc["icd_code"].astype(str))
 
-    #get comorbidities
-    #comorbidities = diagnoses_with_desc[diagnoses_with_desc["seq_num"] > 1].copy()
-
-    #print(f"Found {len(comorbidities)} comorbidities")
-
-    #create procedure presence feature
+    # Create procedure presence feature
     procedure_counts = procedures_with_desc["long_title"].value_counts()
     min_procedure_freq = 25
 
@@ -328,13 +324,16 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     print(f"Filtered procedures dataset shape: {procedures_filtered.shape}")
     print(f"Filtered procedures dataset preview: \n{procedures_filtered.head()}")
 
-    #checking if procedures are more than the frequency threshold
+    # Checking if procedures are more than the frequency threshold
     if len(procedures_filtered) == 0:
         print("WARNING: No procedures match the frequency threshold. Reducing threshold.")
         min_procedure_freq = 10
         common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
         procedures_filtered = procedures_with_desc[procedures_with_desc['long_title'].isin(common_procedures)]
         print(f"Using {len(common_procedures)} procedures with reduced threshold")
+    
+    # Create mapping of procedure codes to descriptions for readability
+    procedure_mapping = procedures_with_desc[['icd_code', 'long_title']].drop_duplicates().set_index('icd_code')['long_title'].to_dict()
     
     if len(procedures_filtered) > 0:
         procedures_pivot = pd.get_dummies(procedures_filtered[["hadm_id", "long_title"]], columns=["long_title"], prefix="Procedure", prefix_sep="_")
@@ -344,30 +343,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         print("WARNING: No procedures found after filtering. Skipping procedure feature engineering.")
         procedures_by_admission = pd.DataFrame(index = transactions_base["hadm_id"].unique())
     
-    #create comorbidity presence feature
-    '''
-    comorbidity_counts = comorbidities["long_title"].value_counts()
-    min_comorbidity_freq = 40
-    common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
-    print(f"Using {len(common_comorbidities)} common comorbidities for feature engineering out of {len(comorbidity_counts)} total comorbidities")
-    comorbidities_filtered = comorbidities[comorbidities["long_title"].isin(common_comorbidities)]
-    print(f"Filtered comorbidities dataset shape: {comorbidities_filtered.shape}")
-    print(f"Filtered comorbidities dataset preview: \n{comorbidities_filtered.head()}")
-    if len(comorbidities_filtered) == 0:
-        print("WARNING: No comorbidities match the frequency threshold. Reducing threshold.")
-        min_comorbidity_freq = 20
-        common_comorbidities = comorbidity_counts[comorbidity_counts >= min_comorbidity_freq].index.tolist()
-        comorbidities_filtered = comorbidities[comorbidities['long_title'].isin(common_comorbidities)]
-        print(f"Using {len(common_comorbidities)} comorbidities with reduced threshold")
-    if len(comorbidities_filtered) > 0:
-        comorbidities_pivot = pd.get_dummies(comorbidities_filtered[["hadm_id", "long_title"]], columns=["long_title"], prefix="Comorbidity", prefix_sep="_")
-        comorbidities_by_admission = comorbidities_pivot.groupby("hadm_id").max()
-        print(f"Created comorbidities with admissons with shape: {comorbidities_by_admission.shape}")
-    else:
-        print("WARNING: No comorbidities found after filtering. Skipping comorbidity feature engineering.")
-        comorbidities_by_admission = pd.DataFrame(index = transactions_base["hadm_id"].unique())
-    '''
-    #create demographic features
+    # Create demographic features
     demographic_cols = ["hadm_id", "anchor_age", "gender", "age_category"]
 
     demographic_features = pd.get_dummies(transactions_base[demographic_cols], columns=["gender", "age_category"], prefix=["Gender", "Age"], prefix_sep="_")
@@ -381,11 +357,10 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     print(f"Demographic features preview: \n{demographics_by_admission.head()}")
 
-    #merge all features into one dataset
+    # Merge all features into one dataset
     all_features = pd.DataFrame(index = transactions_base["hadm_id"].unique())
 
-    #list to keep track of dataframes with potential join issues
-
+    # List to keep track of dataframes with potential join issues
     empty_dfs = []  
     for name, df in [("Procedures", procedures_by_admission), ("Demographics", demographics_by_admission)]:
         if df.empty:
@@ -402,14 +377,15 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     if empty_dfs:
         print(f"WARNING: The following dataframes were empty and not included in the final dataset: {', '.join(empty_dfs)}")
 
-
-    #fill missing values with 0
+    # Fill missing values with 0
     all_features = all_features.fillna(0)
-
     
     # 8. Create diagnosis outcome features
     diagnosis_counts = transactions_base['primary_diagnosis'].value_counts()
 
+    # Create mapping of diagnosis codes to descriptions for readability
+    diagnosis_mapping = transactions_base[['primary_diagnosis_code', 'primary_diagnosis']].drop_duplicates().set_index('primary_diagnosis_code')['primary_diagnosis'].to_dict()
+    
     # We want at least 10 diagnoses, but respect max_features budget
     diagnosis_feature_limit = max(10, max_features_count - len(demographics_by_admission.columns) - 
                             (len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0))
@@ -440,8 +416,8 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     transactions_matrix = all_features.join(diagnosis_by_admission, how='inner')
 
-    #printing transaction matrix shape
-    print("TRANSACTİON MATRİX")
+    # Printing transaction matrix shape
+    print("TRANSACTION MATRIX")
     print(f"Transaction matrix shape after joining features and outcomes: {transactions_matrix.shape}")
     print(f"Transaction matrix preview: \n{transactions_matrix.head()}")
     if transactions_matrix.empty:
@@ -465,6 +441,20 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     # Save the transaction matrix
     os.makedirs('output', exist_ok=True)
     transactions_matrix.to_csv('output/transaction_matrix.csv')
+    
+    # Save mappings for later use in readability
+    mappings = {
+        'procedure_mapping': procedure_mapping,
+        'diagnosis_mapping': diagnosis_mapping
+    }
+    
+    import pickle
+    with open('output/feature_mappings.pkl', 'wb') as f:
+        pickle.dump(mappings, f)
+    
+    # Create and save human-readable versions of the transaction matrix
+    readable_matrix = create_readable_transaction_matrix(transactions_matrix)
+    detailed_matrix = create_detailed_transaction_matrix(transactions_matrix, transactions_base, diagnoses_with_desc, procedures_with_desc)
     
     # For debug purposes, also save feature counts
     feature_counts = pd.Series({
