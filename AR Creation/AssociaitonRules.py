@@ -33,7 +33,7 @@ def main(sample_fraction=0.01, min_support=0.01, min_confidence=0.5, visualize=T
         transactions_matrix = engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses_with_desc)
     
     # 5. Mine association rules
-    frequent_itemsets, rules, procedure_rules = mine_association_rules(transactions_matrix, min_support, min_confidence)
+    frequent_itemsets, rules, procedure_rules, diagnosis_to_procedure_rules = mine_association_rules(transactions_matrix, min_support, min_confidence)
     
     # 6. Create visualizations if requested and available
     if visualize and visualization_available:
@@ -505,7 +505,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     # Create procedure presence feature
     procedure_counts = procedures_with_desc["long_title"].value_counts()
-    min_procedure_freq = 25
+    min_procedure_freq = 45
 
     common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
     print(f"Using {len(common_procedures)} common procedures for feature engineering out of {len(procedure_counts)} total procedures")
@@ -534,8 +534,8 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         print("WARNING: No procedures found after filtering. Skipping procedure feature engineering.")
         procedures_by_admission = pd.DataFrame(index = transactions_base["hadm_id"].unique())
     
-    # Create demographic features
-    demographic_cols = ["hadm_id", "anchor_age", "gender", "age_category"]
+    # Create demographic features - REMOVING anchor_age as requested
+    demographic_cols = ["hadm_id", "gender", "age_category"]  # Removed anchor_age
 
     demographic_features = pd.get_dummies(transactions_base[demographic_cols], columns=["gender", "age_category"], prefix=["Gender", "Age"], prefix_sep="_")
 
