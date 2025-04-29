@@ -1,10 +1,11 @@
-def main(sample_fraction=0.01, min_support=0.01, min_confidence=0.5, visualize=True, generate_report=True):
+# Main function remains largely the same, but with updated imports and function calls
+def main(sample_fraction=0.1, min_support=0.0006, min_confidence=0.5, visualize=True, generate_report=True):
     """
     Main function to run the full pipeline.
     
     Args:
         sample_fraction (float): Fraction of data to sample
-        min_support (float): Minimum support threshold for Apriori
+        min_support (float): Minimum support threshold for FP-Growth
         min_confidence (float): Minimum confidence threshold for rules
         visualize (bool): Whether to create visualizations
         generate_report (bool): Whether to generate HTML report
@@ -61,14 +62,14 @@ def main(sample_fraction=0.01, min_support=0.01, min_confidence=0.5, visualize=T
     
     return frequent_itemsets, rules, procedure_rules
 
+# Update main imports at the top
 import pandas as pd
 import numpy as np
-from mlxtend.frequent_patterns import apriori, association_rules
+from mlxtend.frequent_patterns import fpgrowth, association_rules  # Changed from apriori to fpgrowth
 import matplotlib.pyplot as plt
 import ast
 import os
 import pickle
-
 # Import visualization functions
 try:
     import networkx as nx
@@ -105,7 +106,7 @@ def sample_data(data, fraction=0.1, seed=42):
         return data
         
     # For small datasets, use at least 1000 rows or the original size, whichever is smaller
-    min_rows = min(5000, len(data))
+    min_rows = min(10000, len(data))
     
     # Calculate how many rows to sample (at least min_rows)
     sample_size = max(min_rows, int(len(data) * fraction))
@@ -116,12 +117,12 @@ def sample_data(data, fraction=0.1, seed=42):
     return data.sample(n=sample_size, random_state=seed)
 
 def load_data(sample_fraction=0.1):
-    patients_path = 'Data/patients.csv'
-    admissions_path = 'Data/admissions.csv'
-    diagnoses_path = 'Data/diagnoses_icd.csv'
-    d_icd_diagnoses_path = 'Data/d_icd_diagnoses.csv'
-    d_icd_procedures_path = 'Data/d_icd_procedures.csv'
-    procedures_path = 'Data/procedures_icd.csv'
+    patients_path = 'AR Creation/Data/patients.csv'
+    admissions_path = 'AR Creation/Data/admissions.csv'
+    diagnoses_path = 'AR Creation/Data/diagnoses_icd.csv'
+    d_icd_diagnoses_path = 'AR Creation/Data/d_icd_diagnoses.csv'
+    d_icd_procedures_path = 'AR Creation/Data/d_icd_procedures.csv'
+    procedures_path = 'AR Creation/Data/procedures_icd.csv'
 
     print(f"Loading data with sampling fraction: {sample_fraction}")
 
@@ -505,7 +506,7 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
 
     # Create procedure presence feature
     procedure_counts = procedures_with_desc["long_title"].value_counts()
-    min_procedure_freq = 45
+    min_procedure_freq = 2
 
     common_procedures = procedure_counts[procedure_counts >= min_procedure_freq].index.tolist()
     print(f"Using {len(common_procedures)} common procedures for feature engineering out of {len(procedure_counts)} total procedures")
@@ -578,8 +579,10 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     diagnosis_mapping = transactions_base[['primary_diagnosis_code', 'primary_diagnosis']].drop_duplicates().set_index('primary_diagnosis_code')['primary_diagnosis'].to_dict()
     
     # We want at least 10 diagnoses, but respect max_features budget
+    max_procedure_features = max_features_count // 2  # Reserve half for procedures, half for diagnoses
     diagnosis_feature_limit = max(10, max_features_count - len(demographics_by_admission.columns) - 
-                            (len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0))
+                            min(max_procedure_features, 
+                                len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0))
 
     # Simply take the top N most frequent diagnoses
     common_diagnoses = diagnosis_counts.nlargest(min(diagnosis_feature_limit, len(diagnosis_counts))).index.tolist()
@@ -678,8 +681,9 @@ def filter_diagnosis_to_procedure_demographic_rules(rules_df, transactions_matri
     # Identify feature types from the transaction matrix
     diagnosis_cols = [col for col in transactions_matrix.columns if col.startswith('Diagnosis_')]
     procedure_cols = [col for col in transactions_matrix.columns if col.startswith('Procedure_')]
+    # Modify demographic cols to exclude anchor_age
     demographic_cols = [col for col in transactions_matrix.columns 
-                       if col.startswith(('Gender_', 'Age_')) or col == 'anchor_age']
+                       if col.startswith(('Gender_', 'Age_'))]  # Removed anchor_age
     
     # Filter rules where:
     # 1. Antecedents (LHS) contain only diagnosis features
@@ -724,7 +728,7 @@ def filter_diagnosis_to_procedure_demographic_rules(rules_df, transactions_matri
     
     return filtered_rules
 
-def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence=0.5):
+def mine_association_rules(transactions_matrix, min_support=0.0006, min_confidence=0.5):
     print("Starting association rule mining...")
     
     # Convert the DataFrame to a one-hot encoded format
@@ -744,15 +748,16 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
         print(f"Using a sample of {sample_size} transactions")
         transactions_matrix_bool = transactions_matrix_bool.sample(sample_size)
     
-    # 1. Find frequent itemsets with adaptive support threshold
+    # 1. Find frequent itemsets with adaptive support threshold using FP-Growth
     # Try to find a reasonable number of itemsets
     frequent_itemsets = pd.DataFrame()
     
     try:
-        frequent_itemsets = apriori(transactions_matrix_bool, 
-                                  min_support=min_support,
-                                  use_colnames=True,
-                                  max_len=4)  # Limit to combinations of at most 4 items
+        # Using fpgrowth instead of apriori
+        frequent_itemsets = fpgrowth(transactions_matrix_bool, 
+                                   min_support=min_support,
+                                   use_colnames=True,
+                                   max_len=4)  # Limit to combinations of at most 4 items
         
         # If we found too few itemsets, try with a lower threshold
         if len(frequent_itemsets) < 10:
@@ -760,12 +765,12 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
             min_support = max(min_support_floor, min_support / 2)
             print(f"Found too few itemsets ({len(frequent_itemsets)}). Reducing support from {old_support} to {min_support}")
             
-            frequent_itemsets = apriori(transactions_matrix_bool, 
-                                      min_support=min_support,
-                                      use_colnames=True,
-                                      max_len=4)
+            frequent_itemsets = fpgrowth(transactions_matrix_bool, 
+                                       min_support=min_support,
+                                       use_colnames=True,
+                                       max_len=4)
     except Exception as e:
-        print(f"ERROR in apriori algorithm: {str(e)}")
+        print(f"ERROR in FP-Growth algorithm: {str(e)}")
         print("Trying with a smaller dataset...")
         
         # Sample the data if it's too large
@@ -773,13 +778,13 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
             sample_size = min(10000, int(transactions_matrix.shape[0] * 0.5))
             transactions_sample = transactions_matrix.sample(sample_size)
             try:
-                frequent_itemsets = apriori(transactions_sample.astype(bool), 
-                                          min_support=min_support,
-                                          use_colnames=True,
-                                          max_len=3)
-                print(f"Successfully ran apriori on a sample of {sample_size} transactions")
+                frequent_itemsets = fpgrowth(transactions_sample.astype(bool), 
+                                           min_support=min_support,
+                                           use_colnames=True,
+                                           max_len=3)
+                print(f"Successfully ran FP-Growth on a sample of {sample_size} transactions")
             except Exception as e2:
-                print(f"ERROR in apriori algorithm even with sampling: {str(e2)}")
+                print(f"ERROR in FP-Growth algorithm even with sampling: {str(e2)}")
                 return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     
     if frequent_itemsets.empty:
@@ -886,7 +891,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='Run the association rule mining pipeline')
     parser.add_argument('--sample_fraction', type=float, default=0.01, help='Fraction of data to sample')
-    parser.add_argument('--min_support', type=float, default=0.01, help='Minimum support threshold')
+    parser.add_argument('--min_support', type=float, default=0.0006, help='Minimum support threshold')
     parser.add_argument('--min_confidence', type=float, default=0.5, help='Minimum confidence threshold')
     parser.add_argument('--skip_visualizations', action='store_true', help='Skip creating visualizations')
     parser.add_argument('--skip_report', action='store_true', help='Skip generating HTML report')
