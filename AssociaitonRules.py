@@ -26,6 +26,7 @@ def load_data(sample_fraction=0.1):
     d_icd_diagnoses_path = 'Data/d_icd_diagnoses.csv'
     d_icd_procedures_path = 'Data/d_icd_procedures.csv'
     procedures_path = 'Data/procedures_icd.csv'
+    notes_path = 'Data/Notes.csv'
     print(f"Loading data with sampling fraction: {sample_fraction}")
     patients = pd.read_csv(patients_path)
     admissions = pd.read_csv(admissions_path)
@@ -35,6 +36,7 @@ def load_data(sample_fraction=0.1):
     procedures = pd.read_csv(procedures_path)
     lab_events = pd.read_csv(lab_events_path)
     d_icd_labs = pd.read_csv(d_icd_labs_path)
+    notes = pd.read_csv(notes_path)
 
     print("Original dataset shapes:")
     print(f"Patients dataset shape: {patients.shape}")
@@ -45,6 +47,7 @@ def load_data(sample_fraction=0.1):
     print(f"Procedures dataset shape: {procedures.shape}")
     print(f"Lab events dataset shape: {lab_events.shape}")
     print(f"d_icd_labs dataset shape: {d_icd_labs.shape}")
+    print(f"Notes dataset shape: {notes.shape}")
 
     # Sample the main data tables that contain patient-level information
     # We don't sample the reference tables (d_icd_*)
@@ -59,6 +62,7 @@ def load_data(sample_fraction=0.1):
         diagnoses = diagnoses[diagnoses['subject_id'].isin(sampled_subject_ids)]
         procedures = procedures[procedures['subject_id'].isin(sampled_subject_ids)]
         lab_events = lab_events[lab_events['subject_id'].isin(sampled_subject_ids)]
+        notes = notes[notes['subject_id'].isin(sampled_subject_ids)]
         
         patients = patients_sampled
         
@@ -68,6 +72,7 @@ def load_data(sample_fraction=0.1):
         print(f"Diagnoses dataset shape: {diagnoses.shape}")
         print(f"Procedures dataset shape: {procedures.shape}")
         print(f"Lab events dataset shape: {lab_events.shape}")
+        print(f"Notes dataset shape: {notes.shape}")
     print("\nPatients data preview: \n", patients.head())
     print("Admissions data preview: \n", admissions.head())
     print("Diagnoses data preview: \n", diagnoses.head())
@@ -76,13 +81,15 @@ def load_data(sample_fraction=0.1):
     print("Procedures data preview: \n", procedures.head())
     print("Lab events data preview: \n", lab_events.head())
     print("d_icd_labs data preview: \n", d_icd_labs.head())
+    print("Notes data preview: \n", notes.head())
     # Check for missing values
     print("Patients missing values: ", patients.isnull().sum())
     print("Admissions missing values: ", admissions.isnull().sum())
     print("Diagnoses missing values: ", diagnoses.isnull().sum())
+    print("Notes missing values: ", notes.isnull().sum())
     
-    return patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures, lab_events, d_icd_labs
-def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events, d_icd_labs):
+    return patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures, lab_events, d_icd_labs, notes
+def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events, d_icd_labs, notes):
     def categorize_age(age):
         if age < 18:
             return 'Child'
@@ -96,7 +103,7 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events
             return 'Elderly'
         
     print("Starting preprocessing...")
-    print(f"Initial shapes - Patients: {patients.shape}, Admissions: {admissions.shape}, Diagnoses: {diagnoses.shape}")
+    print(f"Initial shapes - Patients: {patients.shape}, Admissions: {admissions.shape}, Diagnoses: {diagnoses.shape}, Notes: {notes.shape}")
     
     # 1. Handle missing values in patients
     # No action needed as only dod is missing which is expected
@@ -111,6 +118,12 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events
     #Merge lab events with description
     lab_events_with_desc = pd.merge(lab_events, d_icd_labs, how='inner')
 
+    # Process Notes.csv
+    notes_subset = notes[['hadm_id', 'subject_id', 'Symptoms', 'allergies']].copy()
+    notes_subset['Symptoms'] = notes_subset['Symptoms'].str.lower().str.strip()
+    notes_subset['allergies'] = notes_subset['allergies'].fillna('None').str.lower().str.strip()
+    print(f"Notes missing values after handling: \n{notes_subset.isnull().sum()}")
+
     missing_desc = diagnoses_with_desc[diagnoses_with_desc["long_title"].isnull()]
     if len(missing_desc) > 0:
         print(f"WARNING: {len(missing_desc)} diagnosis codes have no description in the dictionary")
@@ -124,6 +137,13 @@ def preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events
     #create base transaction dataset
     transactions_base = pd.merge(patient_admissions, primary_diagnosis[["subject_id", "hadm_id", "icd_code", "long_title"]], how='inner', on=["subject_id", "hadm_id"])
     transactions_base = transactions_base.rename(columns={"long_title": "primary_diagnosis", "icd_code": "primary_diagnosis_code"})
+    
+    # Merge notes data into transactions_base
+    transactions_base = pd.merge(transactions_base, notes_subset, how='left', on=['subject_id', 'hadm_id'])
+    transactions_base['Symptoms'] = transactions_base['Symptoms'].fillna('Unknown')
+    transactions_base['allergies'] = transactions_base['allergies'].fillna('None')
+    
+    
     #checking for missing values
     missing_values = transactions_base.isnull().sum()
     
@@ -250,11 +270,48 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     demographics_by_admission = demographic_features.groupby("hadm_id").first()
     print(f"Created demographic features with shape: {demographics_by_admission.shape}")
     print(f"Demographic features preview: \n{demographics_by_admission.head()}")
+
+    # Notes feature engineering: Symptoms
+    print("Generating symptom features...")
+    symptom_counts = transactions_base['Symptoms'].value_counts()
+    min_symptom_freq = 10
+    common_symptoms = symptom_counts[symptom_counts >= min_symptom_freq].index.tolist()
+    print(f"Using {len(common_symptoms)} common symptoms")
+    symptoms_filtered = transactions_base[transactions_base['Symptoms'].isin(common_symptoms)]
+    if len(symptoms_filtered) > 0:
+        symptoms_pivot = pd.get_dummies(symptoms_filtered[['hadm_id', 'Symptoms']], 
+                                       columns=['Symptoms'], 
+                                       prefix='Symptom', 
+                                       prefix_sep='_')
+        symptoms_by_admission = symptoms_pivot.groupby('hadm_id').max()
+        print(f"Symptom features shape: {symptoms_by_admission.shape}")
+    else:
+        print("WARNING: No symptoms meet the frequency threshold.")
+        symptoms_by_admission = pd.DataFrame(index=transactions_base["hadm_id"].unique())
+
+    # Notes feature engineering: Allergies
+    print("Generating allergy features...")
+    allergy_counts = transactions_base['allergies'].value_counts()
+    min_allergy_freq = 10
+    common_allergies = allergy_counts[allergy_counts >= min_allergy_freq].index.tolist()
+    print(f"Using {len(common_allergies)} common allergies")
+    allergies_filtered = transactions_base[transactions_base['allergies'].isin(common_allergies)]
+    if len(allergies_filtered) > 0:
+        allergies_pivot = pd.get_dummies(allergies_filtered[['hadm_id', 'allergies']], 
+                                        columns=['allergies'], 
+                                        prefix='Allergy', 
+                                        prefix_sep='_')
+        allergies_by_admission = allergies_pivot.groupby('hadm_id').max()
+        print(f"Allergy features shape: {allergies_by_admission.shape}")
+    else:
+        print("WARNING: No allergies meet the frequency threshold.")
+        allergies_by_admission = pd.DataFrame(index=transactions_base["hadm_id"].unique())
+        
     #merge all features into one dataset
     all_features = pd.DataFrame(index = transactions_base["hadm_id"].unique())
     #list to keep track of dataframes with potential join issues
     empty_dfs = []  
-    for name, df in [("Procedures", procedures_by_admission), ("Comorbidities", comorbidities_by_admission), ("Demographics", demographics_by_admission), ("Lab", lab_summary)]:
+    for name, df in [("Procedures", procedures_by_admission), ("Comorbidities", comorbidities_by_admission), ("Demographics", demographics_by_admission), ("Lab", lab_summary),("Symptoms", symptoms_by_admission),("Allergies", allergies_by_admission)]:
         if df.empty:
             print(f"WARNING: {name} dataframe is empty.")
             empty_dfs.append(name)
@@ -275,7 +332,9 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     # We want at least 10 diagnoses, but respect max_features budget
     diagnosis_feature_limit = max(10, max_features_count - len(demographics_by_admission.columns) - 
                             (len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0) - 
-                            (len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0))
+                            (len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0) -
+                            (len(symptoms_by_admission.columns) if hasattr(symptoms_by_admission, 'columns') else 0) - 
+                            (len(allergies_by_admission.columns) if hasattr(allergies_by_admission, 'columns') else 0))
     # Simply take the top N most frequent diagnoses
     common_diagnoses = diagnosis_counts.nlargest(min(diagnosis_feature_limit, len(diagnosis_counts))).index.tolist()
     print(f"Using {len(common_diagnoses)} most common diagnoses out of {len(diagnosis_counts)} total")
@@ -315,6 +374,8 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
     print(f"Features include {len(demographics_by_admission.columns)} demographic features, " 
         f"{len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0} procedure features, "
         f"{len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0} comorbidity features, "
+        f"{len(symptoms_by_admission.columns) if hasattr(symptoms_by_admission, 'columns') else 0} symptom features, "
+        f"{len(allergies_by_admission.columns) if hasattr(allergies_by_admission, 'columns') else 0} allergy features, "
         f"and {len(diagnosis_by_admission.columns) if hasattr(diagnosis_by_admission, 'columns') else 0} diagnosis outcomes")
     
     # Save the transaction matrix
@@ -326,6 +387,8 @@ def engineer_features(transactions_base, procedures, d_icd_procedures, diagnoses
         'demographic_features': len(demographics_by_admission.columns),
         'procedure_features': len(procedures_by_admission.columns) if hasattr(procedures_by_admission, 'columns') else 0,
         'comorbidity_features': len(comorbidities_by_admission.columns) if hasattr(comorbidities_by_admission, 'columns') else 0,
+        'symptom_features': len(symptoms_by_admission.columns) if hasattr(symptoms_by_admission, 'columns') else 0,
+        'allergy_features': len(allergies_by_admission.columns) if hasattr(allergies_by_admission, 'columns') else 0,
         'diagnosis_features': len(diagnosis_by_admission.columns) if hasattr(diagnosis_by_admission, 'columns') else 0,
         'lab_features': len(lab_summary.columns) if hasattr(lab_summary, 'columns') else 0,
         'total_features': transactions_matrix.shape[1],
@@ -469,8 +532,8 @@ def mine_association_rules(transactions_matrix, min_support=0.01, min_confidence
     
     return frequent_itemsets, rules, diagnosis_rules
 sample_fraction = 0.01  # Use 10% of the data
-patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures, lab_events, d_icd_labs = load_data(sample_fraction)
-transactions_base, diagnoses_with_desc, lab_events_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events, d_icd_labs)
+patients, admissions, diagnoses, d_icd_diagnoses, d_icd_procedures, procedures, lab_events, d_icd_labs, notes = load_data(sample_fraction)
+transactions_base, diagnoses_with_desc, lab_events_with_desc = preprocess_data(patients, admissions, diagnoses, d_icd_diagnoses, lab_events, d_icd_labs, notes)
 #check if the transaction_matrix_csv is already existing
 # if os.path.exists('output/transaction_matrix.csv'):
 #     transactions_matrix = pd.read_csv('output/transaction_matrix.csv', index_col=0)
